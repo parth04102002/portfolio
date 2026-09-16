@@ -334,6 +334,59 @@ a {
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px rgba(6, 182, 212, 0.15);
 }
 
+/* Realistic Dark macOS Safari Browser Mockup Frame */
+.browser-frame {
+  background: #090d16;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85), 0 0 35px rgba(6, 182, 212, 0.18);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.browser-frame:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 30px 65px -15px rgba(0, 0, 0, 0.9), 0 0 45px rgba(6, 182, 212, 0.25);
+}
+
+.browser-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.browser-dots {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.browser-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.browser-url {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  max-width: 65%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* Corner Cut HUD Decorator for Form & Tech Container */
 .hud-corner-card {
   position: relative;
@@ -436,6 +489,9 @@ a {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .filter-btn:hover {
@@ -450,11 +506,23 @@ a {
   box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
 }
 
+.filter-count {
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.filter-btn.active .filter-count {
+  background: rgba(6, 182, 212, 0.3);
+  color: #fff;
+}
+
 /* Project Cards Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2.25rem;
 }
 
 .project-card {
@@ -465,17 +533,18 @@ a {
   display: flex;
   flex-direction: column;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
   border-color: var(--border-glow);
-  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(6, 182, 212, 0.15);
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(6, 182, 212, 0.15);
 }
 
 .project-thumb-wrap {
   width: 100%;
-  height: 220px;
+  height: 230px;
   overflow: hidden;
   position: relative;
   background: #090d16;
@@ -504,7 +573,7 @@ a {
   display: flex;
   align-items: center;
   gap: 4rem;
-  margin-bottom: 6rem;
+  margin-bottom: 6.5rem;
   position: relative;
 }
 
@@ -518,20 +587,6 @@ a {
 
 .featured-image-container {
   flex: 1.25;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 35px rgba(6, 182, 212, 0.15);
-}
-
-.featured-image-container img {
-  width: 100%;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.featured-image-container:hover img {
-  transform: scale(1.04);
 }
 
 /* Experience Figma Cards Grid */
@@ -602,6 +657,56 @@ a {
   color: #e2e8f0;
 }
 
+/* Project Detail Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-content {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  border-radius: 24px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.95), 0 0 50px rgba(6, 182, 212, 0.2);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+}
+
 /* Accordion (FAQ) */
 .faq-item {
   background: rgba(15, 23, 42, 0.55);
@@ -639,21 +744,22 @@ a {
   line-height: 1.6;
 }
 
-/* Client Testimonials */
-.testimonial-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 18px;
-  padding: 2rem;
+/* Floating Badges */
+.floating-stat-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(3, 7, 18, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.3s ease;
-}
-
-.testimonial-card:hover {
-  border-color: rgba(6, 182, 212, 0.4);
-  transform: translateY(-4px);
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
 }
 
 /* Responsive Media Queries */
@@ -692,5 +798,9 @@ a {
 
   .hud-corner-card {
     padding: 1.75rem;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
   }
 }
