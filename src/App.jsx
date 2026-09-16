@@ -163,7 +163,7 @@ function Hero() {
             boxShadow: '0 30px 70px -10px rgba(6, 182, 212, 0.25), 0 0 40px rgba(0, 0, 0, 0.8)'
           }}>
             <img 
-              src="/hero3d.jpg" 
+              src="./hero3d.jpg" 
               alt="Futuristic 3D Tech Workspace" 
               style={{ width: '100%', borderRadius: '18px', display: 'block' }}
             />
@@ -401,7 +401,7 @@ function Projects() {
       category: 'Healthcare & Aesthetics',
       type: 'featured',
       url: 'https://eleganceclinic.in/',
-      image: '/elegance.jpg',
+      image: './elegance.jpg',
       headline: 'Plastic & Cosmetic Surgery Center — Surat',
       description: 'A luxury healthcare web platform engineered to showcase treatments (cosmetic surgery, hair transplantation, dermatology, and laser therapies) while preserving high brand elegance and client trust.',
       deliverables: ['Custom WordPress Theme', 'Consultation Inquiry System', 'SEO-Optimized Treatment Catalog', 'Mobile-Responsive UX'],
@@ -413,7 +413,7 @@ function Projects() {
       category: 'Healthcare & Aesthetics',
       type: 'featured',
       url: 'https://themomentmassage.com/',
-      image: '/themoment.jpg',
+      image: './themoment.jpg',
       headline: 'Luxury Spa & Wellness Sanctuary',
       description: 'Developed an elegant, zen-inspired WordPress website featuring complete service menus, tier pricing, and instant booking reservation forms, optimized for high conversion and mobile visitors.',
       deliverables: ['Custom Wellness Layouts', 'Integrated Booking Engine', 'High-Converting CTAs', 'Fast Load Times'],
@@ -425,7 +425,7 @@ function Projects() {
       category: 'Corporate & Marketing',
       type: 'grid',
       url: 'https://sabvix.com/satyam/',
-      image: '/satyam.jpg',
+      image: './satyam.jpg',
       headline: 'Enterprise Corporate Platform',
       description: 'Modern corporate website architecture built with high attention to typography, modular sections, and smooth multi-device responsiveness to present enterprise capabilities.',
       deliverables: ['Corporate Layout Design', 'Multi-device Responsive UI', 'Interactive Service Modules'],
@@ -437,7 +437,7 @@ function Projects() {
       category: 'Corporate & Marketing',
       type: 'grid',
       url: 'https://www.squadralupo.com/',
-      image: '/squadra.jpg',
+      image: './squadra.jpg',
       headline: 'Luxury Automotive & Lifestyle Portal',
       description: 'Engineered a sleek, dark-themed responsive website for high-end automotive enthusiasts and collectors, featuring fluid navigation and dynamic vehicle showcase galleries.',
       deliverables: ['High-End Visual Aesthetics', 'Vehicle Portfolio Showcase', 'Interactive Media Grid'],
@@ -449,7 +449,7 @@ function Projects() {
       category: 'Corporate & Marketing',
       type: 'grid',
       url: 'https://yashrajmarketing.com/',
-      image: '/yashraj.jpg',
+      image: './yashraj.jpg',
       headline: 'Digital Growth & Marketing Agency',
       description: 'Built a clean, user-focused digital marketing agency portal presenting growth strategies, case studies, and conversion-focused lead generation funnels.',
       deliverables: ['Lead Generation Forms', 'Service Packages Display', 'SEO-Friendly Layout'],
@@ -461,7 +461,7 @@ function Projects() {
       category: 'Industrial & Export',
       type: 'grid',
       url: 'https://krishnapeanut.com/',
-      image: '/krishnapeanut.jpg',
+      image: './krishnapeanut.jpg',
       headline: 'Agro-Food Processing & Global Export Hub',
       description: 'Created a comprehensive international trade portal featuring detailed product catalogs for Bold, Java, and TJ varieties, technical specifications, and international export inquiry tools.',
       deliverables: ['Product Variety Catalog (Bold/Java/TJ)', 'Global Inquiry Engine', 'Quality Certification Showcase'],
@@ -473,7 +473,7 @@ function Projects() {
       category: 'Industrial & Export',
       type: 'grid',
       url: 'https://aaronmetals.in/',
-      image: '/aaronmetals.jpg',
+      image: './aaronmetals.jpg',
       headline: 'Precision Metal Casting & Valve Foundry',
       description: 'Professional industrial website engineered for a metal casting foundry, showcasing valve castings, pump castings, company profile, and precision quote request systems.',
       deliverables: ['Custom Valve & Pump Product Pages', 'Quote & Technical Inquiry Form', 'Industrial SEO Structure'],
@@ -557,7 +557,7 @@ function Projects() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             >
-              <img src="/elegance.jpg" alt="Elegance Clinic Website UI Mockup" />
+              <img src="./elegance.jpg" alt="Elegance Clinic Website UI Mockup" />
             </motion.div>
           </div>
 
@@ -607,7 +607,7 @@ function Projects() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             >
-              <img src="/themoment.jpg" alt="The Moment Massage Wellness Portal Mockup" />
+              <img src="./themoment.jpg" alt="The Moment Massage Wellness Portal Mockup" />
             </motion.div>
           </div>
         </div>
