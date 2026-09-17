@@ -7,6 +7,7 @@ import {
   User, MessageSquare, ChevronDown, Star, Download, ArrowUp, FileText,
   Lock, RefreshCw, Eye, Award, Check
 } from 'lucide-react';
+import { TextInput, TextArea, Button as GravityButton, Card, Text } from '@gravity-ui/uikit';
 
 const slideUp = {
   hidden: { opacity: 0, y: 40, scale: 0.98 },
@@ -27,6 +28,107 @@ const staggerContainer = {
     }
   }
 };
+
+/* --- Typewriter Effect Component --- */
+function TypewriterText({ words }) {
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  React.useEffect(() => {
+    const typingSpeed = isDeleting ? 40 : 120;
+    const word = words[currentWordIndex];
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting && currentText === word) {
+        setTimeout(() => setIsDeleting(true), 1500); // Wait before deleting
+      } else if (isDeleting && currentText === '') {
+        setIsDeleting(false);
+        setCurrentWordIndex((prev) => (prev + 1) % words.length);
+      } else {
+        setCurrentText(word.substring(0, currentText.length + (isDeleting ? -1 : 1)));
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [currentText, isDeleting, currentWordIndex, words]);
+
+  return (
+    <span style={{ position: 'relative', display: 'inline-block', width: '10ch', textAlign: 'left', whiteSpace: 'nowrap' }}>
+      {currentText}
+      <span className="cursor-blink" style={{ color: '#06b6d4', marginLeft: '2px' }}>|</span>
+    </span>
+  );
+}
+
+/* --- Huge Typographic Impact Section --- */
+function LargeTypewriterRow({ word, index }) {
+  const [currentText, setCurrentText] = useState('');
+  const [inView, setInView] = useState(false);
+  const ref = React.useRef(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setInView(true);
+      }
+    }, { threshold: 0.1 });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    if (inView && currentText.length < word.length) {
+      const timeout = setTimeout(() => {
+        setCurrentText(word.slice(0, currentText.length + 1));
+      }, 50); // Fast cinematic typing
+      return () => clearTimeout(timeout);
+    }
+  }, [currentText, inView, word]);
+
+  return (
+    <motion.div 
+      ref={ref} 
+      initial={{ opacity: 0, x: -40 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: "-50px" }}
+      style={{ borderBottom: '1px solid rgba(255,255,255,0.04)', padding: '1.5rem 0', overflow: 'hidden', whiteSpace: 'nowrap' }}
+      className="large-typewriter-row"
+    >
+      <div 
+        className="huge-text"
+        style={{ fontSize: 'clamp(2rem, 7.5vw, 8.5rem)', fontWeight: 900, color: '#f8fafc', lineHeight: 0.85, letterSpacing: '-0.04em', textTransform: 'uppercase' }}
+      >
+        {currentText}<span className="cursor-blink" style={{ color: '#06b6d4', opacity: currentText.length === word.length ? 0.5 : 1 }}>|</span>
+      </div>
+    </motion.div>
+  );
+}
+
+function TypographicImpact() {
+  const words = ['STRATEGY', 'PERFORMANCE', 'CUSTOM-CODE', 'SCALABILITY'];
+  return (
+    <section style={{ padding: '6rem 0', background: '#000000', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <div className="container">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          style={{ fontSize: '1rem', fontWeight: 600, color: '#06b6d4', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '3px' }}
+        >
+          The Developer's Way
+        </motion.div>
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+          {words.map((w, i) => (
+            <LargeTypewriterRow key={i} word={w} index={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 /* --- Navigation --- */
 function Navbar() {
@@ -89,7 +191,7 @@ function Navbar() {
 /* --- Hero Section --- */
 function Hero() {
   return (
-    <section id="about" className="container" style={{ padding: '6rem 0 6rem', position: 'relative' }}>
+    <section id="about" className="container" style={{ paddingTop: '6rem', paddingBottom: '6rem', position: 'relative' }}>
       <div className="glow-bg" style={{ top: '0', left: '10%' }}></div>
       
       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '3.5rem' }}>
@@ -110,7 +212,7 @@ function Hero() {
             style={{ fontSize: '3.6rem', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem', letterSpacing: '-1px' }}
           >
             I'm <span className="gradient-text">Parth Parmar</span>.<br />
-            Professional WordPress & Web Developer.
+            Professional <span style={{ color: '#06b6d4' }}><TypewriterText words={['WordPress', 'React.js', 'Shopify']} /></span> Developer.
           </motion.h1>
 
           <motion.p 
@@ -124,8 +226,11 @@ function Hero() {
             <a href="#work" className="btn-primary">
               Explore 7+ Client Sites <ArrowRight size={18} />
             </a>
-            <a href="#contact" className="btn-outline">
-              Request a Project Quote
+            <a href="https://wa.me/917567959878" target="_blank" rel="noreferrer" className="btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <MessageSquare size={18} /> Chat on WhatsApp
+            </a>
+            <a href="/Parth_Parmar_Resume.pdf" target="_blank" rel="noreferrer" download className="btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(16, 185, 129, 0.4)', color: '#10b981' }}>
+              <Download size={18} /> Download CV
             </a>
           </motion.div>
 
@@ -265,7 +370,7 @@ function ExperienceAndEducation() {
   ];
 
   return (
-    <section id="experience" className="container" style={{ padding: '6rem 0' }}>
+    <section id="experience" className="container" style={{ paddingTop: '6rem', paddingBottom: '6rem' }}>
       <div className="section-header">
         <span className="section-tag">Career & Credentials</span>
         <h2 className="section-title">Work Experience & <span className="gradient-text">Education</span></h2>
@@ -341,7 +446,7 @@ function SkillsMatrix() {
   ];
 
   return (
-    <section id="skills" className="container" style={{ padding: '6rem 0' }}>
+    <section id="skills" className="container" style={{ paddingTop: '6rem', paddingBottom: '6rem' }}>
       <div className="section-header">
         <span className="section-tag">Technical Arsenal</span>
         <h2 className="section-title">Skills & <span className="gradient-text">Technologies</span></h2>
@@ -538,7 +643,7 @@ function Projects() {
     : allProjects.filter(p => p.category === filter);
 
   return (
-    <section id="work" className="container" style={{ padding: '7rem 0' }}>
+    <section id="work" className="container" style={{ paddingTop: '7rem', paddingBottom: '7rem' }}>
       <div className="section-header">
         <span className="section-tag">Proven Results</span>
         <h2 className="section-title">Featured <span className="gradient-text">Client Works</span></h2>
@@ -916,6 +1021,66 @@ function Projects() {
   );
 }
 
+/* --- Client ROI Analysis Section --- */
+function ROIAnalysis() {
+  const benefits = [
+    {
+      title: 'Lightning Fast Load Times',
+      value: '< 1s',
+      desc: 'Engineered for sub-second speeds to decrease bounce rates and increase conversion by up to 30%.',
+      icon: Zap,
+      color: '#06b6d4'
+    },
+    {
+      title: 'Technical SEO Structure',
+      value: '100/100',
+      desc: 'Flawless semantic markup and schema deployment ensuring top-tier Google search visibility.',
+      icon: Globe,
+      color: '#10b981'
+    },
+    {
+      title: 'Mobile-First Conversions',
+      value: '2x',
+      desc: 'Responsive UI/UX flows specifically designed to capture leads efficiently on smaller devices.',
+      icon: LayoutTemplate,
+      color: '#3b82f6'
+    }
+  ];
+
+  return (
+    <section className="container" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <div style={{ background: 'linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(2, 6, 23, 0.9))', border: '1px solid rgba(6, 182, 212, 0.2)', borderRadius: '24px', padding: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div className="glow-bg" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.5 }}></div>
+        
+        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#f8fafc', marginBottom: '1rem', zIndex: 1 }}>
+          The Technical <span className="gradient-text">Advantage</span>
+        </h2>
+        <p style={{ color: '#94a3b8', fontSize: '1.05rem', maxWidth: '600px', marginBottom: '3.5rem', zIndex: 1 }}>
+          Why businesses choose to collaborate with me. It’s not just about looking good—it’s about measurable performance and digital growth.
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', width: '100%', zIndex: 1 }}>
+          {benefits.map((b, i) => {
+            const Icon = b.icon;
+            return (
+              <div key={i} style={{ background: 'rgba(255,255,255,0.03)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'left' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: `${b.color}20`, color: b.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Icon size={24} />
+                  </div>
+                  <div style={{ fontSize: '1.75rem', fontWeight: 800, color: b.color }}>{b.value}</div>
+                </div>
+                <h4 style={{ fontSize: '1.15rem', color: '#f8fafc', marginBottom: '0.75rem' }}>{b.title}</h4>
+                <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: 1.6 }}>{b.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* --- FAQ Section --- */
 function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -1133,108 +1298,103 @@ function ContactSection() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
-                  
-                  {/* Full Name */}
-                  <div className="input-group">
-                    <label className="form-label">Full Name *</label>
-                    <input 
-                      type="text" 
-                      required
-                      placeholder="John Doe" 
-                      className="form-control"
-                      value={formState.fullName}
-                      onChange={(e) => setFormState({ ...formState, fullName: e.target.value })}
-                    />
-                    <div className="input-icon-wrapper">
-                      <User size={18} />
+                <Card view="raised" style={{ padding: '2.5rem', background: 'rgba(15, 23, 42, 0.6)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                    
+                    <div>
+                      <Text variant="body-2" style={{ marginBottom: '8px', display: 'block', color: '#cbd5e1', fontWeight: 500 }}>Full Name *</Text>
+                      <TextInput 
+                        size="xl" 
+                        placeholder="John Doe" 
+                        value={formState.fullName}
+                        onChange={(e) => setFormState({ ...formState, fullName: e.target.value })}
+                      />
+                    </div>
+
+                    <div>
+                      <Text variant="body-2" style={{ marginBottom: '8px', display: 'block', color: '#cbd5e1', fontWeight: 500 }}>Email Address *</Text>
+                      <TextInput 
+                        size="xl" 
+                        placeholder="name@company.com" 
+                        value={formState.email}
+                        onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                      />
+                    </div>
+
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                    <div>
+                      <Text variant="body-2" style={{ marginBottom: '8px', display: 'block', color: '#cbd5e1', fontWeight: 500 }}>Phone / WhatsApp</Text>
+                      <TextInput 
+                        size="xl" 
+                        placeholder="+91 00000 00000" 
+                        value={formState.phone}
+                        onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                      />
                     </div>
                   </div>
 
-                  {/* Email Address */}
-                  <div className="input-group">
-                    <label className="form-label">Email Address *</label>
-                    <input 
-                      type="email" 
-                      required
-                      placeholder="name@company.com" 
-                      className="form-control"
-                      value={formState.email}
-                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                  <div style={{ marginBottom: '2.5rem' }}>
+                    <Text variant="body-2" style={{ marginBottom: '8px', display: 'block', color: '#cbd5e1', fontWeight: 500 }}>Project Details / Message *</Text>
+                    <TextArea 
+                      size="xl" 
+                      minRows={4} 
+                      placeholder="Tell me about your project, timeline, and goals..." 
+                      value={formState.message}
+                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                     />
-                    <div className="input-icon-wrapper">
-                      <Mail size={18} />
-                    </div>
-                  </div>
-                </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
-                  {/* Phone / WhatsApp */}
-                  <div className="input-group">
-                    <label className="form-label">Phone / WhatsApp</label>
-                    <input 
-                      type="tel" 
-                      placeholder="+91 00000 00000" 
-                      className="form-control"
-                      value={formState.phone}
-                      onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
-                    />
-                    <div className="input-icon-wrapper">
-                      <Phone size={18} />
-                    </div>
                   </div>
 
-                  {/* Service Needed */}
-                  <div className="input-group">
-                    <label className="form-label">Service Required</label>
-                    <select 
-                      className="form-control"
-                      style={{ paddingLeft: '16px' }}
-                      value={formState.service}
-                      onChange={(e) => setFormState({ ...formState, service: e.target.value })}
-                    >
-                      <option value="WordPress Custom Development" style={{ background: '#090d16', color: '#fff' }}>WordPress Custom Development</option>
-                      <option value="WooCommerce / Shopify Store" style={{ background: '#090d16', color: '#fff' }}>WooCommerce / Shopify Store</option>
-                      <option value="Speed & SEO Optimization" style={{ background: '#090d16', color: '#fff' }}>Speed & SEO Optimization</option>
-                      <option value="Theme / Plugin Customization" style={{ background: '#090d16', color: '#fff' }}>Theme / Plugin Customization</option>
-                      <option value="Full Website Redesign" style={{ background: '#090d16', color: '#fff' }}>Full Website Redesign</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* Message */}
-                <div className="input-group" style={{ marginBottom: '2rem' }}>
-                  <label className="form-label">Project Details / Message *</label>
-                  <textarea 
-                    rows={4}
-                    required
-                    placeholder="Tell me about your project, timeline, and goals..." 
-                    className="form-control"
-                    style={{ paddingLeft: '16px', resize: 'vertical' }}
-                    value={formState.message}
-                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  />
-                </div>
-
-                {/* Submit Action */}
-                <button 
-                  type="submit" 
-                  className="btn-primary" 
-                  disabled={loading}
-                  style={{ width: '100%', padding: '16px', fontSize: '1.05rem', borderRadius: '12px' }}
-                >
-                  {loading ? 'Submitting Inquiry...' : (
-                    <>
-                      Send Inquiry Directly <Send size={18} />
-                    </>
-                  )}
-                </button>
+                  <GravityButton 
+                    view="action" 
+                    size="xl" 
+                    type="submit" 
+                    loading={loading}
+                    width="max"
+                    style={{ background: '#06b6d4', color: '#02050e', fontWeight: 700 }}
+                  >
+                    Send Inquiry Directly
+                  </GravityButton>
+                </Card>
               </form>
             )}
           </div>
         </motion.div>
       </div>
     </section>
+  );
+}
+
+/* --- Floating WhatsApp Widget --- */
+function FloatingWhatsApp() {
+  return (
+    <a 
+      href="https://wa.me/917567959878" 
+      target="_blank" 
+      rel="noreferrer"
+      style={{
+        position: 'fixed',
+        bottom: '30px',
+        right: '30px',
+        width: '60px',
+        height: '60px',
+        backgroundColor: '#25D366',
+        color: '#fff',
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 10px 25px rgba(37, 211, 102, 0.4)',
+        zIndex: 1000,
+        transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1) translateY(-5px)'}
+      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1) translateY(0)'}
+      title="Chat with me on WhatsApp"
+    >
+      <MessageSquare size={28} />
+    </a>
   );
 }
 
@@ -1284,12 +1444,15 @@ export default function App() {
     <>
       <Navbar />
       <Hero />
+      <TypographicImpact />
       <ExperienceAndEducation />
       <SkillsMatrix />
       <Projects />
+      <ROIAnalysis />
       <FAQ />
       <ContactSection />
       <Footer />
+      <FloatingWhatsApp />
     </>
   );
 }

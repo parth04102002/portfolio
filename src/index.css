@@ -24,6 +24,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -88,16 +90,40 @@ a {
   letter-spacing: 0.5px;
 }
 
+/* Typewriter Cursor Blink */
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
 /* Ambient Glow Blobs */
 .glow-bg {
   position: absolute;
-  width: 650px;
-  height: 650px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(3, 7, 18, 0) 70%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(2, 6, 23, 0) 70%);
   border-radius: 50%;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   filter: blur(40px);
+}
+
+/* Large Typographic Row Hover Effects */
+.large-typewriter-row {
+  cursor: pointer;
+  transition: background 0.4s ease;
+}
+.large-typewriter-row:hover {
+  background: rgba(6, 182, 212, 0.05);
+}
+.large-typewriter-row .huge-text {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.large-typewriter-row:hover .huge-text {
+  color: #06b6d4 !important;
+  transform: translateX(15px);
 }
 
 /* Button Component Styles */

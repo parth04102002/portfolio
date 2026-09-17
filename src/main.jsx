@@ -1,10 +1,15 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import '@gravity-ui/uikit/styles/fonts.css';
+import '@gravity-ui/uikit/styles/styles.css';
+import { ThemeProvider } from '@gravity-ui/uikit';
 import './index.css'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <ThemeProvider theme="dark">
+      <App />
+    </ThemeProvider>
   </StrictMode>,
 )
