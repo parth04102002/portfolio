@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Monitor, Zap, LayoutTemplate, ShoppingCart, ExternalLink, Mail, ArrowRight, 
-  Briefcase, Code2, GraduationCap, Phone, MapPin, Send, CheckCircle2, 
-  Menu, X, Sparkles, Globe, ShieldCheck, Database, Layers, ChevronRight, 
-  User, MessageSquare, ChevronDown, Star, Download, ArrowUp, FileText,
-  Lock, RefreshCw, Eye, Award, Check
+  Zap, LayoutTemplate, ShoppingCart, ExternalLink, Mail, ArrowRight, 
+  Briefcase, Code2, GraduationCap, Phone, MapPin, CheckCircle2, 
+  Menu, X, Sparkles, Globe, ShieldCheck, Database, Layers, 
+  MessageSquare, ChevronDown, Download, Lock, RefreshCw, Eye 
 } from 'lucide-react';
 import { TextInput, TextArea, Button as GravityButton, Card, Text } from '@gravity-ui/uikit';
 
@@ -54,7 +53,7 @@ function TypewriterText({ words }) {
   }, [currentText, isDeleting, currentWordIndex, words]);
 
   return (
-    <span style={{ position: 'relative', display: 'inline-block', width: '10ch', textAlign: 'left', whiteSpace: 'nowrap' }}>
+    <span style={{ position: 'relative', display: 'inline-block', minWidth: '7.5ch', textAlign: 'left', whiteSpace: 'nowrap' }}>
       {currentText}
       <span className="cursor-blink" style={{ color: '#06b6d4', marginLeft: '2px' }}>|</span>
     </span>
@@ -66,6 +65,7 @@ function LargeTypewriterRow({ word, index }) {
   const [currentText, setCurrentText] = useState('');
   const [inView, setInView] = useState(false);
   const ref = React.useRef(null);
+  const isOutline = index % 2 === 1; // Alternating outline and solid variants for high-end aesthetic
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -89,18 +89,20 @@ function LargeTypewriterRow({ word, index }) {
   return (
     <motion.div 
       ref={ref} 
-      initial={{ opacity: 0, x: -40 }}
+      initial={{ opacity: 0, x: -30 }}
       whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.7, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      viewport={{ once: true, margin: "-50px" }}
-      style={{ borderBottom: '1px solid rgba(255,255,255,0.04)', padding: '1.5rem 0', overflow: 'hidden', whiteSpace: 'nowrap' }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: "-40px" }}
+      style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
       className="large-typewriter-row"
+      tabIndex={0}
+      role="text"
+      aria-label={word}
     >
       <div 
-        className="huge-text"
-        style={{ fontSize: 'clamp(2rem, 7.5vw, 8.5rem)', fontWeight: 900, color: '#f8fafc', lineHeight: 0.85, letterSpacing: '-0.04em', textTransform: 'uppercase' }}
+        className={`huge-text ${isOutline ? 'outline-variant' : 'solid-variant'}`}
       >
-        {currentText}<span className="cursor-blink" style={{ color: '#06b6d4', opacity: currentText.length === word.length ? 0.5 : 1 }}>|</span>
+        {currentText}<span className="cursor-blink" style={{ color: '#06b6d4', opacity: currentText.length === word.length ? 0.4 : 1 }}>|</span>
       </div>
     </motion.div>
   );
@@ -109,18 +111,18 @@ function LargeTypewriterRow({ word, index }) {
 function TypographicImpact() {
   const words = ['STRATEGY', 'PERFORMANCE', 'CUSTOM-CODE', 'SCALABILITY'];
   return (
-    <section style={{ padding: '6rem 0', background: '#000000', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+    <section style={{ padding: '4.5rem 0', background: '#000000', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden' }}>
       <div className="container">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          style={{ fontSize: '1rem', fontWeight: 600, color: '#06b6d4', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '3px' }}
+          style={{ fontSize: '0.85rem', fontWeight: 700, color: '#06b6d4', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '3px' }}
         >
           The Developer's Way
         </motion.div>
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
           {words.map((w, i) => (
             <LargeTypewriterRow key={i} word={w} index={i} />
           ))}
@@ -170,9 +172,9 @@ function Navbar() {
         {mobileOpen && (
           <motion.div 
             className="mobile-drawer"
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
           >
             <a href="#about" onClick={() => setMobileOpen(false)}>About Parth</a>
@@ -181,6 +183,14 @@ function Navbar() {
             <a href="#work" onClick={() => setMobileOpen(false)}>Client Projects</a>
             <a href="#faq" onClick={() => setMobileOpen(false)}>Frequently Asked Questions</a>
             <a href="#contact" onClick={() => setMobileOpen(false)}>Contact / Get A Quote</a>
+            <a 
+              href="#contact" 
+              className="btn-primary" 
+              onClick={() => setMobileOpen(false)}
+              style={{ marginTop: '0.5rem', textAlign: 'center', width: '100%', justifyContent: 'center' }}
+            >
+              Hire Parth Parmar <ArrowRight size={16} />
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
@@ -191,12 +201,12 @@ function Navbar() {
 /* --- Hero Section --- */
 function Hero() {
   return (
-    <section id="about" className="container" style={{ paddingTop: '6rem', paddingBottom: '6rem', position: 'relative' }}>
+    <section id="about" className="container" style={{ paddingTop: 'clamp(3.5rem, 7vw, 6rem)', paddingBottom: 'clamp(3.5rem, 7vw, 6rem)', position: 'relative', width: '100%' }}>
       <div className="glow-bg" style={{ top: '0', left: '10%' }}></div>
       
-      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '3.5rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '3rem', width: '100%' }}>
         <motion.div 
-          style={{ flex: '1 1 520px', zIndex: 10 }}
+          style={{ flex: '1 1 min(100%, 520px)', minWidth: 0, zIndex: 10 }}
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -209,7 +219,7 @@ function Hero() {
 
           <motion.h1 
             variants={slideUp}
-            style={{ fontSize: '3.6rem', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem', letterSpacing: '-1px' }}
+            style={{ fontSize: 'clamp(2.05rem, 5.2vw, 3.6rem)', fontWeight: 800, lineHeight: 1.16, marginBottom: '1.25rem', letterSpacing: '-0.025em' }}
           >
             I'm <span className="gradient-text">Parth Parmar</span>.<br />
             Professional <span style={{ color: '#06b6d4' }}><TypewriterText words={['WordPress', 'React.js', 'Shopify']} /></span> Developer.
@@ -217,12 +227,12 @@ function Hero() {
 
           <motion.p 
             variants={slideUp}
-            style={{ fontSize: '1.15rem', color: '#94a3b8', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: '580px' }}
+            style={{ fontSize: 'clamp(0.95rem, 2vw, 1.15rem)', color: '#94a3b8', lineHeight: 1.7, marginBottom: '2rem', maxWidth: '580px' }}
           >
             Specializing in high-performance WordPress themes, seamless WooCommerce & Shopify stores, and responsive frontends that transform visitors into paying clients.
           </motion.p>
 
-          <motion.div variants={slideUp} style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+          <motion.div variants={slideUp} style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem' }}>
             <a href="#work" className="btn-primary">
               Explore 7+ Client Sites <ArrowRight size={18} />
             </a>
@@ -237,26 +247,33 @@ function Hero() {
           {/* Quick Metrics */}
           <motion.div 
             variants={slideUp} 
-            style={{ display: 'flex', gap: '2.5rem', marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}
+            style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 105px), 1fr))', 
+              gap: '1.5rem', 
+              marginTop: '2.5rem', 
+              paddingTop: '1.75rem', 
+              borderTop: '1px solid rgba(255,255,255,0.06)' 
+            }}
           >
             <div>
-              <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#06b6d4' }}>2+ Years</div>
-              <div style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Industry Experience</div>
+              <div style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', fontWeight: 800, color: '#06b6d4' }}>2+ Years</div>
+              <div style={{ fontSize: '0.82rem', color: '#94a3b8' }}>Industry Experience</div>
             </div>
             <div>
-              <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#3b82f6' }}>7+ Sites</div>
-              <div style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Live Client Deployments</div>
+              <div style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', fontWeight: 800, color: '#3b82f6' }}>7+ Sites</div>
+              <div style={{ fontSize: '0.82rem', color: '#94a3b8' }}>Live Client Deployments</div>
             </div>
             <div>
-              <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#10b981' }}>100%</div>
-              <div style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Responsive & SEO Ready</div>
+              <div style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', fontWeight: 800, color: '#10b981' }}>100%</div>
+              <div style={{ fontSize: '0.82rem', color: '#94a3b8' }}>Responsive & SEO Ready</div>
             </div>
           </motion.div>
         </motion.div>
 
         {/* 3D Visual Banner with Browser Mockup Frame */}
         <motion.div 
-          style={{ flex: '1 1 450px', position: 'relative' }}
+          style={{ flex: '1 1 min(100%, 450px)', minWidth: 0, width: '100%', position: 'relative' }}
           initial={{ opacity: 0, scale: 0.9, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -286,11 +303,12 @@ function Hero() {
                 position: 'absolute',
                 bottom: '16px',
                 left: '16px',
+                maxWidth: 'calc(100% - 32px)',
                 background: 'rgba(15, 23, 42, 0.9)',
                 backdropFilter: 'blur(16px)',
                 border: '1px solid rgba(6, 182, 212, 0.3)',
                 borderRadius: '12px',
-                padding: '10px 18px',
+                padding: '10px 16px',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '10px',
@@ -299,7 +317,7 @@ function Hero() {
                 <Sparkles size={18} color="#06b6d4" />
                 <div>
                   <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Core Focus</div>
-                  <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#f8fafc' }}>Custom Themes & Performance</div>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#f8fafc', whiteSpace: 'normal' }}>Custom Themes & Performance</div>
                 </div>
               </div>
             </div>
@@ -446,7 +464,7 @@ function SkillsMatrix() {
   ];
 
   return (
-    <section id="skills" className="container" style={{ paddingTop: '6rem', paddingBottom: '6rem' }}>
+    <section id="skills" className="container" style={{ paddingTop: 'clamp(3.5rem, 6vw, 6rem)', paddingBottom: 'clamp(3.5rem, 6vw, 6rem)' }}>
       <div className="section-header">
         <span className="section-tag">Technical Arsenal</span>
         <h2 className="section-title">Skills & <span className="gradient-text">Technologies</span></h2>
@@ -455,7 +473,7 @@ function SkillsMatrix() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.75rem' }}>
+      <div className="skills-grid">
         {skillCategories.map((group, idx) => {
           const Icon = group.icon;
           return (
@@ -643,7 +661,7 @@ function Projects() {
     : allProjects.filter(p => p.category === filter);
 
   return (
-    <section id="work" className="container" style={{ paddingTop: '7rem', paddingBottom: '7rem' }}>
+    <section id="work" className="container" style={{ paddingTop: 'clamp(3.5rem, 7vw, 7rem)', paddingBottom: 'clamp(3.5rem, 7vw, 7rem)' }}>
       <div className="section-header">
         <span className="section-tag">Proven Results</span>
         <h2 className="section-title">Featured <span className="gradient-text">Client Works</span></h2>
@@ -668,7 +686,7 @@ function Projects() {
 
       {/* Flagship Showcases (Elegance Clinic & The Moment Massage) */}
       {(filter === 'All' || filter === 'Healthcare & Aesthetics') && (
-        <div style={{ marginBottom: '5rem' }}>
+        <div style={{ marginBottom: '4rem' }}>
           {/* Elegance Clinic */}
           <div className="featured-showcase-row">
             <div className="glow-bg" style={{ right: '-15%', top: '10%' }}></div>
@@ -687,14 +705,14 @@ function Projects() {
                 </span>
               </div>
 
-              <h3 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem', color: '#f8fafc', letterSpacing: '-0.5px' }}>
+              <h3 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 800, marginBottom: '1rem', color: '#f8fafc', letterSpacing: '-0.5px' }}>
                 Elegance Clinic
               </h3>
-              <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+              <p style={{ color: '#94a3b8', fontSize: 'clamp(0.95rem, 2vw, 1.05rem)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
                 A premium plastic and cosmetic surgery center based in Surat. The platform was designed to showcase specialized cosmetic treatments, hair restorations, and dermatology with a high-end, trustworthy aesthetic.
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.8rem', marginBottom: '1.8rem' }}>
+              <div className="featured-checklist-grid">
                 {['Custom WordPress Theme', 'Medical Treatment Catalog', 'Consultation Booking Funnel', 'High PageSpeed Score'].map((item, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#cbd5e1' }}>
                     <CheckCircle2 size={16} color="#06b6d4" /> {item}
@@ -709,7 +727,7 @@ function Projects() {
                 <span>Responsive</span>
               </div>
 
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }}>
                 <a href="https://eleganceclinic.in/" target="_blank" rel="noreferrer" className="btn-primary">
                   Launch Live Site <ExternalLink size={17} />
                 </a>
@@ -765,14 +783,14 @@ function Projects() {
                 </span>
               </div>
 
-              <h3 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem', color: '#f8fafc', letterSpacing: '-0.5px' }}>
+              <h3 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 800, marginBottom: '1rem', color: '#f8fafc', letterSpacing: '-0.5px' }}>
                 The Moment Massage
               </h3>
-              <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+              <p style={{ color: '#94a3b8', fontSize: 'clamp(0.95rem, 2vw, 1.05rem)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
                 A luxury wellness and spa center website engineered with serene organic aesthetics, categorized therapy menus, and streamlined reservation features for seamless appointment booking.
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.8rem', marginBottom: '1.8rem' }}>
+              <div className="featured-checklist-grid">
                 {['Direct Spa Reservation Form', 'Zen Organic UI Aesthetics', 'Mobile First Navigation', 'SEO Structured Data'].map((item, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#cbd5e1' }}>
                     <CheckCircle2 size={16} color="#3b82f6" /> {item}
@@ -787,7 +805,7 @@ function Projects() {
                 <span>Custom UI</span>
               </div>
 
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }}>
                 <a href="https://themomentmassage.com/" target="_blank" rel="noreferrer" className="btn-primary">
                   Launch Live Site <ExternalLink size={17} />
                 </a>
@@ -955,10 +973,10 @@ function Projects() {
                 </span>
               </div>
 
-              <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#f8fafc', marginBottom: '0.4rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.4rem, 4.2vw, 2.2rem)', fontWeight: 800, color: '#f8fafc', marginBottom: '0.4rem' }}>
                 {selectedProject.title}
               </h2>
-              <div style={{ color: '#06b6d4', fontWeight: 600, fontSize: '0.95rem', marginBottom: '1.5rem' }}>
+              <div style={{ color: '#06b6d4', fontWeight: 600, fontSize: 'clamp(0.85rem, 2vw, 0.95rem)', marginBottom: '1.5rem' }}>
                 {selectedProject.headline}
               </div>
 
@@ -976,7 +994,7 @@ function Projects() {
                 <img src={selectedProject.image} alt={selectedProject.title} style={{ width: '100%', display: 'block', maxHeight: '350px', objectFit: 'cover' }} />
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '1.75rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1.25rem', marginBottom: '1.5rem' }}>
                 <div style={{ background: 'rgba(255,255,255,0.02)', padding: '1.25rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
                   <h4 style={{ color: '#f59e0b', fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.4rem' }}>The Challenge</h4>
                   <p style={{ color: '#94a3b8', fontSize: '0.88rem', lineHeight: 1.6 }}>{selectedProject.challenge}</p>
@@ -987,8 +1005,8 @@ function Projects() {
                 </div>
               </div>
 
-              <h4 style={{ fontSize: '1.05rem', color: '#f8fafc', marginBottom: '0.8rem' }}>Key Deliverables & Capabilities:</h4>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.6rem', marginBottom: '2rem' }}>
+              <h4 style={{ fontSize: '1rem', color: '#f8fafc', marginBottom: '0.8rem' }}>Key Deliverables & Capabilities:</h4>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.6rem', marginBottom: '1.75rem' }}>
                 {selectedProject.deliverables.map((del, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#cbd5e1' }}>
                     <CheckCircle2 size={16} color="#06b6d4" /> {del}
@@ -996,7 +1014,7 @@ function Projects() {
                 ))}
               </div>
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', paddingTop: '1.25rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
                 <div className="project-tags" style={{ margin: 0 }}>
                   {selectedProject.tags.map((t, idx) => (
                     <span key={idx}>{t}</span>
@@ -1008,7 +1026,7 @@ function Projects() {
                   target="_blank" 
                   rel="noreferrer" 
                   className="btn-primary"
-                  style={{ padding: '12px 28px' }}
+                  style={{ padding: '10px 24px' }}
                 >
                   Visit Production Site <ExternalLink size={17} />
                 </a>
@@ -1048,30 +1066,30 @@ function ROIAnalysis() {
   ];
 
   return (
-    <section className="container" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
-      <div style={{ background: 'linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(2, 6, 23, 0.9))', border: '1px solid rgba(6, 182, 212, 0.2)', borderRadius: '24px', padding: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+    <section className="container" style={{ paddingTop: 'clamp(3.5rem, 6vw, 5rem)', paddingBottom: 'clamp(3.5rem, 6vw, 5rem)' }}>
+      <div className="roi-card">
         <div className="glow-bg" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.5 }}></div>
         
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#f8fafc', marginBottom: '1rem', zIndex: 1 }}>
+        <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 800, color: '#f8fafc', marginBottom: '1rem', zIndex: 1 }}>
           The Technical <span className="gradient-text">Advantage</span>
         </h2>
-        <p style={{ color: '#94a3b8', fontSize: '1.05rem', maxWidth: '600px', marginBottom: '3.5rem', zIndex: 1 }}>
+        <p style={{ color: '#94a3b8', fontSize: 'clamp(0.95rem, 2vw, 1.05rem)', maxWidth: '600px', marginBottom: '3rem', zIndex: 1 }}>
           Why businesses choose to collaborate with me. It’s not just about looking good—it’s about measurable performance and digital growth.
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', width: '100%', zIndex: 1 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1.5rem', width: '100%', zIndex: 1 }}>
           {benefits.map((b, i) => {
             const Icon = b.icon;
             return (
-              <div key={i} style={{ background: 'rgba(255,255,255,0.03)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'left' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-                  <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: `${b.color}20`, color: b.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Icon size={24} />
+              <div key={i} style={{ background: 'rgba(255,255,255,0.03)', padding: '1.75rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'left' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                  <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: `${b.color}20`, color: b.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Icon size={22} />
                   </div>
-                  <div style={{ fontSize: '1.75rem', fontWeight: 800, color: b.color }}>{b.value}</div>
+                  <div style={{ fontSize: '1.65rem', fontWeight: 800, color: b.color }}>{b.value}</div>
                 </div>
-                <h4 style={{ fontSize: '1.15rem', color: '#f8fafc', marginBottom: '0.75rem' }}>{b.title}</h4>
-                <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: 1.6 }}>{b.desc}</p>
+                <h4 style={{ fontSize: '1.1rem', color: '#f8fafc', marginBottom: '0.6rem' }}>{b.title}</h4>
+                <p style={{ color: '#94a3b8', fontSize: '0.88rem', lineHeight: 1.6 }}>{b.desc}</p>
               </div>
             );
           })}
@@ -1105,7 +1123,7 @@ function FAQ() {
   ];
 
   return (
-    <section id="faq" className="container" style={{ padding: '6rem 0' }}>
+    <section id="faq" className="container" style={{ padding: 'clamp(3.5rem, 6vw, 6rem) 0' }}>
       <div className="section-header">
         <span className="section-tag">Clarity & Process</span>
         <h2 className="section-title">Frequently Asked <span className="gradient-text">Questions</span></h2>
@@ -1114,7 +1132,7 @@ function FAQ() {
         </p>
       </div>
 
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '800px', margin: '0 auto', width: '100%' }}>
         {faqs.map((faq, i) => (
           <div key={i} className="faq-item">
             <button 
@@ -1127,7 +1145,9 @@ function FAQ() {
                 style={{ 
                   transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)', 
                   transition: 'transform 0.25s ease',
-                  color: '#06b6d4'
+                  color: '#06b6d4',
+                  flexShrink: 0,
+                  marginLeft: '12px'
                 }} 
               />
             </button>
@@ -1174,7 +1194,7 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="container" style={{ padding: '7rem 0 8rem', position: 'relative' }}>
+    <section id="contact" className="container" style={{ padding: 'clamp(4rem, 7vw, 7rem) 0 clamp(4rem, 7vw, 8rem)', position: 'relative' }}>
       <div className="glow-bg" style={{ bottom: '0', left: '50%', transform: 'translateX(-50%)' }}></div>
 
       <div className="section-header">
@@ -1185,56 +1205,56 @@ function ContactSection() {
         </p>
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3.5rem', alignItems: 'stretch' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2.5rem', alignItems: 'stretch' }}>
         
         {/* Contact Info Sidebar */}
         <motion.div 
-          style={{ flex: '1 1 360px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+          style={{ flex: '1 1 min(100%, 340px)', minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={slideUp}
         >
           <div>
-            <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#f8fafc', marginBottom: '1rem' }}>
+            <h3 style={{ fontSize: 'clamp(1.4rem, 3.5vw, 1.8rem)', fontWeight: 800, color: '#f8fafc', marginBottom: '1rem' }}>
               Work With a Dedicated <span style={{ color: '#06b6d4' }}>WordPress Engineer</span>
             </h3>
-            <p style={{ color: '#94a3b8', lineHeight: 1.7, marginBottom: '2.5rem' }}>
+            <p style={{ color: '#94a3b8', lineHeight: 1.7, marginBottom: '2rem', fontSize: '0.95rem' }}>
               Whether you need a custom-coded theme, high-converting WooCommerce storefront, emergency speed optimization, or ongoing website maintenance, I'm available to collaborate.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(6, 182, 212, 0.12)', border: '1px solid rgba(6, 182, 212, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#06b6d4' }}>
-                  <Mail size={22} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(6, 182, 212, 0.12)', border: '1px solid rgba(6, 182, 212, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#06b6d4', flexShrink: 0 }}>
+                  <Mail size={20} />
                 </div>
-                <div>
-                  <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Direct Email</div>
-                  <a href="mailto:parmarparth23012003@gmail.com" style={{ color: '#f8fafc', fontWeight: 600, fontSize: '0.95rem' }}>
+                <div style={{ minWidth: 0, overflow: 'hidden' }}>
+                  <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>Direct Email</div>
+                  <a href="mailto:parmarparth23012003@gmail.com" style={{ color: '#f8fafc', fontWeight: 600, fontSize: '0.92rem', wordBreak: 'break-word' }}>
                     parmarparth23012003@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(59, 130, 246, 0.12)', border: '1px solid rgba(59, 130, 246, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#3b82f6' }}>
-                  <Phone size={22} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(59, 130, 246, 0.12)', border: '1px solid rgba(59, 130, 246, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#3b82f6', flexShrink: 0 }}>
+                  <Phone size={20} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Call / WhatsApp</div>
-                  <a href="tel:+917567959878" style={{ color: '#f8fafc', fontWeight: 600, fontSize: '0.95rem' }}>
+                  <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>Call / WhatsApp</div>
+                  <a href="tel:+917567959878" style={{ color: '#f8fafc', fontWeight: 600, fontSize: '0.92rem' }}>
                     +91 7567959878
                   </a>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981' }}>
-                  <MapPin size={22} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', flexShrink: 0 }}>
+                  <MapPin size={20} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Location</div>
-                  <div style={{ color: '#f8fafc', fontWeight: 600, fontSize: '0.95rem' }}>
+                  <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>Location</div>
+                  <div style={{ color: '#f8fafc', fontWeight: 600, fontSize: '0.92rem' }}>
                     Vadodara, Gujarat, India (388260)
                   </div>
                 </div>
@@ -1242,11 +1262,11 @@ function ContactSection() {
             </div>
           </div>
 
-          <div style={{ marginTop: '2.5rem', padding: '1.25rem', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '14px' }}>
-            <div style={{ fontSize: '0.85rem', color: '#94a3b8', marginBottom: '0.5rem' }}>Languages Spoken:</div>
-            <div style={{ display: 'flex', gap: '8px' }}>
+          <div style={{ marginTop: '2rem', padding: '1.25rem', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '14px' }}>
+            <div style={{ fontSize: '0.82rem', color: '#94a3b8', marginBottom: '0.5rem' }}>Languages Spoken:</div>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
               {['English', 'Gujarati', 'Hindi'].map((lang, idx) => (
-                <span key={idx} style={{ padding: '4px 12px', background: 'rgba(6, 182, 212, 0.1)', color: '#67e8f9', borderRadius: '50px', fontSize: '0.8rem', fontWeight: 600 }}>
+                <span key={idx} style={{ padding: '4px 12px', background: 'rgba(6, 182, 212, 0.1)', color: '#67e8f9', borderRadius: '50px', fontSize: '0.78rem', fontWeight: 600 }}>
                   {lang}
                 </span>
               ))}
@@ -1256,18 +1276,18 @@ function ContactSection() {
 
         {/* High-Tech HUD Glassmorphism Form */}
         <motion.div 
-          style={{ flex: '1 1 500px' }}
+          style={{ flex: '1 1 min(100%, 460px)', minWidth: 0, width: '100%' }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={slideUp}
         >
           <div className="hud-corner-card">
-            <div style={{ marginBottom: '2rem' }}>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#f8fafc' }}>
+            <div style={{ marginBottom: '1.75rem' }}>
+              <h3 style={{ fontSize: 'clamp(1.35rem, 3vw, 1.75rem)', fontWeight: 800, color: '#f8fafc' }}>
                 Send a <span className="gradient-text">Project Inquiry</span>
               </h3>
-              <p style={{ color: '#94a3b8', fontSize: '0.9rem', marginTop: '4px' }}>
+              <p style={{ color: '#94a3b8', fontSize: '0.88rem', marginTop: '4px' }}>
                 Fill in the details below to receive a personalized quote & project timeline.
               </p>
             </div>
@@ -1278,15 +1298,15 @@ function ContactSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 style={{ 
                   textAlign: 'center', 
-                  padding: '3rem 1.5rem', 
+                  padding: '2.5rem 1.25rem', 
                   background: 'rgba(16, 185, 129, 0.08)', 
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  border: '1px solid rgba(16, 185, 129, 0.3)', 
                   borderRadius: '16px' 
                 }}
               >
-                <CheckCircle2 size={56} color="#10b981" style={{ margin: '0 auto 1.5rem' }} />
-                <h4 style={{ fontSize: '1.4rem', color: '#f8fafc', marginBottom: '0.5rem' }}>Message Sent Successfully!</h4>
-                <p style={{ color: '#94a3b8', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
+                <CheckCircle2 size={52} color="#10b981" style={{ margin: '0 auto 1.25rem' }} />
+                <h4 style={{ fontSize: '1.3rem', color: '#f8fafc', marginBottom: '0.5rem' }}>Message Sent Successfully!</h4>
+                <p style={{ color: '#94a3b8', fontSize: '0.92rem', marginBottom: '1.5rem' }}>
                   Thank you for reaching out, <strong>{formState.fullName}</strong>. Parth Parmar will review your inquiry and get back to you shortly.
                 </p>
                 <button 
@@ -1298,8 +1318,8 @@ function ContactSection() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit}>
-                <Card view="raised" style={{ padding: '2.5rem', background: 'rgba(15, 23, 42, 0.6)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                <Card view="raised" className="contact-gravity-card">
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1.25rem', marginBottom: '1.25rem' }}>
                     
                     <div>
                       <Text variant="body-2" style={{ marginBottom: '8px', display: 'block', color: '#cbd5e1', fontWeight: 500 }}>Full Name *</Text>
@@ -1323,7 +1343,7 @@ function ContactSection() {
 
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1.25rem', marginBottom: '1.25rem' }}>
                     <div>
                       <Text variant="body-2" style={{ marginBottom: '8px', display: 'block', color: '#cbd5e1', fontWeight: 500 }}>Phone / WhatsApp</Text>
                       <TextInput 
@@ -1335,7 +1355,7 @@ function ContactSection() {
                     </div>
                   </div>
 
-                  <div style={{ marginBottom: '2.5rem' }}>
+                  <div style={{ marginBottom: '2rem' }}>
                     <Text variant="body-2" style={{ marginBottom: '8px', display: 'block', color: '#cbd5e1', fontWeight: 500 }}>Project Details / Message *</Text>
                     <TextArea 
                       size="xl" 
@@ -1373,27 +1393,11 @@ function FloatingWhatsApp() {
       href="https://wa.me/917567959878" 
       target="_blank" 
       rel="noreferrer"
-      style={{
-        position: 'fixed',
-        bottom: '30px',
-        right: '30px',
-        width: '60px',
-        height: '60px',
-        backgroundColor: '#25D366',
-        color: '#fff',
-        borderRadius: '50%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        boxShadow: '0 10px 25px rgba(37, 211, 102, 0.4)',
-        zIndex: 1000,
-        transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
-      }}
-      onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1) translateY(-5px)'}
-      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1) translateY(0)'}
-      title="Chat with me on WhatsApp"
+      className="floating-whatsapp-btn"
+      title="Chat with Parth Parmar on WhatsApp"
+      aria-label="Chat on WhatsApp"
     >
-      <MessageSquare size={28} />
+      <MessageSquare size={26} />
     </a>
   );
 }
