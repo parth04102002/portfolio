@@ -336,13 +336,23 @@ a {
 }
 
 /* Hero Typed Role & Status Pill */
+.hero-title {
+  min-height: 2.38em;
+}
+
+.hero-role-wrapper {
+  display: block;
+  min-height: 1.2em;
+  white-space: nowrap;
+}
+
 .hero-typed-role {
   color: #38bdf8;
   background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 50%, #60a5fa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  display: inline;
+  display: inline-block;
   filter: drop-shadow(0 0 18px rgba(6, 182, 212, 0.35));
 }
 
@@ -657,21 +667,31 @@ a {
 
 .project-thumb-wrap {
   width: 100%;
-  height: 230px;
+  height: 240px;
   overflow: hidden;
   position: relative;
   background: #090d16;
+}
+
+.project-thumb-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(3, 7, 18, 0.25) 0%, transparent 40%, rgba(3, 7, 18, 0.65) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .project-thumb-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-card:hover .project-thumb-wrap img {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .project-card-body {
@@ -860,10 +880,11 @@ a {
 /* Floating Badges */
 .floating-stat-badge {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  background: rgba(3, 7, 18, 0.8);
+  bottom: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.88);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 5px 12px;
   border-radius: 50px;
   font-size: 0.75rem;
@@ -871,8 +892,10 @@ a {
   display: flex;
   align-items: center;
   gap: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #f8fafc;
+  z-index: 2;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
 }
 
 /* Client ROI Card Responsive Class */
@@ -1140,8 +1163,9 @@ a {
   }
 
   .hero-title {
-    font-size: 1.85rem !important;
-    line-height: 1.25 !important;
+    font-size: 1.7rem !important;
+    line-height: 1.22 !important;
+    min-height: 2.45em !important;
   }
 
   .hero-metrics-bar {
@@ -1161,7 +1185,8 @@ a {
   }
 
   .hero-title {
-    font-size: 1.6rem !important;
+    font-size: 1.48rem !important;
+    min-height: 2.45em !important;
   }
 
   .hero-metrics-bar {

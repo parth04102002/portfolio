@@ -61,7 +61,7 @@ function TypewriterText({ words }) {
 
   return (
     <span className="hero-typed-role">
-      {currentText}
+      {currentText || '\u00A0'}
       <span 
         className="cursor-blink" 
         style={{ 
@@ -223,7 +223,7 @@ function Hero() {
     <section id="about" className="container" style={{ paddingTop: 'clamp(3.5rem, 7vw, 6rem)', paddingBottom: 'clamp(3.5rem, 7vw, 6rem)', position: 'relative', width: '100%' }}>
       <div className="glow-bg" style={{ top: '0', left: '10%' }}></div>
       
-      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '3rem', width: '100%' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', flexWrap: 'wrap', gap: '3rem', width: '100%' }}>
         <motion.div 
           style={{ flex: '1 1 min(100%, 520px)', minWidth: 0, zIndex: 10 }}
           initial="hidden"
@@ -242,7 +242,9 @@ function Hero() {
             style={{ fontSize: 'clamp(2.05rem, 5.2vw, 3.6rem)', fontWeight: 800, lineHeight: 1.18, marginBottom: '1.25rem', letterSpacing: '-0.025em' }}
           >
             I'm <span className="gradient-text">Parth Parmar</span>.<br />
-            Professional <TypewriterText words={['WordPress Developer', 'Shopify Specialist', 'WooCommerce Expert', 'React.js Engineer']} />
+            <span className="hero-role-wrapper">
+              <TypewriterText words={['WordPress Specialist', 'Shopify Developer', 'WooCommerce Expert', 'Frontend Engineer']} />
+            </span>
           </motion.h1>
 
           <motion.p 
@@ -894,14 +896,17 @@ function Projects() {
                 position: 'absolute',
                 top: '12px',
                 right: '12px',
-                background: 'rgba(3, 7, 18, 0.85)',
-                backdropFilter: 'blur(8px)',
-                padding: '4px 12px',
+                background: 'rgba(3, 7, 18, 0.88)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                padding: '5px 14px',
                 borderRadius: '50px',
                 fontSize: '0.75rem',
                 fontWeight: 600,
                 color: '#67e8f9',
-                border: '1px solid rgba(6, 182, 212, 0.3)'
+                border: '1px solid rgba(6, 182, 212, 0.35)',
+                zIndex: 2,
+                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.5)'
               }}>
                 {project.badge}
               </div>
