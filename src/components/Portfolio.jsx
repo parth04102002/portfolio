@@ -4,11 +4,11 @@ import { ExternalLink, Github } from 'lucide-react';
 const projects = [
   {
     id: 1,
-    title: 'Satyam',
-    category: 'Custom WordPress',
-    description: 'A bespoke personal/professional WordPress website focusing on elegant design, smooth user experience, and optimized performance.',
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    tags: ['WordPress', 'PHP', 'Custom Theme', 'Responsive'],
+    title: 'Satyam CNC & SPM Machines',
+    category: 'Industrial & Manufacturing',
+    description: 'Bespoke industrial WordPress platform featuring custom SPM & CNC machine lineups, 3D machinery specifications, and interactive RFQ quotation engine.',
+    image: './satyam.jpg',
+    tags: ['WordPress', 'PHP', 'Industrial Catalog', 'Responsive'],
     link: 'https://sabvix.com/satyam/',
     github: '#'
   },
