@@ -15,10 +15,10 @@ const projects = [
   {
     id: 2,
     title: 'Squadra Lupo',
-    category: 'Premium Brand Site',
-    description: 'A high-end, responsive WordPress website for Squadra Lupo. Features a premium layout, custom integrations, and blazing fast loading speeds.',
-    image: 'https://images.unsplash.com/photo-1502877338535-34cb0c584b42?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    tags: ['WordPress', 'Elementor', 'Performance SEO', 'CSS3'],
+    category: 'Automotive & Luxury',
+    description: 'Bespoke dark-themed digital showroom celebrating rare automotive heritage, homologation rally legends, and rare modern supercars.',
+    image: './squadra.jpg',
+    tags: ['WordPress', 'Luxury Automotive', 'E-Commerce', 'Performance UI'],
     link: 'https://www.squadralupo.com/',
     github: '#'
   },

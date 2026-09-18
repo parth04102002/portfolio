@@ -595,19 +595,19 @@ function Projects() {
     {
       id: 'squadra',
       title: 'Squadra Lupo',
-      category: 'Corporate & Marketing',
-      badge: 'Luxury Automotive',
-      stat: '🏎️ High-Impact Visuals',
+      category: 'Automotive & Luxury',
+      badge: 'Collector Vault',
+      stat: '🏎️ Curated Supercars',
       type: 'grid',
       url: 'https://www.squadralupo.com/',
       cleanUrl: 'https://squadralupo.com',
       image: './squadra.jpg',
-      headline: 'Luxury Automotive & Lifestyle Portal',
-      description: 'Engineered a sleek, dark-themed responsive website for high-end automotive enthusiasts and collectors, featuring fluid navigation and dynamic vehicle showcase galleries.',
-      challenge: 'High-resolution vehicle photography caused slow load times on mobile devices.',
-      solution: 'Implemented lazy-loading WebP pipelines and dark luxury UI styling that highlights automobile craftsmanship.',
-      deliverables: ['High-End Visual Aesthetics', 'Vehicle Portfolio Showcase', 'Interactive Media Grid'],
-      tags: ['WordPress', 'Automotive Showcase', 'Interactive UI', 'Performance']
+      headline: 'Curated Heritage & Rare Homologation Supercar Vault',
+      description: 'Developed an elite, dark-mode digital showroom for Squadra Lupo celebrating rare automotive heritage. Features iconic rally homologation legends (Subaru 22B, Lancer Evo), modern supercars, bespoke workshop servicing, and an exclusive collector gear boutique.',
+      challenge: 'Delivering an immersive, cinematic dark-room aesthetic for museum-grade collector automobiles without compromising responsive performance or mobile fluidity.',
+      solution: 'Crafted a bespoke, moody high-contrast UI with optimized media carousels, boutique e-commerce integration, and high-performance typography for high-net-worth collectors.',
+      deliverables: ['Rare Vehicle Garage Showcase', 'Cinematic Dark Showroom UI', 'Objects & Gear Boutique', 'Mobile-Optimized Media Performance'],
+      tags: ['WordPress', 'Luxury Automotive', 'E-Commerce', 'Performance UI']
     },
     {
       id: 'yashraj',
