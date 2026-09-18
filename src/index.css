@@ -356,18 +356,81 @@ a {
   filter: drop-shadow(0 0 18px rgba(6, 182, 212, 0.35));
 }
 
-.hero-metrics-bar {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 115px), 1fr));
+/* Hero Telemetry Metrics HUD */
+.hero-metrics-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 1.5rem;
   margin-top: 2.75rem;
-  padding: 1.5rem 1.75rem;
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(6, 182, 212, 0.06);
+  padding: 1.35rem 2rem;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.75), 0 0 30px rgba(6, 182, 212, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-metrics-hud::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.6), transparent);
+}
+
+.hud-metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.hud-metric-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hud-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.hud-metric-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.hud-metric-val {
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.hud-metric-sub {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.hud-metric-divider {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  flex-shrink: 0;
 }
 
 .status-pill {
@@ -722,6 +785,45 @@ a {
   flex: 1.25;
 }
 
+/* Career Symmetrical Columns Grid */
+.career-columns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.25rem;
+  align-items: start;
+}
+
+.career-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.career-column-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.career-col-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
+}
+
+.career-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 /* Experience Figma Cards Grid */
 .experience-grid {
   display: grid;
@@ -730,19 +832,21 @@ a {
 }
 
 .exp-card {
-  background: rgba(15, 23, 42, 0.5);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  padding: 1.75rem;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 1.85rem;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .exp-card:hover {
-  border-color: rgba(6, 182, 212, 0.4);
-  transform: translateY(-3px);
+  border-color: rgba(6, 182, 212, 0.45);
+  transform: translateY(-4px);
   background: rgba(15, 23, 42, 0.75);
+  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.75), 0 0 25px rgba(6, 182, 212, 0.12);
 }
 
 .exp-header {
@@ -898,7 +1002,26 @@ a {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
 }
 
-/* Client ROI Card Responsive Class */
+.project-cat-pill {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(3, 7, 18, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #67e8f9;
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  z-index: 2;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Client ROI / Technical Advantage Section */
 .roi-card {
   background: linear-gradient(145deg, rgba(15, 23, 42, 0.85), rgba(2, 6, 23, 0.95));
   border: 1px solid rgba(6, 182, 212, 0.2);
@@ -911,6 +1034,97 @@ a {
   position: relative;
   overflow: hidden;
   width: 100%;
+}
+
+.advantage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+  text-align: left;
+}
+
+.advantage-card {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.advantage-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.85), 0 0 30px rgba(6, 182, 212, 0.12);
+}
+
+.advantage-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.advantage-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+}
+
+.advantage-benchmark-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid;
+  letter-spacing: 0.03em;
+}
+
+.advantage-value-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 0.85rem;
+}
+
+.advantage-value {
+  font-size: 2.75rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.advantage-spec {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.advantage-meter-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.advantage-meter-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 1.2s ease-out;
 }
 
 /* Featured Checklist Grid */
@@ -926,6 +1140,88 @@ a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 1.75rem;
+}
+
+.skill-card-modern {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 1.85rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card-modern:hover {
+  transform: translateY(-5px);
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(6, 182, 212, 0.12);
+}
+
+.skill-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.skill-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+}
+
+.skill-count-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid;
+}
+
+.skill-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: auto;
+}
+
+.skill-chip-interactive {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 13px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #e2e8f0;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.skill-chip-interactive:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(6, 182, 212, 0.4);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.skill-chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 /* Floating WhatsApp Button */
@@ -984,6 +1280,16 @@ a {
   .roi-card {
     padding: 3rem 2rem;
   }
+
+  .career-columns-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .advantage-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1007,6 +1313,23 @@ a {
     height: 42px;
   }
 
+  .hero-metrics-hud {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+    padding: 1.35rem 1.5rem;
+  }
+
+  .hud-metric-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  }
+
+  .hud-metric-sub {
+    white-space: normal;
+  }
+
   .section-title {
     font-size: 1.95rem;
   }
@@ -1023,6 +1346,19 @@ a {
   .experience-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .advantage-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .advantage-value {
+    font-size: 2.35rem;
   }
 
   .hud-corner-card {
@@ -1168,7 +1504,7 @@ a {
     min-height: 2.45em !important;
   }
 
-  .hero-metrics-bar {
+  .hero-metrics-hud {
     padding: 1.15rem 1rem;
     gap: 1rem;
     margin-top: 2rem;
@@ -1189,7 +1525,7 @@ a {
     min-height: 2.45em !important;
   }
 
-  .hero-metrics-bar {
+  .hero-metrics-hud {
     padding: 1rem 0.75rem;
     gap: 0.75rem;
   }

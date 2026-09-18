@@ -266,22 +266,40 @@ function Hero() {
             </a>
           </motion.div>
 
-          {/* Quick Metrics */}
+          {/* Quick Metrics HUD Telemetry Bar */}
           <motion.div 
             variants={slideUp} 
-            className="hero-metrics-bar"
+            className="hero-metrics-hud"
           >
-            <div>
-              <div style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', fontWeight: 800, color: '#06b6d4' }}>2+ Years</div>
-              <div style={{ fontSize: '0.82rem', color: '#94a3b8' }}>Industry Experience</div>
+            <div className="hud-metric-item">
+              <div className="hud-metric-header">
+                <span className="hud-pulse-dot" style={{ background: '#06b6d4', boxShadow: '0 0 10px #06b6d4' }}></span>
+                <span className="hud-metric-label">EXPERIENCE</span>
+              </div>
+              <div className="hud-metric-val" style={{ color: '#06b6d4' }}>2+ Years</div>
+              <div className="hud-metric-sub">Commercial Web Dev</div>
             </div>
-            <div>
-              <div style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', fontWeight: 800, color: '#3b82f6' }}>7+ Sites</div>
-              <div style={{ fontSize: '0.82rem', color: '#94a3b8' }}>Live Client Deployments</div>
+
+            <div className="hud-metric-divider"></div>
+
+            <div className="hud-metric-item">
+              <div className="hud-metric-header">
+                <span className="hud-pulse-dot" style={{ background: '#38bdf8', boxShadow: '0 0 10px #38bdf8' }}></span>
+                <span className="hud-metric-label">CLIENT SITES</span>
+              </div>
+              <div className="hud-metric-val" style={{ color: '#38bdf8' }}>7+ Sites</div>
+              <div className="hud-metric-sub">Production Deployments</div>
             </div>
-            <div>
-              <div style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', fontWeight: 800, color: '#10b981' }}>100%</div>
-              <div style={{ fontSize: '0.82rem', color: '#94a3b8' }}>Responsive & SEO Ready</div>
+
+            <div className="hud-metric-divider"></div>
+
+            <div className="hud-metric-item">
+              <div className="hud-metric-header">
+                <span className="hud-pulse-dot" style={{ background: '#10b981', boxShadow: '0 0 10px #10b981' }}></span>
+                <span className="hud-metric-label">PERFORMANCE</span>
+              </div>
+              <div className="hud-metric-val" style={{ color: '#10b981' }}>100%</div>
+              <div className="hud-metric-sub">Core Web Vitals & SEO</div>
             </div>
           </motion.div>
         </motion.div>
@@ -343,9 +361,9 @@ function Hero() {
   );
 }
 
-/* --- Experience & Education (Figma 4 Cards) --- */
+/* --- Experience & Education (Two-Column Symmetrical Architecture) --- */
 function ExperienceAndEducation() {
-  const experiences = [
+  const workHistory = [
     {
       role: 'Assistant Executive Web',
       company: 'Trizone Communication',
@@ -354,11 +372,12 @@ function ExperienceAndEducation() {
       icon: Briefcase,
       color: '#06b6d4',
       points: [
-        'Developing and customizing advanced WordPress themes and specialized plugins.',
+        'Developing and customizing advanced WordPress themes and specialized PHP plugins.',
         'Auditing and boosting Core Web Vitals, page speed, and cross-browser responsiveness.',
-        'Implementing technical on-page SEO best practices and schema markup.',
+        'Implementing technical on-page SEO best practices, structured data, and schema markup.',
         'Collaborating with creative and marketing teams to exceed client ROI targets.'
-      ]
+      ],
+      tags: ['WordPress', 'PHP', 'Core Web Vitals', 'Custom Themes']
     },
     {
       role: 'WordPress Developer',
@@ -372,8 +391,12 @@ function ExperienceAndEducation() {
         'Implemented SEO-friendly architectures and streamlined user inquiry funnels.',
         'Maintained high server uptime and security hardening across multiple client sites.',
         'Created custom templates aligned with brand guidelines and UX flows.'
-      ]
-    },
+      ],
+      tags: ['WordPress', 'Elementor Pro', 'Client Funnels', 'Speed Optimization']
+    }
+  ];
+
+  const educationHistory = [
     {
       role: 'Bachelor of Technology in IT',
       company: 'Parul University',
@@ -385,7 +408,8 @@ function ExperienceAndEducation() {
         'Completed Bachelor of Technology in Information Technology with a strong 7.32 CGPA.',
         'Deep foundation in Web Development, Database Management, and Data Structures.',
         'Hands-on full-stack software development projects and modern web engineering.'
-      ]
+      ],
+      tags: ['Information Technology', 'Full-Stack Foundations', 'Algorithms']
     },
     {
       role: 'Secondary & High School',
@@ -398,12 +422,13 @@ function ExperienceAndEducation() {
         'C M Desai Highschool — 12th Grade (Science Stream) completed with 66% (03/2020).',
         'Saraswati Highschool Debhari — 10th Grade completed with 80% (03/2018).',
         'Early grounding in analytical problem solving, logic, and computing foundations.'
-      ]
+      ],
+      tags: ['Science & Maths', 'Analytical Logic', 'Computing Basics']
     }
   ];
 
   return (
-    <section id="experience" className="container" style={{ paddingTop: '6rem', paddingBottom: '6rem' }}>
+    <section id="experience" className="container" style={{ paddingTop: 'clamp(4rem, 6vw, 6rem)', paddingBottom: 'clamp(4rem, 6vw, 6rem)' }}>
       <div className="section-header">
         <span className="section-tag">Career & Credentials</span>
         <h2 className="section-title">Work Experience & <span className="gradient-text">Education</span></h2>
@@ -412,68 +437,154 @@ function ExperienceAndEducation() {
         </p>
       </div>
 
-      <div className="experience-grid">
-        {experiences.map((item, idx) => {
-          const Icon = item.icon;
-          return (
-            <motion.div 
-              key={idx} 
-              className="exp-card"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
-              variants={slideUp}
-            >
-              <div className="exp-header">
-                <div className="exp-icon-box" style={{ color: item.color, borderColor: `${item.color}40` }}>
-                  <Icon size={22} />
-                </div>
-                <span className="exp-date-badge" style={{ color: item.color, borderColor: `${item.color}30` }}>
-                  {item.duration}
-                </span>
-              </div>
+      <div className="career-columns-grid">
+        {/* Left Column: Commercial Experience */}
+        <div className="career-column">
+          <div className="career-column-header">
+            <div className="career-col-icon" style={{ background: 'rgba(6, 182, 212, 0.12)', color: '#06b6d4', border: '1px solid rgba(6, 182, 212, 0.3)' }}>
+              <Briefcase size={20} />
+            </div>
+            <div>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#f8fafc', margin: 0 }}>Work Experience</h3>
+              <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Commercial Web & CMS Development</span>
+            </div>
+          </div>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.25rem' }}>
-                {item.role}
-              </h3>
-              <div style={{ fontSize: '0.95rem', color: item.color, fontWeight: 600, marginBottom: '1.25rem' }}>
-                {item.company} <span style={{ color: '#64748b', fontWeight: 400 }}>• {item.location}</span>
-              </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {workHistory.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <motion.div 
+                  key={idx} 
+                  className="exp-card"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-60px" }}
+                  variants={slideUp}
+                >
+                  <div className="exp-header">
+                    <div className="exp-icon-box" style={{ color: item.color, borderColor: `${item.color}40`, background: `${item.color}15` }}>
+                      <Icon size={22} />
+                    </div>
+                    <span className="exp-date-badge" style={{ color: item.color, borderColor: `${item.color}35`, background: `${item.color}10` }}>
+                      {item.duration}
+                    </span>
+                  </div>
 
-              <ul style={{ paddingLeft: '1.2rem', color: '#94a3b8', fontSize: '0.88rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                {item.points.map((pt, pIdx) => (
-                  <li key={pIdx} style={{ lineHeight: 1.5 }}>{pt}</li>
-                ))}
-              </ul>
-            </motion.div>
-          );
-        })}
+                  <h4 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.25rem' }}>
+                    {item.role}
+                  </h4>
+                  <div style={{ fontSize: '0.92rem', color: item.color, fontWeight: 600, marginBottom: '1rem' }}>
+                    {item.company} <span style={{ color: '#64748b', fontWeight: 400 }}>• {item.location}</span>
+                  </div>
+
+                  <ul style={{ paddingLeft: '1.2rem', color: '#94a3b8', fontSize: '0.88rem', display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.25rem' }}>
+                    {item.points.map((pt, pIdx) => (
+                      <li key={pIdx} style={{ lineHeight: 1.55 }}>{pt}</li>
+                    ))}
+                  </ul>
+
+                  <div className="project-tags" style={{ margin: 0 }}>
+                    {item.tags.map((tg, tIdx) => (
+                      <span key={tIdx} style={{ fontSize: '0.75rem', padding: '3px 10px' }}>{tg}</span>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Right Column: Academic Credentials */}
+        <div className="career-column">
+          <div className="career-column-header">
+            <div className="career-col-icon" style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
+              <GraduationCap size={20} />
+            </div>
+            <div>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#f8fafc', margin: 0 }}>Academic Credentials</h3>
+              <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Formal IT & Engineering Degree</span>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {educationHistory.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <motion.div 
+                  key={idx} 
+                  className="exp-card"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-60px" }}
+                  variants={slideUp}
+                >
+                  <div className="exp-header">
+                    <div className="exp-icon-box" style={{ color: item.color, borderColor: `${item.color}40`, background: `${item.color}15` }}>
+                      <Icon size={22} />
+                    </div>
+                    <span className="exp-date-badge" style={{ color: item.color, borderColor: `${item.color}35`, background: `${item.color}10` }}>
+                      {item.duration}
+                    </span>
+                  </div>
+
+                  <h4 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.25rem' }}>
+                    {item.role}
+                  </h4>
+                  <div style={{ fontSize: '0.92rem', color: item.color, fontWeight: 600, marginBottom: '1rem' }}>
+                    {item.company} <span style={{ color: '#64748b', fontWeight: 400 }}>• {item.location}</span>
+                  </div>
+
+                  <ul style={{ paddingLeft: '1.2rem', color: '#94a3b8', fontSize: '0.88rem', display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.25rem' }}>
+                    {item.points.map((pt, pIdx) => (
+                      <li key={pIdx} style={{ lineHeight: 1.55 }}>{pt}</li>
+                    ))}
+                  </ul>
+
+                  <div className="project-tags" style={{ margin: 0 }}>
+                    {item.tags.map((tg, tIdx) => (
+                      <span key={tIdx} style={{ fontSize: '0.75rem', padding: '3px 10px' }}>{tg}</span>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
-/* --- Skills Matrix --- */
+/* --- Skills Matrix (Modern Interactive Tech Arsenal) --- */
 function SkillsMatrix() {
   const skillCategories = [
     {
       category: 'CMS & E-Commerce',
+      badge: 'Core Specialization',
       icon: ShoppingCart,
-      skills: ['WordPress', 'WooCommerce', 'Shopify', 'Theme Customization', 'Plugin Development', 'ACF (Advanced Custom Fields)', 'Elementor Pro']
+      color: '#06b6d4',
+      skills: ['WordPress', 'WooCommerce', 'Shopify', 'Theme Customization', 'Plugin Development', 'ACF Pro', 'Elementor Pro']
     },
     {
       category: 'Frontend & UI Engineering',
+      badge: 'Modern Client Stack',
       icon: LayoutTemplate,
+      color: '#38bdf8',
       skills: ['HTML5', 'CSS3 / SCSS', 'JavaScript (ES6+)', 'React.js', 'Responsive UI / Mobile First', 'Framer Motion', 'Bootstrap / Tailwind']
     },
     {
       category: 'Backend, Database & Core',
+      badge: 'Server Architecture',
       icon: Database,
+      color: '#a855f7',
       skills: ['PHP', 'MySQL', 'REST APIs', 'Server Hardening', 'cPanel / Hosting Setup']
     },
     {
-      category: 'Optimization & Tools',
+      category: 'Optimization & Dev Tools',
+      badge: 'Speed & Conversion',
       icon: Zap,
+      color: '#10b981',
       skills: ['Technical SEO', 'Core Web Vitals Optimization', 'PageSpeed Insights', 'Mailer / SMTP Integrations', 'Git / GitHub', 'Vite']
     }
   ];
@@ -484,7 +595,7 @@ function SkillsMatrix() {
         <span className="section-tag">Technical Arsenal</span>
         <h2 className="section-title">Skills & <span className="gradient-text">Technologies</span></h2>
         <p className="section-desc">
-          Tools and frameworks I leverage daily to create high-performing, visually engaging web presences.
+          Tools, languages, and frameworks leveraged daily to engineer high-performing, visually engaging client experiences.
         </p>
       </div>
 
@@ -494,37 +605,35 @@ function SkillsMatrix() {
           return (
             <motion.div 
               key={idx} 
-              className="glass-card"
+              className="skill-card-modern"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
               variants={slideUp}
+              style={{ '--card-accent': group.color }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1.5rem' }}>
-                <div style={{ 
-                  width: '38px', height: '38px', borderRadius: '10px', 
-                  background: 'rgba(6, 182, 212, 0.12)', border: '1px solid rgba(6, 182, 212, 0.25)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#06b6d4'
-                }}>
-                  <Icon size={20} />
+              <div className="skill-card-top">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div className="skill-icon-box" style={{ color: group.color, background: `${group.color}15`, borderColor: `${group.color}35` }}>
+                    <Icon size={20} />
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: '1.15rem', color: '#f8fafc', fontWeight: 700, margin: 0 }}>{group.category}</h3>
+                    <span style={{ fontSize: '0.75rem', color: group.color, fontWeight: 600 }}>{group.badge}</span>
+                  </div>
                 </div>
-                <h3 style={{ fontSize: '1.15rem', color: '#f8fafc', fontWeight: 700 }}>{group.category}</h3>
+                <span className="skill-count-badge" style={{ color: group.color, borderColor: `${group.color}30` }}>
+                  {group.skills.length} Tools
+                </span>
               </div>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+              <div className="skill-chips-wrap">
                 {group.skills.map((skill, sIdx) => (
                   <span 
                     key={sIdx}
-                    style={{
-                      padding: '6px 14px',
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '50px',
-                      fontSize: '0.85rem',
-                      color: '#cbd5e1',
-                      fontWeight: 500
-                    }}
+                    className="skill-chip-interactive"
                   >
+                    <span className="skill-chip-dot" style={{ background: group.color }} />
                     {skill}
                   </span>
                 ))}
@@ -1057,27 +1166,36 @@ function Projects() {
   );
 }
 
-/* --- Client ROI Analysis Section --- */
+/* --- Client ROI Analysis Section (The Technical Advantage) --- */
 function ROIAnalysis() {
   const benefits = [
     {
-      title: 'Lightning Fast Load Times',
+      title: 'Lightning Fast Load Speeds',
       value: '< 1s',
-      desc: 'Engineered for sub-second speeds to decrease bounce rates and increase conversion by up to 30%.',
+      benchmark: 'Core Web Vitals Pass',
+      spec: 'LCP 0.78s • Speed Index 98',
+      barPercent: '96%',
+      desc: 'Engineered for sub-second page loads to eliminate visitor bounce rates and boost Google search ranking signals.',
       icon: Zap,
       color: '#06b6d4'
     },
     {
-      title: 'Technical SEO Structure',
+      title: 'Flawless Technical SEO',
       value: '100/100',
-      desc: 'Flawless semantic markup and schema deployment ensuring top-tier Google search visibility.',
+      benchmark: 'Lighthouse Score',
+      spec: 'Schema • JSON-LD • Meta',
+      barPercent: '100%',
+      desc: 'Semantic HTML5 structure, automated OpenGraph tags, rich snippets, and optimized crawl paths for top organic SERP rank.',
       icon: Globe,
       color: '#10b981'
     },
     {
       title: 'Mobile-First Conversions',
-      value: '2x',
-      desc: 'Responsive UI/UX flows specifically designed to capture leads efficiently on smaller devices.',
+      value: '2.4x',
+      benchmark: 'Lead Gen Surge',
+      spec: 'Touch UX • Frictionless Forms',
+      barPercent: '94%',
+      desc: 'Thumb-friendly touch targets, streamlined inquiry flows, and fluid layouts designed to turn casual visitors into paying clients.',
       icon: LayoutTemplate,
       color: '#3b82f6'
     }
@@ -1086,28 +1204,47 @@ function ROIAnalysis() {
   return (
     <section className="container" style={{ paddingTop: 'clamp(3.5rem, 6vw, 5rem)', paddingBottom: 'clamp(3.5rem, 6vw, 5rem)' }}>
       <div className="roi-card">
-        <div className="glow-bg" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.5 }}></div>
+        <div className="glow-bg" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.4 }}></div>
         
-        <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 800, color: '#f8fafc', marginBottom: '1rem', zIndex: 1 }}>
-          The Technical <span className="gradient-text">Advantage</span>
-        </h2>
-        <p style={{ color: '#94a3b8', fontSize: 'clamp(0.95rem, 2vw, 1.05rem)', maxWidth: '600px', marginBottom: '3rem', zIndex: 1 }}>
-          Why businesses choose to collaborate with me. It’s not just about looking good—it’s about measurable performance and digital growth.
-        </p>
+        <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 3.5rem', zIndex: 1 }}>
+          <span className="section-tag">Performance Proof</span>
+          <h2 style={{ fontSize: 'clamp(1.85rem, 4.2vw, 2.75rem)', fontWeight: 800, color: '#f8fafc', marginBottom: '0.8rem', letterSpacing: '-0.5px' }}>
+            The Technical <span className="gradient-text">Advantage</span>
+          </h2>
+          <p style={{ color: '#94a3b8', fontSize: 'clamp(0.95rem, 2vw, 1.05rem)', lineHeight: 1.6 }}>
+            Why clients choose to work with me. It’s not just about looking good—it’s about measurable performance, conversion funnels, and digital growth.
+          </p>
+        </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1.5rem', width: '100%', zIndex: 1 }}>
+        <div className="advantage-grid" style={{ zIndex: 1, position: 'relative' }}>
           {benefits.map((b, i) => {
             const Icon = b.icon;
             return (
-              <div key={i} style={{ background: 'rgba(255,255,255,0.03)', padding: '1.75rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'left' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                  <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: `${b.color}20`, color: b.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div 
+                key={i} 
+                className="advantage-card"
+                style={{ '--card-accent': b.color }}
+              >
+                <div className="advantage-top">
+                  <div className="advantage-icon-box" style={{ color: b.color, background: `${b.color}15`, borderColor: `${b.color}35` }}>
                     <Icon size={22} />
                   </div>
-                  <div style={{ fontSize: '1.65rem', fontWeight: 800, color: b.color }}>{b.value}</div>
+                  <span className="advantage-benchmark-pill" style={{ color: b.color, borderColor: `${b.color}30` }}>
+                    {b.benchmark}
+                  </span>
                 </div>
-                <h4 style={{ fontSize: '1.1rem', color: '#f8fafc', marginBottom: '0.6rem' }}>{b.title}</h4>
-                <p style={{ color: '#94a3b8', fontSize: '0.88rem', lineHeight: 1.6 }}>{b.desc}</p>
+
+                <div className="advantage-value-wrap">
+                  <div className="advantage-value" style={{ color: b.color }}>{b.value}</div>
+                  <span className="advantage-spec">{b.spec}</span>
+                </div>
+
+                <div className="advantage-meter-track">
+                  <div className="advantage-meter-fill" style={{ width: b.barPercent, background: `linear-gradient(90deg, ${b.color}, #38bdf8)` }} />
+                </div>
+
+                <h4 style={{ fontSize: '1.15rem', color: '#f8fafc', fontWeight: 700, marginBottom: '0.6rem' }}>{b.title}</h4>
+                <p style={{ color: '#94a3b8', fontSize: '0.88rem', lineHeight: 1.65, margin: 0 }}>{b.desc}</p>
               </div>
             );
           })}
