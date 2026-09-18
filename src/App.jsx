@@ -564,30 +564,70 @@ function SkillsMatrix() {
       badge: 'Core Specialization',
       icon: ShoppingCart,
       color: '#06b6d4',
-      skills: ['WordPress', 'WooCommerce', 'Shopify', 'Theme Customization', 'Plugin Development', 'ACF Pro', 'Elementor Pro']
+      desc: 'Building blazing-fast storefronts and CMS-driven platforms that convert.',
+      skills: [
+        { name: 'WordPress', level: 'Expert' },
+        { name: 'WooCommerce', level: 'Expert' },
+        { name: 'Shopify', level: 'Advanced' },
+        { name: 'Theme Customization', level: 'Expert' },
+        { name: 'Plugin Development', level: 'Advanced' },
+        { name: 'ACF Pro', level: 'Expert' },
+        { name: 'Elementor Pro', level: 'Expert' },
+      ]
     },
     {
       category: 'Frontend & UI Engineering',
       badge: 'Modern Client Stack',
       icon: LayoutTemplate,
       color: '#38bdf8',
-      skills: ['HTML5', 'CSS3 / SCSS', 'JavaScript (ES6+)', 'React.js', 'Responsive UI / Mobile First', 'Framer Motion', 'Bootstrap / Tailwind']
+      desc: 'Pixel-perfect, responsive interfaces with silky-smooth animations.',
+      skills: [
+        { name: 'HTML5 / Semantic Web', level: 'Expert' },
+        { name: 'CSS3 / SCSS', level: 'Expert' },
+        { name: 'JavaScript (ES6+)', level: 'Advanced' },
+        { name: 'React.js', level: 'Intermediate' },
+        { name: 'Framer Motion', level: 'Advanced' },
+        { name: 'Bootstrap / Tailwind', level: 'Expert' },
+        { name: 'Responsive UI / Mobile First', level: 'Expert' },
+      ]
     },
     {
       category: 'Backend, Database & Core',
       badge: 'Server Architecture',
       icon: Database,
       color: '#a855f7',
-      skills: ['PHP', 'MySQL', 'REST APIs', 'Server Hardening', 'cPanel / Hosting Setup']
+      desc: 'Robust server configurations and data architecture for scalable apps.',
+      skills: [
+        { name: 'PHP', level: 'Advanced' },
+        { name: 'MySQL', level: 'Advanced' },
+        { name: 'REST APIs', level: 'Advanced' },
+        { name: 'Server Hardening', level: 'Intermediate' },
+        { name: 'cPanel / Hosting Setup', level: 'Expert' },
+        { name: 'SMTP / Email Config', level: 'Expert' },
+      ]
     },
     {
       category: 'Optimization & Dev Tools',
       badge: 'Speed & Conversion',
       icon: Zap,
       color: '#10b981',
-      skills: ['Technical SEO', 'Core Web Vitals Optimization', 'PageSpeed Insights', 'Mailer / SMTP Integrations', 'Git / GitHub', 'Vite']
+      desc: 'Every millisecond and every Lighthouse point engineered for client ROI.',
+      skills: [
+        { name: 'Technical SEO', level: 'Expert' },
+        { name: 'Core Web Vitals', level: 'Expert' },
+        { name: 'PageSpeed Insights', level: 'Expert' },
+        { name: 'Git / GitHub', level: 'Advanced' },
+        { name: 'Vite / Webpack', level: 'Intermediate' },
+        { name: 'SMTP Integrations', level: 'Advanced' },
+      ]
     }
   ];
+
+  const levelColor = {
+    'Expert': '#10b981',
+    'Advanced': '#38bdf8',
+    'Intermediate': '#f59e0b',
+  };
 
   return (
     <section id="skills" className="container" style={{ paddingTop: 'clamp(3.5rem, 6vw, 6rem)', paddingBottom: 'clamp(3.5rem, 6vw, 6rem)' }}>
@@ -595,7 +635,7 @@ function SkillsMatrix() {
         <span className="section-tag">Technical Arsenal</span>
         <h2 className="section-title">Skills & <span className="gradient-text">Technologies</span></h2>
         <p className="section-desc">
-          Tools, languages, and frameworks leveraged daily to engineer high-performing, visually engaging client experiences.
+          Tools, languages, and frameworks leveraged daily to engineer high-performing, conversion-focused client experiences.
         </p>
       </div>
 
@@ -613,18 +653,23 @@ function SkillsMatrix() {
               style={{ '--card-accent': group.color }}
             >
               <div className="skill-card-top">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div className="skill-icon-box" style={{ color: group.color, background: `${group.color}15`, borderColor: `${group.color}35` }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flex: 1, minWidth: 0 }}>
+                  <div className="skill-icon-box" style={{ color: group.color, background: `${group.color}14`, borderColor: `${group.color}35` }}>
                     <Icon size={20} />
                   </div>
-                  <div>
-                    <h3 style={{ fontSize: '1.15rem', color: '#f8fafc', fontWeight: 700, margin: 0 }}>{group.category}</h3>
-                    <span style={{ fontSize: '0.75rem', color: group.color, fontWeight: 600 }}>{group.badge}</span>
+                  <div style={{ minWidth: 0 }}>
+                    <h3 style={{ fontSize: '1.05rem', color: '#f8fafc', fontWeight: 700, margin: 0, lineHeight: 1.3 }}>{group.category}</h3>
+                    <span style={{ fontSize: '0.72rem', color: group.color, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{group.badge}</span>
                   </div>
                 </div>
-                <span className="skill-count-badge" style={{ color: group.color, borderColor: `${group.color}30` }}>
-                  {group.skills.length} Tools
+                <span className="skill-count-badge" style={{ color: group.color, borderColor: `${group.color}30`, background: `${group.color}0D` }}>
+                  {group.skills.length} Skills
                 </span>
+              </div>
+
+              {/* Card description */}
+              <div style={{ padding: '1rem 1.85rem 1.25rem', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                <p style={{ fontSize: '0.85rem', color: '#64748b', lineHeight: 1.6, margin: 0 }}>{group.desc}</p>
               </div>
 
               <div className="skill-chips-wrap">
@@ -632,10 +677,21 @@ function SkillsMatrix() {
                   <span 
                     key={sIdx}
                     className="skill-chip-interactive"
+                    style={{ '--card-accent': group.color }}
                   >
-                    <span className="skill-chip-dot" style={{ background: group.color }} />
-                    {skill}
+                    <span className="skill-chip-dot" style={{ background: levelColor[skill.level] || group.color }} />
+                    {skill.name}
                   </span>
+                ))}
+              </div>
+
+              {/* Proficiency legend */}
+              <div style={{ padding: '0.85rem 1.85rem 1.35rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                {Object.entries(levelColor).map(([lvl, col]) => (
+                  <div key={lvl} style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.72rem', color: '#475569' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: col, display: 'inline-block', flexShrink: 0 }} />
+                    {lvl}
+                  </div>
                 ))}
               </div>
             </motion.div>
@@ -792,6 +848,36 @@ function Projects() {
         <p className="section-desc">
           Real production websites engineered for luxury clinics, wellness centers, industrial exporters, and digital agencies.
         </p>
+      </div>
+
+      {/* Social Proof Stats Strip */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        gap: 'clamp(1.5rem, 4vw, 3.5rem)',
+        flexWrap: 'wrap',
+        marginBottom: '2.5rem',
+        padding: '1.5rem 2rem',
+        background: 'rgba(6, 182, 212, 0.04)',
+        border: '1px solid rgba(6, 182, 212, 0.15)',
+        borderRadius: '18px',
+        backdropFilter: 'blur(12px)',
+      }}>
+        {[
+          { label: 'Live Websites', val: '7+', icon: Globe },
+          { label: 'Industries Served', val: '4', icon: Layers },
+          { label: 'Avg PageSpeed', val: '97', icon: Zap },
+          { label: 'Clients Satisfied', val: '100%', icon: CheckCircle2 },
+        ].map((s, i) => {
+          const Icon = s.icon;
+          return (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <Icon size={18} color="#06b6d4" />
+              <span style={{ fontSize: 'clamp(1.35rem, 3vw, 1.75rem)', fontWeight: 800, color: '#f8fafc', letterSpacing: '-0.02em' }}>{s.val}</span>
+              <span style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: 500 }}>{s.label}</span>
+            </div>
+          );
+        })}
       </div>
 
       {/* Filter Tabs with Live Project Counts */}
