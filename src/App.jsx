@@ -35,27 +35,46 @@ function TypewriterText({ words }) {
   const [isDeleting, setIsDeleting] = useState(false);
 
   React.useEffect(() => {
-    const typingSpeed = isDeleting ? 40 : 120;
     const word = words[currentWordIndex];
+    const typingSpeed = isDeleting ? 35 : 75;
     
+    let delay = typingSpeed;
+    if (!isDeleting && currentText === word) {
+      delay = 2000;
+    } else if (isDeleting && currentText === '') {
+      delay = 400;
+    }
+
     const timeout = setTimeout(() => {
       if (!isDeleting && currentText === word) {
-        setTimeout(() => setIsDeleting(true), 1500); // Wait before deleting
+        setIsDeleting(true);
       } else if (isDeleting && currentText === '') {
         setIsDeleting(false);
         setCurrentWordIndex((prev) => (prev + 1) % words.length);
       } else {
         setCurrentText(word.substring(0, currentText.length + (isDeleting ? -1 : 1)));
       }
-    }, typingSpeed);
+    }, delay);
 
     return () => clearTimeout(timeout);
   }, [currentText, isDeleting, currentWordIndex, words]);
 
   return (
-    <span style={{ position: 'relative', display: 'inline-block', minWidth: '7.5ch', textAlign: 'left', whiteSpace: 'nowrap' }}>
+    <span className="hero-typed-role">
       {currentText}
-      <span className="cursor-blink" style={{ color: '#06b6d4', marginLeft: '2px' }}>|</span>
+      <span 
+        className="cursor-blink" 
+        style={{ 
+          display: 'inline-block',
+          color: '#38bdf8', 
+          WebkitTextFillColor: '#38bdf8', 
+          marginLeft: '4px', 
+          fontWeight: 300,
+          filter: 'drop-shadow(0 0 8px #38bdf8)' 
+        }}
+      >
+        |
+      </span>
     </span>
   );
 }
@@ -219,10 +238,11 @@ function Hero() {
 
           <motion.h1 
             variants={slideUp}
-            style={{ fontSize: 'clamp(2.05rem, 5.2vw, 3.6rem)', fontWeight: 800, lineHeight: 1.16, marginBottom: '1.25rem', letterSpacing: '-0.025em' }}
+            className="hero-title"
+            style={{ fontSize: 'clamp(2.05rem, 5.2vw, 3.6rem)', fontWeight: 800, lineHeight: 1.18, marginBottom: '1.25rem', letterSpacing: '-0.025em' }}
           >
             I'm <span className="gradient-text">Parth Parmar</span>.<br />
-            Professional <span style={{ color: '#06b6d4' }}><TypewriterText words={['WordPress', 'React.js', 'Shopify']} /></span> Developer.
+            Professional <TypewriterText words={['WordPress Developer', 'Shopify Specialist', 'WooCommerce Expert', 'React.js Engineer']} />
           </motion.h1>
 
           <motion.p 
@@ -247,14 +267,7 @@ function Hero() {
           {/* Quick Metrics */}
           <motion.div 
             variants={slideUp} 
-            style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 105px), 1fr))', 
-              gap: '1.5rem', 
-              marginTop: '2.5rem', 
-              paddingTop: '1.75rem', 
-              borderTop: '1px solid rgba(255,255,255,0.06)' 
-            }}
+            className="hero-metrics-bar"
           >
             <div>
               <div style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', fontWeight: 800, color: '#06b6d4' }}>2+ Years</div>
