@@ -62,8 +62,9 @@ function Preloader({ onDone }) {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="preloader-initials">
-            P<span style={{ color: '#06b6d4' }}>.</span>P
+            Parth<span style={{ color: '#06b6d4' }}> Parmar</span>
           </div>
+          <div className="preloader-subtitle">Portfolio</div>
         </motion.div>
         <motion.p
           className="preloader-label"
@@ -1191,7 +1192,7 @@ function Projects() {
       </h3>
 
       <div className="projects-grid">
-        {filteredProjects.map((project) => (
+        {filteredProjects.map((project, cardIdx) => (
           <motion.div 
             key={project.id} 
             className="project-card"
@@ -1199,8 +1200,16 @@ function Projects() {
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
             variants={slideUp}
+            whileHover={{ y: -8 }}
           >
-            {/* Safari Browser Top Bar for each card */}
+            {/* Colored top accent strip per project */}
+            <div className="project-card-stripe" style={{
+              background: cardIdx % 3 === 0 ? 'linear-gradient(90deg,#06b6d4,#3b82f6)' :
+                          cardIdx % 3 === 1 ? 'linear-gradient(90deg,#10b981,#06b6d4)' :
+                                             'linear-gradient(90deg,#8b5cf6,#3b82f6)'
+            }} />
+
+            {/* Safari Browser Top Bar */}
             <div className="browser-header">
               <div className="browser-dots">
                 <div className="browser-dot" style={{ background: '#ef4444' }}></div>
@@ -1213,25 +1222,10 @@ function Projects() {
             </div>
 
             <div className="project-thumb-wrap">
-              <img src={project.image} alt={project.title} />
+              <img src={project.image} alt={project.title} loading="lazy" />
               
               {/* Category Pill */}
-              <div style={{
-                position: 'absolute',
-                top: '12px',
-                right: '12px',
-                background: 'rgba(3, 7, 18, 0.88)',
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
-                padding: '5px 14px',
-                borderRadius: '50px',
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                color: '#67e8f9',
-                border: '1px solid rgba(6, 182, 212, 0.35)',
-                zIndex: 2,
-                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.5)'
-              }}>
+              <div className="project-cat-pill">
                 {project.badge}
               </div>
 
@@ -1239,16 +1233,24 @@ function Projects() {
               <div className="floating-stat-badge">
                 {project.stat}
               </div>
+
+              {/* Hover overlay CTA */}
+              <div className="project-thumb-overlay">
+                <div className="project-thumb-overlay-inner">
+                  <Eye size={20} />
+                  <span>View Details</span>
+                </div>
+              </div>
             </div>
 
             <div className="project-card-body">
-              <h4 style={{ fontSize: '1.35rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.35rem' }}>
+              <h4 className="project-card-title">
                 {project.title}
               </h4>
-              <div style={{ fontSize: '0.85rem', color: '#06b6d4', fontWeight: 600, marginBottom: '0.8rem' }}>
+              <div className="project-card-headline">
                 {project.headline}
               </div>
-              <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: 1.6, flexGrow: 1 }}>
+              <p className="project-card-desc">
                 {project.description}
               </p>
 
@@ -1258,22 +1260,20 @@ function Projects() {
                 ))}
               </div>
 
-              <div style={{ display: 'flex', gap: '0.75rem', marginTop: 'auto' }}>
+              <div className="project-card-actions">
                 <a 
                   href={project.url} 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="btn-primary" 
-                  style={{ flex: 1, padding: '10px 14px', fontSize: '0.85rem' }}
+                  className="btn-primary project-live-btn"
                 >
                   <span>Live Site</span>
                   <ExternalLink size={15} />
                 </a>
                 <button 
-                  className="btn-outline" 
+                  className="project-case-btn"
                   onClick={() => setSelectedProject(project)}
-                  style={{ padding: '10px 14px', fontSize: '0.85rem' }}
-                  title="Inspect Case Study"
+                  title="View Case Study"
                 >
                   <Eye size={16} />
                 </button>
@@ -1387,83 +1387,142 @@ function ROIAnalysis() {
     {
       title: 'Lightning Fast Load Speeds',
       value: '< 1s',
+      numericVal: 96,
       benchmark: 'Core Web Vitals Pass',
       spec: 'LCP 0.78s • Speed Index 98',
-      barPercent: '96%',
+      barPercent: 96,
       desc: 'Engineered for sub-second page loads to eliminate visitor bounce rates and boost Google search ranking signals.',
       icon: Zap,
-      color: '#06b6d4'
+      color: '#06b6d4',
+      tag: '96% FASTER'
     },
     {
       title: 'Flawless Technical SEO',
       value: '100/100',
+      numericVal: 100,
       benchmark: 'Lighthouse Score',
       spec: 'Schema • JSON-LD • Meta',
-      barPercent: '100%',
+      barPercent: 100,
       desc: 'Semantic HTML5 structure, automated OpenGraph tags, rich snippets, and optimized crawl paths for top organic SERP rank.',
       icon: Globe,
-      color: '#10b981'
+      color: '#10b981',
+      tag: 'PERFECT SCORE'
     },
     {
       title: 'Mobile-First Conversions',
       value: '2.4x',
+      numericVal: 94,
       benchmark: 'Lead Gen Surge',
       spec: 'Touch UX • Frictionless Forms',
-      barPercent: '94%',
+      barPercent: 94,
       desc: 'Thumb-friendly touch targets, streamlined inquiry flows, and fluid layouts designed to turn casual visitors into paying clients.',
       icon: LayoutTemplate,
-      color: '#3b82f6'
+      color: '#3b82f6',
+      tag: '2.4× MORE LEADS'
     }
   ];
 
   return (
-    <section className="container" style={{ paddingTop: 'clamp(3.5rem, 6vw, 5rem)', paddingBottom: 'clamp(3.5rem, 6vw, 5rem)' }}>
-      <div className="roi-card">
-        <div className="glow-bg" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.4 }}></div>
-        
-        <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 3.5rem', zIndex: 1 }}>
+    <section className="roi-section">
+      <div className="container">
+        {/* Header */}
+        <motion.div
+          className="roi-header"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
           <span className="section-tag">Performance Proof</span>
-          <h2 style={{ fontSize: 'clamp(1.85rem, 4.2vw, 2.75rem)', fontWeight: 800, color: '#f8fafc', marginBottom: '0.8rem', letterSpacing: '-0.5px' }}>
+          <h2 className="section-title">
             The Technical <span className="gradient-text">Advantage</span>
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: 'clamp(0.95rem, 2vw, 1.05rem)', lineHeight: 1.6 }}>
-            Why clients choose to work with me. It’s not just about looking good—it’s about measurable performance, conversion funnels, and digital growth.
+          <p className="section-desc">
+            Why clients choose to work with me — measurable performance, conversion funnels, and real digital growth.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="advantage-grid" style={{ zIndex: 1, position: 'relative' }}>
+        {/* Cards Grid */}
+        <div className="roi-cards-grid">
           {benefits.map((b, i) => {
             const Icon = b.icon;
             return (
-              <div 
-                key={i} 
-                className="advantage-card"
-                style={{ '--card-accent': b.color }}
+              <motion.div
+                key={i}
+                className="roi-adv-card"
+                style={{ '--accent': b.color }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.65, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -6 }}
               >
-                <div className="advantage-top">
-                  <div className="advantage-icon-box" style={{ color: b.color, background: `${b.color}15`, borderColor: `${b.color}35` }}>
+                {/* Top accent bar */}
+                <div className="roi-card-accent-bar" style={{ background: `linear-gradient(90deg, ${b.color}, transparent)` }} />
+
+                {/* Ghost big number */}
+                <div className="roi-ghost-num">{b.value}</div>
+
+                {/* Header row */}
+                <div className="roi-card-top">
+                  <div className="roi-icon-wrap" style={{ background: `${b.color}18`, borderColor: `${b.color}35`, color: b.color }}>
                     <Icon size={22} />
                   </div>
-                  <span className="advantage-benchmark-pill" style={{ color: b.color, borderColor: `${b.color}30` }}>
-                    {b.benchmark}
+                  <span className="roi-tag-pill" style={{ color: b.color, borderColor: `${b.color}35`, background: `${b.color}12` }}>
+                    {b.tag}
                   </span>
                 </div>
 
-                <div className="advantage-value-wrap">
-                  <div className="advantage-value" style={{ color: b.color }}>{b.value}</div>
-                  <span className="advantage-spec">{b.spec}</span>
+                {/* Big value */}
+                <div className="roi-big-value" style={{ color: b.color }}>{b.value}</div>
+                <div className="roi-spec-row">{b.spec}</div>
+
+                {/* Progress bar */}
+                <div className="roi-bar-track">
+                  <motion.div
+                    className="roi-bar-fill"
+                    style={{ background: `linear-gradient(90deg, ${b.color}, #38bdf8)` }}
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${b.barPercent}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.4, ease: 'easeOut', delay: 0.3 + i * 0.1 }}
+                  />
                 </div>
 
-                <div className="advantage-meter-track">
-                  <div className="advantage-meter-fill" style={{ width: b.barPercent, background: `linear-gradient(90deg, ${b.color}, #38bdf8)` }} />
-                </div>
+                {/* Title + desc */}
+                <h4 className="roi-card-title">{b.title}</h4>
+                <p className="roi-card-desc">{b.desc}</p>
 
-                <h4 style={{ fontSize: '1.15rem', color: '#f8fafc', fontWeight: 700, marginBottom: '0.6rem' }}>{b.title}</h4>
-                <p style={{ color: '#94a3b8', fontSize: '0.88rem', lineHeight: 1.65, margin: 0 }}>{b.desc}</p>
-              </div>
+                {/* Benchmark pill */}
+                <div className="roi-benchmark-footer" style={{ borderColor: `${b.color}20` }}>
+                  <span className="roi-dot" style={{ background: b.color }} />
+                  {b.benchmark}
+                </div>
+              </motion.div>
             );
           })}
         </div>
+
+        {/* Bottom stat strip */}
+        <motion.div
+          className="roi-stat-strip"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          {[
+            { val: '7+', label: 'Live Websites Deployed' },
+            { val: '100%', label: 'Client Satisfaction' },
+            { val: '2+', label: 'Years Experience' },
+            { val: '98', label: 'Avg Lighthouse Score' },
+          ].map((s, i) => (
+            <div key={i} className="roi-strip-item">
+              <div className="roi-strip-val">{s.val}</div>
+              <div className="roi-strip-label">{s.label}</div>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

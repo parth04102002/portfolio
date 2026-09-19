@@ -74,11 +74,12 @@ body {
   gap: 1.25rem;
 }
 .preloader-initials {
-  font-size: clamp(3rem, 10vw, 5.5rem);
+  font-size: clamp(2.2rem, 8vw, 4rem);
   font-weight: 900;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   color: #f8fafc;
   line-height: 1;
+  text-align: center;
 }
 .preloader-label {
   font-size: 0.88rem;
@@ -1263,57 +1264,175 @@ a {
   text-transform: uppercase;
 }
 
-/* Client ROI / Technical Advantage Section */
-.roi-card {
-  background: linear-gradient(145deg, rgba(15, 23, 42, 0.85), rgba(2, 6, 23, 0.95));
-  border: 1px solid rgba(6, 182, 212, 0.2);
-  border-radius: 24px;
-  padding: 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
+/* ─── Preloader subtitle ─────────────────────────────────────── */
+.preloader-subtitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #06b6d4;
+  margin-top: 0.2rem;
 }
 
-.advantage-grid {
+/* ─── Project Card Improvements ─────────────────────────────── */
+.project-card-stripe {
+  height: 3px;
+  width: 100%;
+  flex-shrink: 0;
+}
+.project-cat-pill {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(3, 7, 18, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 5px 14px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #67e8f9;
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  z-index: 2;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.project-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 3;
+  backdrop-filter: blur(4px);
+}
+.project-card:hover .project-thumb-overlay { opacity: 1; }
+.project-thumb-overlay-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f8fafc;
+  font-weight: 700;
+  font-size: 0.95rem;
+  background: rgba(6, 182, 212, 0.2);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  padding: 10px 22px;
+  border-radius: 50px;
+  transform: translateY(6px);
+  transition: transform 0.35s ease;
+}
+.project-card:hover .project-thumb-overlay-inner { transform: translateY(0); }
+.project-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 0.3rem;
+}
+.project-card-headline {
+  font-size: 0.83rem;
+  color: #06b6d4;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.project-card-desc {
+  color: #94a3b8;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+.project-card-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+.project-live-btn {
+  flex: 1;
+  padding: 10px 14px !important;
+  font-size: 0.85rem !important;
+}
+.project-case-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  color: #94a3b8;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.project-case-btn:hover {
+  background: rgba(6, 182, 212, 0.12);
+  border-color: rgba(6, 182, 212, 0.35);
+  color: #06b6d4;
+}
+
+/* ─── ROI / Technical Advantage — Premium Redesign ──────────── */
+.roi-section {
+  padding: clamp(4rem, 7vw, 7rem) 0;
+  position: relative;
+  background: linear-gradient(180deg, transparent 0%, rgba(6, 182, 212, 0.03) 50%, transparent 100%);
+}
+.roi-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.roi-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  width: 100%;
-  text-align: left;
+  gap: 1.75rem;
+  margin-bottom: 3rem;
 }
-
-.advantage-card {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
+.roi-adv-card {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
   padding: 2.25rem;
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
 }
-
-.advantage-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(6, 182, 212, 0.4);
-  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.85), 0 0 30px rgba(6, 182, 212, 0.12);
+.roi-adv-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  box-shadow: 0 30px 60px -12px rgba(0,0,0,0.85),
+              0 0 40px color-mix(in srgb, var(--accent) 15%, transparent);
 }
-
-.advantage-top {
+.roi-card-accent-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 22px 22px 0 0;
+}
+.roi-ghost-num {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 7rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.025);
+  letter-spacing: -0.06em;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.roi-card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
-
-.advantage-icon-box {
+.roi-icon-wrap {
   width: 48px;
   height: 48px;
   border-radius: 14px;
@@ -1321,53 +1440,119 @@ a {
   align-items: center;
   justify-content: center;
   border: 1px solid;
+  flex-shrink: 0;
 }
-
-.advantage-benchmark-pill {
-  font-size: 0.75rem;
-  font-weight: 700;
+.roi-tag-pill {
+  font-size: 0.7rem;
+  font-weight: 800;
   padding: 4px 12px;
   border-radius: 50px;
   border: 1px solid;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
-
-.advantage-value-wrap {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  margin-bottom: 0.85rem;
-}
-
-.advantage-value {
-  font-size: 2.75rem;
+.roi-big-value {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 900;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.4rem;
 }
-
-.advantage-spec {
-  font-size: 0.82rem;
+.roi-spec-row {
+  font-size: 0.78rem;
   font-weight: 600;
-  color: #94a3b8;
+  color: #64748b;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.07em;
+  margin-bottom: 1.25rem;
 }
-
-.advantage-meter-track {
+.roi-bar-track {
   width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
+  height: 5px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 99px;
   overflow: hidden;
   margin-bottom: 1.5rem;
 }
-
-.advantage-meter-fill {
+.roi-bar-fill {
   height: 100%;
-  border-radius: 10px;
-  transition: width 1.2s ease-out;
+  border-radius: 99px;
 }
+.roi-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 0.55rem;
+}
+.roi-card-desc {
+  color: #94a3b8;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  margin: 0 0 1.5rem;
+  flex-grow: 1;
+}
+.roi-benchmark-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+  padding-top: 1rem;
+  border-top: 1px solid;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: auto;
+}
+.roi-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+/* Bottom stat strip */
+.roi-stat-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  flex-wrap: wrap;
+  padding: 2rem 2.5rem;
+  background: rgba(6, 182, 212, 0.04);
+  border: 1px solid rgba(6, 182, 212, 0.14);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+}
+.roi-strip-item {
+  text-align: center;
+}
+.roi-strip-val {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 900;
+  color: #f8fafc;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  background: linear-gradient(135deg, #38bdf8, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.roi-strip-label {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
+  margin-top: 0.3rem;
+}
+
+/* Responsive ROI */
+@media (max-width: 900px) {
+  .roi-cards-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+@media (max-width: 600px) {
+  .roi-stat-strip { gap: 1.5rem; padding: 1.5rem; }
+  .roi-strip-val { font-size: 1.75rem; }
+}
+
 
 /* Featured Checklist Grid */
 .featured-checklist-grid {
