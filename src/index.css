@@ -66,12 +66,29 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+.preloader-glow {
+  position: absolute;
+  width: min(500px, 90vw);
+  height: min(500px, 90vw);
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.22) 0%, rgba(3, 7, 18, 0) 70%);
+  border-radius: 50%;
+  filter: blur(55px);
+  pointer-events: none;
+  animation: preloader-glow-pulse 3.5s ease-in-out infinite alternate;
+}
+@keyframes preloader-glow-pulse {
+  0% { transform: scale(0.85); opacity: 0.5; }
+  100% { transform: scale(1.15); opacity: 0.95; }
 }
 .preloader-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
+  z-index: 2;
+  position: relative;
 }
 .preloader-initials {
   font-size: clamp(2.2rem, 8vw, 4rem);
@@ -1346,32 +1363,49 @@ a {
 }
 .project-card-actions {
   display: flex;
+  align-items: center;
   gap: 0.75rem;
   margin-top: auto;
-  padding-top: 0.5rem;
+  padding-top: 0.75rem;
+  width: 100%;
 }
-.project-live-btn {
-  flex: 1;
+.project-card-actions .project-live-btn {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto !important;
   padding: 10px 14px !important;
   font-size: 0.85rem !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
 }
 .project-case-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   padding: 10px 14px;
-  background: rgba(255,255,255,0.04);
-  color: #94a3b8;
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .project-case-btn:hover {
-  background: rgba(6, 182, 212, 0.12);
-  border-color: rgba(6, 182, 212, 0.35);
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.4);
   color: #06b6d4;
+  transform: translateY(-2px);
+}
+.project-case-btn:active {
+  transform: translateY(0);
 }
 
 /* ─── ROI / Technical Advantage — Premium Redesign ──────────── */
@@ -1525,6 +1559,8 @@ a {
 }
 .roi-strip-item {
   text-align: center;
+  flex: 1 1 140px;
+  min-width: 120px;
 }
 .roi-strip-val {
   font-size: clamp(1.8rem, 4vw, 2.4rem);
@@ -1539,18 +1575,48 @@ a {
 }
 .roi-strip-label {
   font-size: 0.8rem;
-  color: #64748b;
+  color: #94a3b8;
   font-weight: 500;
-  margin-top: 0.3rem;
+  margin-top: 0.35rem;
+  letter-spacing: 0.02em;
 }
 
 /* Responsive ROI */
-@media (max-width: 900px) {
-  .roi-cards-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+@media (max-width: 1024px) {
+  .roi-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .roi-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .roi-adv-card {
+    padding: 1.85rem 1.35rem;
+    border-radius: 18px;
+  }
+  .roi-big-value {
+    font-size: 2.6rem;
+  }
+  .roi-ghost-num {
+    font-size: 5rem;
+    opacity: 0.5;
+  }
 }
 @media (max-width: 600px) {
-  .roi-stat-strip { gap: 1.5rem; padding: 1.5rem; }
-  .roi-strip-val { font-size: 1.75rem; }
+  .roi-stat-strip {
+    gap: 1.25rem;
+    padding: 1.5rem 1.25rem;
+    border-radius: 16px;
+  }
+  .roi-strip-val {
+    font-size: 1.65rem;
+  }
+  .roi-strip-label {
+    font-size: 0.75rem;
+  }
 }
 
 

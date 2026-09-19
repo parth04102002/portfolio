@@ -55,16 +55,18 @@ function Preloader({ onDone }) {
       exit={{ opacity: 0, scale: 1.03 }}
       transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
     >
+      <div className="preloader-glow" aria-hidden="true" />
       <div className="preloader-inner">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          style={{ textAlign: 'center' }}
         >
           <div className="preloader-initials">
             Parth<span style={{ color: '#06b6d4' }}> Parmar</span>
           </div>
-          <div className="preloader-subtitle">Portfolio</div>
+          <div className="preloader-subtitle">Creative Web Developer &bull; Portfolio</div>
         </motion.div>
         <motion.p
           className="preloader-label"
@@ -72,7 +74,7 @@ function Preloader({ onDone }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.25, duration: 0.5 }}
         >
-          Loading portfolio<span className="preloader-dots">...</span>
+          Loading experience<span className="preloader-dots">...</span>
         </motion.p>
         <div className="preloader-bar-track">
           <div className="preloader-bar-fill" style={{ width: `${progress}%` }} />
@@ -1221,7 +1223,14 @@ function Projects() {
               </div>
             </div>
 
-            <div className="project-thumb-wrap">
+            <div 
+              className="project-thumb-wrap" 
+              onClick={() => setSelectedProject(project)}
+              role="button"
+              tabIndex={0}
+              aria-label={`Open case study for ${project.title}`}
+              onKeyDown={(e) => e.key === 'Enter' && setSelectedProject(project)}
+            >
               <img src={project.image} alt={project.title} loading="lazy" />
               
               {/* Category Pill */}
@@ -1237,8 +1246,8 @@ function Projects() {
               {/* Hover overlay CTA */}
               <div className="project-thumb-overlay">
                 <div className="project-thumb-overlay-inner">
-                  <Eye size={20} />
-                  <span>View Details</span>
+                  <Eye size={18} />
+                  <span>Explore Case Study</span>
                 </div>
               </div>
             </div>
@@ -1268,14 +1277,15 @@ function Projects() {
                   className="btn-primary project-live-btn"
                 >
                   <span>Live Site</span>
-                  <ExternalLink size={15} />
+                  <ExternalLink size={14} />
                 </a>
                 <button 
                   className="project-case-btn"
                   onClick={() => setSelectedProject(project)}
-                  title="View Case Study"
+                  title="View Case Study Breakdown"
                 >
-                  <Eye size={16} />
+                  <Eye size={14} />
+                  <span>Case Study</span>
                 </button>
               </div>
             </div>
