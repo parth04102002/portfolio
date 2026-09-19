@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { 
   Zap, LayoutTemplate, ShoppingCart, ExternalLink, Mail, ArrowRight, 
   Briefcase, Code2, GraduationCap, Phone, MapPin, CheckCircle2, 
@@ -27,6 +27,90 @@ const staggerContainer = {
     }
   }
 };
+
+/* ─── Page Preloader ─────────────────────────────────────────── */
+function Preloader({ onDone }) {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) { clearInterval(interval); return 100; }
+        return prev + (prev < 80 ? 5 : 1);
+      });
+    }, 28);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (progress >= 100) {
+      const t = setTimeout(onDone, 380);
+      return () => clearTimeout(t);
+    }
+  }, [progress, onDone]);
+
+  return (
+    <motion.div
+      className="preloader"
+      exit={{ opacity: 0, scale: 1.03 }}
+      transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div className="preloader-inner">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="preloader-initials">
+            P<span style={{ color: '#06b6d4' }}>.</span>P
+          </div>
+        </motion.div>
+        <motion.p
+          className="preloader-label"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.25, duration: 0.5 }}
+        >
+          Loading portfolio<span className="preloader-dots">...</span>
+        </motion.p>
+        <div className="preloader-bar-track">
+          <div className="preloader-bar-fill" style={{ width: `${progress}%` }} />
+        </div>
+        <div className="preloader-percent">{progress}<span style={{ fontSize: '0.7em', opacity: 0.6 }}>%</span></div>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ─── Scroll-shrink hook for Navbar ─────────────────────────── */
+function useScrollShrink(threshold = 60) {
+  const [shrunk, setShrunk] = useState(false);
+  useEffect(() => {
+    const handler = () => setShrunk(window.scrollY > threshold);
+    window.addEventListener('scroll', handler, { passive: true });
+    return () => window.removeEventListener('scroll', handler);
+  }, [threshold]);
+  return shrunk;
+}
+
+/* ─── Magnetic button hook ───────────────────────────────────── */
+function useMagnetic(strength = 0.35) {
+  const ref = useRef(null);
+  const handleMove = useCallback((e) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) * strength;
+    const dy = (e.clientY - cy) * strength;
+    ref.current.style.transform = `translate(${dx}px, ${dy}px)`;
+  }, [strength]);
+  const handleLeave = useCallback(() => {
+    if (!ref.current) return;
+    ref.current.style.transform = '';
+  }, []);
+  return { ref, onMouseMove: handleMove, onMouseLeave: handleLeave };
+}
 
 /* --- Typewriter Effect Component --- */
 function TypewriterText({ words }) {
@@ -154,9 +238,11 @@ function TypographicImpact() {
 /* --- Navigation --- */
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const shrunk = useScrollShrink(60);
+  const magnetic = useMagnetic(0.28);
 
   return (
-    <header className="navbar-wrapper">
+    <header className={`navbar-wrapper${shrunk ? ' navbar-shrunk' : ''}`}>
       <nav className="navbar container">
         <a href="#" className="brand-logo">
           <div className="brand-badge">P</div>
@@ -173,7 +259,14 @@ function Navbar() {
         </ul>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-          <a href="#contact" className="btn-primary" style={{ padding: '8px 18px', fontSize: '0.85rem' }}>
+          <a
+            ref={magnetic.ref}
+            onMouseMove={magnetic.onMouseMove}
+            onMouseLeave={magnetic.onMouseLeave}
+            href="#contact"
+            className="btn-primary magnetic-btn"
+            style={{ padding: '8px 18px', fontSize: '0.85rem' }}
+          >
             Hire Me <ArrowRight size={15} />
           </a>
           <button 
@@ -222,8 +315,18 @@ function Hero() {
   return (
     <section id="about" className="container" style={{ paddingTop: 'clamp(3.5rem, 7vw, 6rem)', paddingBottom: 'clamp(3.5rem, 7vw, 6rem)', position: 'relative', width: '100%' }}>
       <div className="glow-bg" style={{ top: '0', left: '10%' }}></div>
+
+      {/* Floating ambient particle orbs */}
+      <div className="hero-particles" aria-hidden="true">
+        <div className="hero-particle hero-particle--1" />
+        <div className="hero-particle hero-particle--2" />
+        <div className="hero-particle hero-particle--3" />
+        <div className="hero-particle hero-particle--4" />
+        <div className="hero-particle hero-particle--5" />
+      </div>
       
       <div style={{ display: 'flex', alignItems: 'flex-start', flexWrap: 'wrap', gap: '3rem', width: '100%' }}>
+
         <motion.div 
           style={{ flex: '1 1 min(100%, 520px)', minWidth: 0, zIndex: 10 }}
           initial="hidden"
@@ -702,7 +805,33 @@ function SkillsMatrix() {
   );
 }
 
-/* --- Ultra-Attractive Featured & Comprehensive Projects --- */
+/* --- Tech Marquee Strip (infinite scroll) --- */
+const MARQUEE_ITEMS = [
+  'WordPress', 'WooCommerce', 'Shopify', 'React.js', 'Framer Motion',
+  'PHP', 'MySQL', 'Elementor Pro', 'ACF Pro', 'Core Web Vitals',
+  'Technical SEO', 'JavaScript', 'SCSS', 'REST APIs', 'cPanel',
+  'Bootstrap', 'Tailwind CSS', 'Git / GitHub', 'Vite', 'PageSpeed Insights',
+];
+
+function TechMarquee() {
+  const doubled = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
+  return (
+    <div className="marquee-section" aria-hidden="true">
+      <div className="marquee-track">
+        <div className="marquee-inner">
+          {doubled.map((item, idx) => (
+            <span key={idx} className="marquee-chip">
+              <span className="marquee-chip-dot" />
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 function Projects() {
   const [filter, setFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
@@ -1685,19 +1814,30 @@ function Footer() {
 }
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
+
   return (
     <>
-      <Navbar />
-      <Hero />
-      <TypographicImpact />
-      <ExperienceAndEducation />
-      <SkillsMatrix />
-      <Projects />
-      <ROIAnalysis />
-      <FAQ />
-      <ContactSection />
-      <Footer />
-      <FloatingWhatsApp />
+      <AnimatePresence mode="wait">
+        {loading && <Preloader key="preloader" onDone={() => setLoading(false)} />}
+      </AnimatePresence>
+
+      {!loading && (
+        <>
+          <Navbar />
+          <Hero />
+          <TypographicImpact />
+          <ExperienceAndEducation />
+          <SkillsMatrix />
+          <TechMarquee />
+          <Projects />
+          <ROIAnalysis />
+          <FAQ />
+          <ContactSection />
+          <Footer />
+          <FloatingWhatsApp />
+        </>
+      )}
     </>
   );
 }
