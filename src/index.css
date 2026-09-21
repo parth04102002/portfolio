@@ -359,19 +359,57 @@ a {
 }
 
 /* Large Typographic Row Hover & Outline Effects */
-.large-typewriter-row {
-  cursor: pointer;
-  transition: background 0.3s ease, border-color 0.3s ease;
-  padding: 1.5rem 0;
+/* ─── Typographic Impact Section ─────────────────────────────── */
+.typo-impact-section {
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+  background: #000000;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
   overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-  width: 100%;
+}
+.typo-section-tag {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #06b6d4;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.typo-rows-wrap {
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
+.large-typewriter-row {
+  cursor: pointer;
+  transition: background 0.35s ease, border-color 0.35s ease;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
 .large-typewriter-row:hover {
-  background: linear-gradient(90deg, rgba(6, 182, 212, 0.08) 0%, transparent 100%);
-  border-bottom-color: rgba(6, 182, 212, 0.25) !important;
+  background: linear-gradient(90deg, rgba(6, 182, 212, 0.06) 0%, transparent 100%);
+}
+.large-typewriter-row.typo-row-open {
+  background: linear-gradient(180deg, rgba(6, 182, 212, 0.06) 0%, rgba(6, 182, 212, 0.02) 100%);
+  border-bottom-color: rgba(6, 182, 212, 0.2);
+}
+
+/* Row header layout */
+.typo-row-header {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  padding: 1.5rem 0;
+}
+.typo-row-index {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(6, 182, 212, 0.5);
+  font-variant-numeric: tabular-nums;
+  min-width: 2ch;
+  flex-shrink: 0;
 }
 
 .large-typewriter-row .huge-text {
@@ -385,36 +423,142 @@ a {
   max-width: 100%;
   overflow: hidden;
   text-overflow: clip;
+  flex: 1;
 }
 
-/* Hollow / Outlined typography variant */
 .huge-text.outline-variant {
   color: transparent !important;
   -webkit-text-stroke: 1.5px rgba(6, 182, 212, 0.75);
 }
-
-/* Solid typography variant */
 .huge-text.solid-variant {
   color: #f8fafc;
   -webkit-text-stroke: 0px transparent;
 }
 
-/* Hover, Focus, and Mobile Tap: Fill with vivid cyan glow */
+/* Toggle chevron */
+.typo-row-toggle {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #64748b;
+  flex-shrink: 0;
+  transition: all 0.35s ease;
+}
+.typo-row-toggle.typo-toggle-open {
+  transform: rotate(180deg);
+  color: #06b6d4;
+  border-color: rgba(6, 182, 212, 0.3);
+  background: rgba(6, 182, 212, 0.1);
+}
+.large-typewriter-row:hover .typo-row-toggle {
+  border-color: rgba(6, 182, 212, 0.25);
+  color: #94a3b8;
+}
+
+/* Hover states for text */
 .large-typewriter-row:hover .huge-text.outline-variant,
 .large-typewriter-row:focus-within .huge-text.outline-variant,
 .large-typewriter-row:active .huge-text.outline-variant {
   color: #06b6d4 !important;
   -webkit-text-stroke: 0px transparent !important;
   text-shadow: 0 0 35px rgba(6, 182, 212, 0.65);
-  transform: translateX(12px);
 }
-
 .large-typewriter-row:hover .huge-text.solid-variant,
 .large-typewriter-row:focus-within .huge-text.solid-variant,
 .large-typewriter-row:active .huge-text.solid-variant {
   color: #38bdf8 !important;
   text-shadow: 0 0 30px rgba(56, 189, 248, 0.55);
-  transform: translateX(12px);
+}
+
+/* Expandable detail panel */
+.typo-expand-panel {
+  overflow: hidden;
+}
+.typo-expand-inner {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding: 0.75rem 0 2rem;
+  padding-left: calc(2ch + clamp(1rem, 2.5vw, 2rem));
+}
+.typo-expand-left {
+  flex: 1;
+  min-width: 0;
+}
+.typo-expand-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 700;
+  color: #06b6d4;
+  margin-bottom: 0.65rem;
+}
+.typo-expand-desc {
+  color: #94a3b8;
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  line-height: 1.7;
+  max-width: 560px;
+}
+.typo-expand-metrics {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  flex-shrink: 0;
+  align-items: flex-start;
+  padding-top: 0.25rem;
+}
+.typo-metric {
+  text-align: center;
+  min-width: 70px;
+}
+.typo-metric-val {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 900;
+  color: #f8fafc;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  background: linear-gradient(135deg, #38bdf8, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.typo-metric-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.3rem;
+}
+
+/* Responsive typographic section */
+@media (max-width: 768px) {
+  .typo-expand-inner {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-left: 0;
+  }
+  .typo-expand-metrics {
+    gap: 1.25rem;
+  }
+  .typo-row-index {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .typo-row-header {
+    gap: 0.75rem;
+    padding: 1.25rem 0;
+  }
+  .typo-row-toggle {
+    width: 30px;
+    height: 30px;
+  }
+  .large-typewriter-row .huge-text {
+    font-size: clamp(1.25rem, 5.8vw, 2.2rem);
+    letter-spacing: -0.02em;
+  }
 }
 
 /* Button Component Styles */
@@ -1965,14 +2109,7 @@ a {
     font-size: 0.7rem;
   }
 
-  .large-typewriter-row {
-    padding: 1rem 0;
-  }
 
-  .large-typewriter-row .huge-text {
-    font-size: clamp(1.25rem, 5.8vw, 2.2rem);
-    letter-spacing: -0.02em;
-  }
 }
 
 @media (max-width: 480px) {

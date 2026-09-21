@@ -167,11 +167,11 @@ function TypewriterText({ words }) {
 }
 
 /* --- Huge Typographic Impact Section --- */
-function LargeTypewriterRow({ word, index }) {
+function LargeTypewriterRow({ word, index, subtitle, description, metrics, isOpen, onToggle }) {
   const [currentText, setCurrentText] = useState('');
   const [inView, setInView] = useState(false);
   const ref = React.useRef(null);
-  const isOutline = index % 2 === 1; // Alternating outline and solid variants for high-end aesthetic
+  const isOutline = index % 2 === 1;
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -187,7 +187,7 @@ function LargeTypewriterRow({ word, index }) {
     if (inView && currentText.length < word.length) {
       const timeout = setTimeout(() => {
         setCurrentText(word.slice(0, currentText.length + 1));
-      }, 50); // Fast cinematic typing
+      }, 50);
       return () => clearTimeout(timeout);
     }
   }, [currentText, inView, word]);
@@ -199,38 +199,128 @@ function LargeTypewriterRow({ word, index }) {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       viewport={{ once: true, margin: "-40px" }}
-      style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
-      className="large-typewriter-row"
+      className={`large-typewriter-row${isOpen ? ' typo-row-open' : ''}`}
+      onClick={onToggle}
       tabIndex={0}
-      role="text"
-      aria-label={word}
+      role="button"
+      aria-expanded={isOpen}
+      aria-label={`${word} — ${subtitle}`}
+      onKeyDown={(e) => e.key === 'Enter' && onToggle()}
     >
-      <div 
-        className={`huge-text ${isOutline ? 'outline-variant' : 'solid-variant'}`}
-      >
-        {currentText}<span className="cursor-blink" style={{ color: '#06b6d4', opacity: currentText.length === word.length ? 0.4 : 1 }}>|</span>
+      {/* Main row */}
+      <div className="typo-row-header">
+        <div className="typo-row-index">0{index + 1}</div>
+        <div 
+          className={`huge-text ${isOutline ? 'outline-variant' : 'solid-variant'}`}
+        >
+          {currentText}<span className="cursor-blink" style={{ color: '#06b6d4', opacity: currentText.length === word.length ? 0.4 : 1 }}>|</span>
+        </div>
+        <div className={`typo-row-toggle${isOpen ? ' typo-toggle-open' : ''}`}>
+          <ChevronDown size={22} />
+        </div>
       </div>
+
+      {/* Expandable detail panel */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="typo-expand-panel"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="typo-expand-inner">
+              <div className="typo-expand-left">
+                <h4 className="typo-expand-subtitle">{subtitle}</h4>
+                <p className="typo-expand-desc">{description}</p>
+              </div>
+              <div className="typo-expand-metrics">
+                {metrics.map((m, i) => (
+                  <div key={i} className="typo-metric">
+                    <div className="typo-metric-val">{m.value}</div>
+                    <div className="typo-metric-label">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
 
 function TypographicImpact() {
-  const words = ['STRATEGY', 'PERFORMANCE', 'CUSTOM-CODE', 'SCALABILITY'];
+  const [openIdx, setOpenIdx] = useState(null);
+
+  const rows = [
+    {
+      word: 'STRATEGY',
+      subtitle: 'Business-First Architecture',
+      description: 'Every project begins with deep research into your market, competitors, and goals. I map user journeys, wireframe conversion funnels, and architect the entire sitemap before writing a single line of code — ensuring every pixel serves a purpose.',
+      metrics: [
+        { value: '100%', label: 'Goal-Aligned' },
+        { value: 'UX-First', label: 'Approach' },
+        { value: '3-Phase', label: 'Process' },
+      ]
+    },
+    {
+      word: 'PERFORMANCE',
+      subtitle: 'Sub-Second Load Times, Every Time',
+      description: 'Lighthouse 100/100 isn\'t a goal, it\'s the baseline. Through lazy loading, critical CSS inlining, image compression pipelines, and CDN optimization — your visitors get blazing speed on any device, anywhere.',
+      metrics: [
+        { value: '<1s', label: 'LCP Target' },
+        { value: '98+', label: 'PageSpeed Score' },
+        { value: '0', label: 'Layout Shift' },
+      ]
+    },
+    {
+      word: 'CUSTOM-CODE',
+      subtitle: 'Zero Bloat, Maximum Control',
+      description: 'No cookie-cutter templates. I write lean, semantic HTML5 with handcrafted CSS and vanilla JS — or React when scale demands it. Every function, every component is purpose-built for your brand\'s unique requirements.',
+      metrics: [
+        { value: '0', label: 'Unused Plugins' },
+        { value: '100%', label: 'Custom Theme' },
+        { value: 'Clean', label: 'Codebase' },
+      ]
+    },
+    {
+      word: 'SCALABILITY',
+      subtitle: 'Built to Grow With You',
+      description: 'From 100 visitors to 100,000 — your website won\'t break a sweat. Modular architecture, optimized databases, caching strategies, and cloud-ready infrastructure ensure your digital presence scales with your ambitions.',
+      metrics: [
+        { value: '99.9%', label: 'Uptime' },
+        { value: '∞', label: 'Scale Ready' },
+        { value: 'Future', label: 'Proof' },
+      ]
+    }
+  ];
+
   return (
-    <section style={{ padding: '4.5rem 0', background: '#000000', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden' }}>
+    <section className="typo-impact-section">
       <div className="container">
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          style={{ fontSize: '0.85rem', fontWeight: 700, color: '#06b6d4', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '3px' }}
+          className="typo-section-tag"
         >
           The Developer's Way
         </motion.div>
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          {words.map((w, i) => (
-            <LargeTypewriterRow key={i} word={w} index={i} />
+        <div className="typo-rows-wrap">
+          {rows.map((r, i) => (
+            <LargeTypewriterRow 
+              key={i} 
+              word={r.word} 
+              index={i}
+              subtitle={r.subtitle}
+              description={r.description}
+              metrics={r.metrics}
+              isOpen={openIdx === i}
+              onToggle={() => setOpenIdx(openIdx === i ? null : i)}
+            />
           ))}
         </div>
       </div>
