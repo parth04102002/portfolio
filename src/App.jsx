@@ -522,7 +522,7 @@ function Hero() {
 
             <div style={{ position: 'relative' }}>
               <img 
-                src="./hero3d.jpg" 
+                src="./hero-crimson.jpg" 
                 alt="Futuristic 3D Tech Workspace" 
                 style={{ width: '100%', display: 'block' }}
               />
