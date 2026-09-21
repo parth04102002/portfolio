@@ -1194,13 +1194,14 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.25rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .career-column {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  height: 100%;
 }
 
 .career-column-header {
@@ -1226,6 +1227,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  flex: 1;
 }
 
 /* Experience Figma Cards Grid */
@@ -1244,6 +1246,9 @@ a {
   padding: 1.85rem;
   position: relative;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .exp-card:hover {

@@ -646,7 +646,7 @@ function ExperienceAndEducation() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', flex: 1 }}>
             {workHistory.map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -680,7 +680,7 @@ function ExperienceAndEducation() {
                     ))}
                   </ul>
 
-                  <div className="project-tags" style={{ margin: 0 }}>
+                  <div className="project-tags" style={{ margin: 0, marginTop: 'auto' }}>
                     {item.tags.map((tg, tIdx) => (
                       <span key={tIdx} style={{ fontSize: '0.75rem', padding: '3px 10px' }}>{tg}</span>
                     ))}
@@ -703,7 +703,7 @@ function ExperienceAndEducation() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', flex: 1 }}>
             {educationHistory.map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -737,7 +737,7 @@ function ExperienceAndEducation() {
                     ))}
                   </ul>
 
-                  <div className="project-tags" style={{ margin: 0 }}>
+                  <div className="project-tags" style={{ margin: 0, marginTop: 'auto' }}>
                     {item.tags.map((tg, tIdx) => (
                       <span key={tIdx} style={{ fontSize: '0.75rem', padding: '3px 10px' }}>{tg}</span>
                     ))}
