@@ -22,6 +22,71 @@
   --radius-md: 14px;
 }
 
+/* Global Ambient Background */
+.global-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+}
+
+.global-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%);
+}
+
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.15;
+  mix-blend-mode: screen;
+}
+
+.glow-1 {
+  width: 700px;
+  height: 700px;
+  background: var(--accent-cyan);
+  top: -200px;
+  right: -200px;
+  animation: float 20s ease-in-out infinite alternate;
+}
+
+.glow-2 {
+  width: 600px;
+  height: 600px;
+  background: var(--accent-blue);
+  bottom: -200px;
+  left: -200px;
+  animation: float 25s ease-in-out infinite alternate-reverse;
+}
+
+.glow-3 {
+  width: 800px;
+  height: 800px;
+  background: var(--accent-purple);
+  top: 30%;
+  left: 20%;
+  opacity: 0.1;
+  animation: float 30s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(30px, 50px); }
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;

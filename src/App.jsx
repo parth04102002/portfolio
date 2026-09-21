@@ -1972,6 +1972,17 @@ function Footer() {
   );
 }
 
+function GlobalBackground() {
+  return (
+    <div className="global-bg-container">
+      <div className="global-grid-overlay"></div>
+      <div className="ambient-glow glow-1"></div>
+      <div className="ambient-glow glow-2"></div>
+      <div className="ambient-glow glow-3"></div>
+    </div>
+  );
+}
+
 export default function App() {
   const [loading, setLoading] = useState(true);
 
@@ -1983,6 +1994,7 @@ export default function App() {
 
       {!loading && (
         <>
+          <GlobalBackground />
           <Navbar />
           <Hero />
           <TypographicImpact />
