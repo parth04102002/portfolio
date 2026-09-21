@@ -64,7 +64,7 @@ function Preloader({ onDone }) {
           style={{ textAlign: 'center' }}
         >
           <div className="preloader-initials">
-            Parth<span style={{ color: '#8b5cf6' }}> Parmar</span>
+            Parth<span style={{ color: '#06b6d4' }}> Parmar</span>
           </div>
           <div className="preloader-subtitle">Creative Web Developer &bull; Portfolio</div>
         </motion.div>
@@ -153,11 +153,11 @@ function TypewriterText({ words }) {
         className="cursor-blink" 
         style={{ 
           display: 'inline-block',
-          color: '#a855f7', 
-          WebkitTextFillColor: '#a855f7', 
+          color: '#38bdf8', 
+          WebkitTextFillColor: '#38bdf8', 
           marginLeft: '4px', 
           fontWeight: 300,
-          filter: 'drop-shadow(0 0 8px #a855f7)' 
+          filter: 'drop-shadow(0 0 8px #38bdf8)' 
         }}
       >
         |
@@ -213,7 +213,7 @@ function LargeTypewriterRow({ word, index, subtitle, description, metrics, isOpe
         <div 
           className={`huge-text ${isOutline ? 'outline-variant' : 'solid-variant'}`}
         >
-          {currentText}<span className="cursor-blink" style={{ color: '#8b5cf6', opacity: currentText.length === word.length ? 0.4 : 1 }}>|</span>
+          {currentText}<span className="cursor-blink" style={{ color: '#06b6d4', opacity: currentText.length === word.length ? 0.4 : 1 }}>|</span>
         </div>
         <div className={`typo-row-toggle${isOpen ? ' typo-toggle-open' : ''}`}>
           <ChevronDown size={22} />
@@ -339,7 +339,7 @@ function Navbar() {
       <nav className="navbar container">
         <a href="#" className="brand-logo">
           <div className="brand-badge">P</div>
-          <span>PARTH<span style={{ color: '#8b5cf6' }}>.</span></span>
+          <span>PARTH<span style={{ color: '#06b6d4' }}>.</span></span>
         </a>
 
         <ul className="nav-links">
@@ -469,10 +469,10 @@ function Hero() {
           >
             <div className="hud-metric-item">
               <div className="hud-metric-header">
-                <span className="hud-pulse-dot" style={{ background: '#8b5cf6', boxShadow: '0 0 10px #8b5cf6' }}></span>
+                <span className="hud-pulse-dot" style={{ background: '#06b6d4', boxShadow: '0 0 10px #06b6d4' }}></span>
                 <span className="hud-metric-label">EXPERIENCE</span>
               </div>
-              <div className="hud-metric-val" style={{ color: '#8b5cf6' }}>2+ Years</div>
+              <div className="hud-metric-val" style={{ color: '#06b6d4' }}>2+ Years</div>
               <div className="hud-metric-sub">Commercial Web Dev</div>
             </div>
 
@@ -480,10 +480,10 @@ function Hero() {
 
             <div className="hud-metric-item">
               <div className="hud-metric-header">
-                <span className="hud-pulse-dot" style={{ background: '#a855f7', boxShadow: '0 0 10px #a855f7' }}></span>
+                <span className="hud-pulse-dot" style={{ background: '#38bdf8', boxShadow: '0 0 10px #38bdf8' }}></span>
                 <span className="hud-metric-label">CLIENT SITES</span>
               </div>
-              <div className="hud-metric-val" style={{ color: '#a855f7' }}>7+ Sites</div>
+              <div className="hud-metric-val" style={{ color: '#38bdf8' }}>7+ Sites</div>
               <div className="hud-metric-sub">Production Deployments</div>
             </div>
 
@@ -535,7 +535,7 @@ function Hero() {
                 maxWidth: 'calc(100% - 32px)',
                 background: 'rgba(15, 23, 42, 0.9)',
                 backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(139, 92, 246, 0.3)',
+                border: '1px solid rgba(6, 182, 212, 0.3)',
                 borderRadius: '12px',
                 padding: '10px 16px',
                 display: 'flex',
@@ -543,7 +543,7 @@ function Hero() {
                 gap: '10px',
                 boxShadow: '0 15px 30px rgba(0,0,0,0.5)'
               }}>
-                <Sparkles size={18} color="#8b5cf6" />
+                <Sparkles size={18} color="#06b6d4" />
                 <div>
                   <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Core Focus</div>
                   <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#f8fafc', whiteSpace: 'normal' }}>Custom Themes & Performance</div>
@@ -566,7 +566,7 @@ function ExperienceAndEducation() {
       duration: '12/2024 - Present',
       location: 'Vadodara, India',
       icon: Briefcase,
-      color: '#8b5cf6',
+      color: '#06b6d4',
       points: [
         'Developing and customizing advanced WordPress themes and specialized PHP plugins.',
         'Auditing and boosting Core Web Vitals, page speed, and cross-browser responsiveness.',
@@ -581,7 +581,7 @@ function ExperienceAndEducation() {
       duration: '12/2023 - 11/2024',
       location: 'Gujarat, India',
       icon: Code2,
-      color: '#ec4899',
+      color: '#3b82f6',
       points: [
         'Engineered responsive, dynamic client portals using WordPress, HTML5, CSS3, and JavaScript.',
         'Implemented SEO-friendly architectures and streamlined user inquiry funnels.',
@@ -637,7 +637,7 @@ function ExperienceAndEducation() {
         {/* Left Column: Commercial Experience */}
         <div className="career-column">
           <div className="career-column-header">
-            <div className="career-col-icon" style={{ background: 'rgba(139, 92, 246, 0.12)', color: '#8b5cf6', border: '1px solid rgba(139, 92, 246, 0.3)' }}>
+            <div className="career-col-icon" style={{ background: 'rgba(6, 182, 212, 0.12)', color: '#06b6d4', border: '1px solid rgba(6, 182, 212, 0.3)' }}>
               <Briefcase size={20} />
             </div>
             <div>
@@ -759,7 +759,7 @@ function SkillsMatrix() {
       category: 'CMS & E-Commerce',
       badge: 'Core Specialization',
       icon: ShoppingCart,
-      color: '#8b5cf6',
+      color: '#06b6d4',
       desc: 'Building blazing-fast storefronts and CMS-driven platforms that convert.',
       skills: [
         { name: 'WordPress', level: 'Expert' },
@@ -775,7 +775,7 @@ function SkillsMatrix() {
       category: 'Frontend & UI Engineering',
       badge: 'Modern Client Stack',
       icon: LayoutTemplate,
-      color: '#a855f7',
+      color: '#38bdf8',
       desc: 'Pixel-perfect, responsive interfaces with silky-smooth animations.',
       skills: [
         { name: 'HTML5 / Semantic Web', level: 'Expert' },
@@ -821,7 +821,7 @@ function SkillsMatrix() {
 
   const levelColor = {
     'Expert': '#10b981',
-    'Advanced': '#a855f7',
+    'Advanced': '#38bdf8',
     'Intermediate': '#f59e0b',
   };
 
@@ -1080,8 +1080,8 @@ function Projects() {
         flexWrap: 'wrap',
         marginBottom: '2.5rem',
         padding: '1.5rem 2rem',
-        background: 'rgba(139, 92, 246, 0.04)',
-        border: '1px solid rgba(139, 92, 246, 0.15)',
+        background: 'rgba(6, 182, 212, 0.04)',
+        border: '1px solid rgba(6, 182, 212, 0.15)',
         borderRadius: '18px',
         backdropFilter: 'blur(12px)',
       }}>
@@ -1094,7 +1094,7 @@ function Projects() {
           const Icon = s.icon;
           return (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Icon size={18} color="#8b5cf6" />
+              <Icon size={18} color="#06b6d4" />
               <span style={{ fontSize: 'clamp(1.35rem, 3vw, 1.75rem)', fontWeight: 800, color: '#f8fafc', letterSpacing: '-0.02em' }}>{s.val}</span>
               <span style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: 500 }}>{s.label}</span>
             </div>
@@ -1131,8 +1131,8 @@ function Projects() {
               variants={slideUp}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.8rem' }}>
-                <span className="mono-tag" style={{ color: '#8b5cf6', fontWeight: 700 }}>FLAGSHIP HEALTHCARE</span>
-                <span style={{ fontSize: '0.8rem', background: 'rgba(139, 92, 246, 0.12)', color: '#67e8f9', padding: '3px 10px', borderRadius: '20px', border: '1px solid rgba(139, 92, 246, 0.25)' }}>
+                <span className="mono-tag" style={{ color: '#06b6d4', fontWeight: 700 }}>FLAGSHIP HEALTHCARE</span>
+                <span style={{ fontSize: '0.8rem', background: 'rgba(6, 182, 212, 0.12)', color: '#67e8f9', padding: '3px 10px', borderRadius: '20px', border: '1px solid rgba(6, 182, 212, 0.25)' }}>
                   Surat, India
                 </span>
               </div>
@@ -1147,7 +1147,7 @@ function Projects() {
               <div className="featured-checklist-grid">
                 {['Custom WordPress Theme', 'Medical Treatment Catalog', 'Consultation Booking Funnel', 'High PageSpeed Score'].map((item, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#cbd5e1' }}>
-                    <CheckCircle2 size={16} color="#8b5cf6" /> {item}
+                    <CheckCircle2 size={16} color="#06b6d4" /> {item}
                   </div>
                 ))}
               </div>
@@ -1209,8 +1209,8 @@ function Projects() {
               variants={slideUp}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.8rem' }}>
-                <span className="mono-tag" style={{ color: '#ec4899', fontWeight: 700 }}>LUXURY WELLNESS PORTAL</span>
-                <span style={{ fontSize: '0.8rem', background: 'rgba(236, 72, 153, 0.12)', color: '#93c5fd', padding: '3px 10px', borderRadius: '20px', border: '1px solid rgba(236, 72, 153, 0.25)' }}>
+                <span className="mono-tag" style={{ color: '#3b82f6', fontWeight: 700 }}>LUXURY WELLNESS PORTAL</span>
+                <span style={{ fontSize: '0.8rem', background: 'rgba(59, 130, 246, 0.12)', color: '#93c5fd', padding: '3px 10px', borderRadius: '20px', border: '1px solid rgba(59, 130, 246, 0.25)' }}>
                   Spa & Retreat
                 </span>
               </div>
@@ -1225,7 +1225,7 @@ function Projects() {
               <div className="featured-checklist-grid">
                 {['Direct Spa Reservation Form', 'Zen Organic UI Aesthetics', 'Mobile First Navigation', 'SEO Structured Data'].map((item, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#cbd5e1' }}>
-                    <CheckCircle2 size={16} color="#ec4899" /> {item}
+                    <CheckCircle2 size={16} color="#3b82f6" /> {item}
                   </div>
                 ))}
               </div>
@@ -1279,7 +1279,7 @@ function Projects() {
 
       {/* Grid of All Client Works */}
       <h3 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '2.5rem', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <Layers size={24} color="#8b5cf6" />
+        <Layers size={24} color="#06b6d4" />
         {filter === 'All' ? 'All Live Client Deliverables' : `${filter} Projects`}
       </h3>
 
@@ -1296,9 +1296,9 @@ function Projects() {
           >
             {/* Colored top accent strip per project */}
             <div className="project-card-stripe" style={{
-              background: cardIdx % 3 === 0 ? 'linear-gradient(90deg,#8b5cf6,#ec4899)' :
-                          cardIdx % 3 === 1 ? 'linear-gradient(90deg,#10b981,#8b5cf6)' :
-                                             'linear-gradient(90deg,#8b5cf6,#ec4899)'
+              background: cardIdx % 3 === 0 ? 'linear-gradient(90deg,#06b6d4,#3b82f6)' :
+                          cardIdx % 3 === 1 ? 'linear-gradient(90deg,#10b981,#06b6d4)' :
+                                             'linear-gradient(90deg,#8b5cf6,#3b82f6)'
             }} />
 
             {/* Safari Browser Top Bar */}
@@ -1409,8 +1409,8 @@ function Projects() {
               </button>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.5rem' }}>
-                <span className="mono-tag" style={{ color: '#8b5cf6', fontWeight: 700 }}>CASE STUDY BREAKDOWN</span>
-                <span style={{ fontSize: '0.8rem', background: 'rgba(139, 92, 246, 0.15)', color: '#67e8f9', padding: '2px 10px', borderRadius: '20px' }}>
+                <span className="mono-tag" style={{ color: '#06b6d4', fontWeight: 700 }}>CASE STUDY BREAKDOWN</span>
+                <span style={{ fontSize: '0.8rem', background: 'rgba(6, 182, 212, 0.15)', color: '#67e8f9', padding: '2px 10px', borderRadius: '20px' }}>
                   {selectedProject.badge}
                 </span>
               </div>
@@ -1418,7 +1418,7 @@ function Projects() {
               <h2 style={{ fontSize: 'clamp(1.4rem, 4.2vw, 2.2rem)', fontWeight: 800, color: '#f8fafc', marginBottom: '0.4rem' }}>
                 {selectedProject.title}
               </h2>
-              <div style={{ color: '#8b5cf6', fontWeight: 600, fontSize: 'clamp(0.85rem, 2vw, 0.95rem)', marginBottom: '1.5rem' }}>
+              <div style={{ color: '#06b6d4', fontWeight: 600, fontSize: 'clamp(0.85rem, 2vw, 0.95rem)', marginBottom: '1.5rem' }}>
                 {selectedProject.headline}
               </div>
 
@@ -1451,7 +1451,7 @@ function Projects() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.6rem', marginBottom: '1.75rem' }}>
                 {selectedProject.deliverables.map((del, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#cbd5e1' }}>
-                    <CheckCircle2 size={16} color="#8b5cf6" /> {del}
+                    <CheckCircle2 size={16} color="#06b6d4" /> {del}
                   </div>
                 ))}
               </div>
@@ -1493,7 +1493,7 @@ function ROIAnalysis() {
       barPercent: 96,
       desc: 'Engineered for sub-second page loads to eliminate visitor bounce rates and boost Google search ranking signals.',
       icon: Zap,
-      color: '#8b5cf6',
+      color: '#06b6d4',
       tag: '96% FASTER'
     },
     {
@@ -1517,7 +1517,7 @@ function ROIAnalysis() {
       barPercent: 94,
       desc: 'Thumb-friendly touch targets, streamlined inquiry flows, and fluid layouts designed to turn casual visitors into paying clients.',
       icon: LayoutTemplate,
-      color: '#ec4899',
+      color: '#3b82f6',
       tag: '2.4× MORE LEADS'
     }
   ];
@@ -1581,7 +1581,7 @@ function ROIAnalysis() {
                 <div className="roi-bar-track">
                   <motion.div
                     className="roi-bar-fill"
-                    style={{ background: `linear-gradient(90deg, ${b.color}, #a855f7)` }}
+                    style={{ background: `linear-gradient(90deg, ${b.color}, #38bdf8)` }}
                     initial={{ width: 0 }}
                     whileInView={{ width: `${b.barPercent}%` }}
                     viewport={{ once: true }}
@@ -1674,7 +1674,7 @@ function FAQ() {
                 style={{ 
                   transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)', 
                   transition: 'transform 0.25s ease',
-                  color: '#8b5cf6',
+                  color: '#06b6d4',
                   flexShrink: 0,
                   marginLeft: '12px'
                 }} 
@@ -1746,7 +1746,7 @@ function ContactSection() {
         >
           <div>
             <h3 style={{ fontSize: 'clamp(1.4rem, 3.5vw, 1.8rem)', fontWeight: 800, color: '#f8fafc', marginBottom: '1rem' }}>
-              Work With a Dedicated <span style={{ color: '#8b5cf6' }}>WordPress Engineer</span>
+              Work With a Dedicated <span style={{ color: '#06b6d4' }}>WordPress Engineer</span>
             </h3>
             <p style={{ color: '#94a3b8', lineHeight: 1.7, marginBottom: '2rem', fontSize: '0.95rem' }}>
               Whether you need a custom-coded theme, high-converting WooCommerce storefront, emergency speed optimization, or ongoing website maintenance, I'm available to collaborate.
@@ -1754,7 +1754,7 @@ function ContactSection() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(139, 92, 246, 0.12)', border: '1px solid rgba(139, 92, 246, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#8b5cf6', flexShrink: 0 }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(6, 182, 212, 0.12)', border: '1px solid rgba(6, 182, 212, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#06b6d4', flexShrink: 0 }}>
                   <Mail size={20} />
                 </div>
                 <div style={{ minWidth: 0, overflow: 'hidden' }}>
@@ -1766,7 +1766,7 @@ function ContactSection() {
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(236, 72, 153, 0.12)', border: '1px solid rgba(236, 72, 153, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ec4899', flexShrink: 0 }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(59, 130, 246, 0.12)', border: '1px solid rgba(59, 130, 246, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#3b82f6', flexShrink: 0 }}>
                   <Phone size={20} />
                 </div>
                 <div>
@@ -1795,7 +1795,7 @@ function ContactSection() {
             <div style={{ fontSize: '0.82rem', color: '#94a3b8', marginBottom: '0.5rem' }}>Languages Spoken:</div>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
               {['English', 'Gujarati', 'Hindi'].map((lang, idx) => (
-                <span key={idx} style={{ padding: '4px 12px', background: 'rgba(139, 92, 246, 0.1)', color: '#67e8f9', borderRadius: '50px', fontSize: '0.78rem', fontWeight: 600 }}>
+                <span key={idx} style={{ padding: '4px 12px', background: 'rgba(6, 182, 212, 0.1)', color: '#67e8f9', borderRadius: '50px', fontSize: '0.78rem', fontWeight: 600 }}>
                   {lang}
                 </span>
               ))}
@@ -1901,7 +1901,7 @@ function ContactSection() {
                     type="submit" 
                     loading={loading}
                     width="max"
-                    style={{ background: '#8b5cf6', color: '#02050e', fontWeight: 700 }}
+                    style={{ background: '#06b6d4', color: '#02050e', fontWeight: 700 }}
                   >
                     Send Inquiry Directly
                   </GravityButton>
@@ -1938,7 +1938,7 @@ function Footer() {
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem' }}>
         <div>
           <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#f8fafc', marginBottom: '0.4rem' }}>
-            PARTH<span style={{ color: '#8b5cf6' }}>.</span>PARMAR
+            PARTH<span style={{ color: '#06b6d4' }}>.</span>PARMAR
           </div>
           <p style={{ color: '#94a3b8', fontSize: '0.85rem' }}>
             Professional WordPress & Web Solutions Developer • Vadodara, Gujarat
