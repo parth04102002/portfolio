@@ -23,6 +23,27 @@ const THEMES = {
     secondaryHex: '#f8fafc', // White/Silver
     secondaryRgb: '248, 250, 252',
   },
+  'ocean': {
+    primaryHex: '#2563eb', // Sapphire Blue
+    primaryRgb: '37, 99, 235',
+    primaryLightHex: '#3b82f6', 
+    secondaryHex: '#22d3ee', // Bright Aqua
+    secondaryRgb: '34, 211, 238',
+  },
+  'sunset': {
+    primaryHex: '#f97316', // Vibrant Orange
+    primaryRgb: '249, 115, 22',
+    primaryLightHex: '#fb923c', 
+    secondaryHex: '#d946ef', // Magenta
+    secondaryRgb: '217, 70, 239',
+  },
+  'monochrome': {
+    primaryHex: '#f8fafc', // Pure White
+    primaryRgb: '248, 250, 252',
+    primaryLightHex: '#ffffff', 
+    secondaryHex: '#64748b', // Slate Grey
+    secondaryRgb: '100, 116, 139',
+  },
   'original': {
     primaryHex: '#06b6d4',
     primaryRgb: '6, 182, 212',
