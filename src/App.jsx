@@ -546,7 +546,7 @@ function Hero() {
             overflow: 'hidden',
             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(239, 68, 68, 0.2)',
             border: '1px solid rgba(255,255,255,0.05)',
-            aspectRatio: '16/10'
+            aspectRatio: '1/1'
           }}>
             <img 
               src="./hero_banner.webp" 
