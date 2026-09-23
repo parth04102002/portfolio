@@ -545,14 +545,34 @@ function Hero() {
             borderRadius: '24px',
             overflow: 'hidden',
             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(239, 68, 68, 0.2)',
-            border: '1px solid rgba(255,255,255,0.05)'
+            border: '1px solid rgba(255,255,255,0.05)',
+            display: 'flex',
+            alignItems: 'center'
           }}>
-            <img 
-              src="./hero_banner.webp" 
-              alt="Web Development and Workspace" 
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,23,42,0.8), transparent)' }}></div>
+            <Swiper
+              modules={[Autoplay]}
+              slidesPerView={'auto'}
+              centeredSlides={false}
+              spaceBetween={12}
+              loop={true}
+              autoplay={{ delay: 3500, disableOnInteraction: false }}
+              className="hero-material-slider"
+              style={{ padding: '12px' }}
+            >
+              <SwiperSlide>
+                <img src="./hero_banner.webp" alt="Workspace 1" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="./hero-crimson.webp" alt="Workspace 2" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="./hero3d.webp" alt="Workspace 3" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="./dwa24.webp" alt="Workspace 4" />
+              </SwiperSlide>
+            </Swiper>
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,23,42,0.85), transparent)', pointerEvents: 'none', zIndex: 10 }}></div>
           </div>
         </motion.div>
       </div>

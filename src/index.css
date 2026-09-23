@@ -2455,3 +2455,28 @@ body {
   }
 }
 
+
+/* Hero Material Slider Mimic */
+.hero-material-slider {
+  width: 100%;
+  height: 100%;
+}
+.hero-material-slider .swiper-slide {
+  width: 20% !important;
+  height: 100% !important;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.5;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.hero-material-slider .swiper-slide-active {
+  width: 70% !important;
+  opacity: 1;
+}
+.hero-material-slider .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
