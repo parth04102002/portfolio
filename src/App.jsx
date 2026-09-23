@@ -35,62 +35,6 @@ const staggerContainer = {
   }
 };
 
-/* ─── Page Preloader ─────────────────────────────────────────── */
-function Preloader({ onDone }) {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) { clearInterval(interval); return 100; }
-        return prev + (prev < 80 ? 5 : 1);
-      });
-    }, 28);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    if (progress >= 100) {
-      const t = setTimeout(onDone, 380);
-      return () => clearTimeout(t);
-    }
-  }, [progress, onDone]);
-
-  return (
-    <motion.div
-      className="preloader"
-      exit={{ opacity: 0, scale: 1.03 }}
-      transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-    >
-      <div className="preloader-glow" aria-hidden="true" />
-      <div className="preloader-inner">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          style={{ textAlign: 'center' }}
-        >
-          <div className="preloader-initials">
-            Parth<span style={{ color: '#ef4444' }}> Parmar</span>
-          </div>
-          <div className="preloader-subtitle">Web Developer</div>
-        </motion.div>
-        <motion.p
-          className="preloader-label"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.25, duration: 0.5 }}
-        >
-          Loading experience<span className="preloader-dots">...</span>
-        </motion.p>
-        <div className="preloader-bar-track">
-          <div className="preloader-bar-fill" style={{ width: `${progress}%` }} />
-        </div>
-        <div className="preloader-percent">{progress}<span style={{ fontSize: '0.7em', opacity: 0.6 }}>%</span></div>
-      </div>
-    </motion.div>
-  );
-}
 
 /* ─── Scroll-shrink hook for Navbar ─────────────────────────── */
 function useScrollShrink(threshold = 60) {
@@ -605,7 +549,7 @@ function Hero() {
             aspectRatio: '16/10'
           }}>
             <img 
-              src="./hero_banner.jpg" 
+              src="./hero_banner.webp" 
               alt="Web Development and Workspace" 
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -900,7 +844,7 @@ function Projects() {
       type: 'featured',
       url: '#',
       cleanUrl: 'dwa24.com',
-      image: './dwa24.jpg',
+      image: './dwa24.webp',
       headline: 'Online Medical Store',
       description: 'An online medical store developed using WordPress and WooCommerce. Features include product management, secure shopping experiences, responsive design, and optimized user journeys.',
       challenge: 'Creating a secure, user-friendly shopping experience for medical products.',
@@ -917,7 +861,7 @@ function Projects() {
       type: 'featured',
       url: 'https://themomentmassage.com/',
       cleanUrl: 'https://themomentmassage.com',
-      image: './themoment.jpg',
+      image: './themoment.webp',
       headline: 'Luxury Spa & Wellness Sanctuary',
       description: 'A premium wellness website designed to showcase services, improve customer engagement, and simplify appointment inquiries through an elegant user experience.',
       challenge: 'Clients previously experienced friction booking massage packages online.',
@@ -934,7 +878,7 @@ function Projects() {
       type: 'grid',
       url: 'https://sabvix.com/satyam/',
       cleanUrl: 'https://sabvix.com/satyam',
-      image: './satyam.jpg',
+      image: './satyam.webp',
       headline: 'Precision Industrial CNC & SPM Machine Manufacturing Portal',
       description: 'An industrial website highlighting CNC machines, automation solutions, and manufacturing capabilities with a focus on lead generation and professional branding.',
       challenge: 'Presenting complex industrial machinery in a clean, conversion-focused layout.',
@@ -951,7 +895,7 @@ function Projects() {
       type: 'grid',
       url: 'https://www.squadralupo.com/',
       cleanUrl: 'https://squadralupo.com',
-      image: './squadra.jpg',
+      image: './squadra.webp',
       headline: 'Corporate Business Website',
       description: 'A modern business website featuring premium design, responsive layouts, advanced animations, and performance-focused development.',
       challenge: 'Delivering an immersive, high-end aesthetic while maintaining performance.',
@@ -968,7 +912,7 @@ function Projects() {
       type: 'grid',
       url: '#',
       cleanUrl: 'gofuelly.com',
-      image: './gofuelly.jpg',
+      image: './gofuelly.webp',
       headline: 'Fuel Delivery Platform',
       description: 'A fuel delivery platform designed to streamline fuel ordering and management through a user-friendly digital experience.',
       challenge: 'Streamlining a complex ordering process for on-demand fuel delivery.',
@@ -985,7 +929,7 @@ function Projects() {
       type: 'grid',
       url: '#',
       cleanUrl: 'aadicura.com',
-      image: './aadicura.jpg',
+      image: './aadicura.webp',
       headline: 'Super Speciality Hospital Website',
       description: 'A healthcare website designed to showcase hospital services, health packages, specialist consultations, and patient-focused information.',
       challenge: 'Organizing a large volume of healthcare services and specialist information clearly.',
@@ -2295,32 +2239,22 @@ function ServicesSection() {
 }
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
-
   return (
     <>
-      <AnimatePresence mode="wait">
-        {loading && <Preloader key="preloader" onDone={() => setLoading(false)} />}
-      </AnimatePresence>
-
-      {!loading && (
-        <>
-          <GlobalBackground />
-          <Navbar />
-          <Hero />
-          <TypographicImpact />
-          <ServicesSection />
-                    <ExperienceOptionTwo />
-          <SkillsMatrix />
-          <TechMarquee />
-          <Projects />
-          <ROIAnalysis />
-          <FAQ />
-          <ContactSection />
-          <Footer />
-          <FloatingWhatsApp />
-        </>
-      )}
+      <GlobalBackground />
+      <Navbar />
+      <Hero />
+      <TypographicImpact />
+      <ServicesSection />
+      <ExperienceOptionTwo />
+      <SkillsMatrix />
+      <TechMarquee />
+      <Projects />
+      <ROIAnalysis />
+      <FAQ />
+      <ContactSection />
+      <Footer />
+      <FloatingWhatsApp />
     </>
   );
 }
