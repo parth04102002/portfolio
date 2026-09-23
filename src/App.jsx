@@ -469,7 +469,6 @@ function Hero() {
           <motion.h1 
             variants={slideUp}
             className="hero-title"
-            style={{ fontSize: 'clamp(2.05rem, 5.2vw, 3.6rem)', fontWeight: 800, lineHeight: 1.18, marginBottom: '1.25rem', letterSpacing: '-0.025em' }}
           >
             I'm <span className="gradient-text">Parth Parmar</span>.<br />
             <span className="hero-role-wrapper">
@@ -479,7 +478,8 @@ function Hero() {
 
           <motion.p 
             variants={slideUp}
-            style={{ fontSize: 'clamp(0.95rem, 2vw, 1.15rem)', color: '#94a3b8', lineHeight: 1.7, marginBottom: '2rem', maxWidth: '580px' }}
+            className="hero-desc"
+            style={{ marginBottom: '2rem', maxWidth: '580px' }}
           >
             Specializing in high-performance WordPress themes, seamless WooCommerce & Shopify stores, and responsive frontends that transform visitors into paying clients.
           </motion.p>
