@@ -328,7 +328,7 @@ function Navbar() {
           <span style={{ fontWeight: 800, color: '#f8fafc', fontSize: '1.1rem', letterSpacing: '-0.02em' }}>PARTH<span style={{ color: '#ef4444' }}>.</span></span>
         </a>
 
-        <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', listStyle: 'none' }}>
+        <div className="nav-links">
           {navItems.map((item) => (
             <a 
               key={item.path}
@@ -1166,99 +1166,111 @@ function Projects() {
         {filter === 'All' ? 'All Live Client Deliverables' : `${filter} Projects`}
       </h3>
 
-      <div className="projects-grid">
+      <Swiper
+        modules={[Pagination, Navigation]}
+        spaceBetween={30}
+        slidesPerView={1}
+        breakpoints={{
+          768: { slidesPerView: 2, spaceBetween: 30 }
+        }}
+        navigation
+        pagination={{ clickable: true }}
+        style={{ paddingBottom: '3rem', paddingTop: '1rem' }}
+      >
         {filteredProjects.map((project, cardIdx) => (
-          <motion.div 
-            key={project.id} 
-            className="project-card"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={slideUp}
-            whileHover={{ y: -8 }}
-          >
-            <div className="project-card-stripe" style={{
-              background: cardIdx % 3 === 0 ? 'linear-gradient(90deg,#ef4444,#f8fafc)' :
-                          cardIdx % 3 === 1 ? 'linear-gradient(90deg,#10b981,#ef4444)' :
-                                             'linear-gradient(90deg,#8b5cf6,#f8fafc)'
-            }} />
-
-            <div className="browser-header">
-              <div className="browser-dots">
-                <div className="browser-dot" style={{ background: '#ef4444' }}></div>
-                <div className="browser-dot" style={{ background: '#f59e0b' }}></div>
-                <div className="browser-dot" style={{ background: '#10b981' }}></div>
-              </div>
-              <div className="browser-url">
-                <Lock size={10} color="#10b981" /> {project.cleanUrl}
-              </div>
-            </div>
-
-            <div 
-              className="project-thumb-wrap" 
-              onClick={() => setSelectedProject(project)}
-              role="button"
-              tabIndex={0}
-              aria-label={`Open case study for ${project.title}`}
-              onKeyDown={(e) => e.key === 'Enter' && setSelectedProject(project)}
+          <SwiperSlide key={project.id} style={{ height: 'auto', display: 'flex' }}>
+            <motion.div 
+              className="project-card"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={slideUp}
+              whileHover={{ y: -8 }}
+              style={{ width: '100%' }}
             >
-              <img src={project.image} alt={project.title} loading="lazy" />
-              
-              <div className="project-cat-pill">
-                {project.badge}
-              </div>
+              <div className="project-card-stripe" style={{
+                background: cardIdx % 3 === 0 ? 'linear-gradient(90deg,#ef4444,#f8fafc)' :
+                            cardIdx % 3 === 1 ? 'linear-gradient(90deg,#10b981,#ef4444)' :
+                                               'linear-gradient(90deg,#8b5cf6,#f8fafc)'
+              }} />
 
-              <div className="floating-stat-badge">
-                {project.stat}
-              </div>
-
-              <div className="project-thumb-overlay">
-                <div className="project-thumb-overlay-inner">
-                  <Eye size={18} />
-                  <span>Explore Case Study</span>
+              <div className="browser-header">
+                <div className="browser-dots">
+                  <div className="browser-dot" style={{ background: '#ef4444' }}></div>
+                  <div className="browser-dot" style={{ background: '#f59e0b' }}></div>
+                  <div className="browser-dot" style={{ background: '#10b981' }}></div>
+                </div>
+                <div className="browser-url">
+                  <Lock size={10} color="#10b981" /> {project.cleanUrl}
                 </div>
               </div>
-            </div>
 
-            <div className="project-card-body">
-              <h4 className="project-card-title">
-                {project.title}
-              </h4>
-              <div className="project-card-headline">
-                {project.headline}
-              </div>
-              <p className="project-card-desc">
-                {project.description}
-              </p>
+              <div 
+                className="project-thumb-wrap" 
+                onClick={() => setSelectedProject(project)}
+                role="button"
+                tabIndex={0}
+                aria-label={`Open case study for ${project.title}`}
+                onKeyDown={(e) => e.key === 'Enter' && setSelectedProject(project)}
+              >
+                <img src={project.image} alt={project.title} loading="lazy" />
+                
+                <div className="project-cat-pill">
+                  {project.badge}
+                </div>
 
-              <div className="project-tags" style={{ marginBottom: '1.25rem' }}>
-                {project.tags.map((tag, tIdx) => (
-                  <span key={tIdx}>{tag}</span>
-                ))}
+                <div className="floating-stat-badge">
+                  {project.stat}
+                </div>
+
+                <div className="project-thumb-overlay">
+                  <div className="project-thumb-overlay-inner">
+                    <Eye size={18} />
+                    <span>Explore Case Study</span>
+                  </div>
+                </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '0.75rem', marginTop: 'auto', paddingTop: '10px' }}>
-                <button 
-                  className="btn-outline" 
-                  onClick={() => setSelectedProject(project)}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', padding: '8px 16px', flex: 1, justifyContent: 'center' }}
-                >
-                  <Eye size={15} /> Case Study
-                </button>
-                <a 
-                  href={project.url} 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="btn-primary" 
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', padding: '8px 16px', flex: 1, justifyContent: 'center' }}
-                >
-                  Live <ExternalLink size={15} />
-                </a>
+              <div className="project-card-body">
+                <h4 className="project-card-title">
+                  {project.title}
+                </h4>
+                <div className="project-card-headline">
+                  {project.headline}
+                </div>
+                <p className="project-card-desc">
+                  {project.description}
+                </p>
+
+                <div className="project-tags" style={{ marginBottom: '1.25rem' }}>
+                  {project.tags.map((tag, tIdx) => (
+                    <span key={tIdx}>{tag}</span>
+                  ))}
+                </div>
+
+                <div style={{ display: 'flex', gap: '0.75rem', marginTop: 'auto', paddingTop: '10px' }}>
+                  <button 
+                    className="btn-outline" 
+                    onClick={() => setSelectedProject(project)}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', padding: '8px 16px', flex: 1, justifyContent: 'center' }}
+                  >
+                    <Eye size={15} /> Case Study
+                  </button>
+                  <a 
+                    href={project.url} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="btn-primary" 
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', padding: '8px 16px', flex: 1, justifyContent: 'center' }}
+                  >
+                    Live <ExternalLink size={15} />
+                  </a>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
 
       {/* Project Case Study Modal */}
       <AnimatePresence>
@@ -1603,7 +1615,7 @@ function ContactSection() {
                 </div>
                 <div style={{ minWidth: 0, overflow: 'hidden' }}>
                   <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>Direct Email</div>
-                  <a href="mailto:parmarparth23012003@gmail.com" style={{ color: '#f8fafc', fontWeight: 600, fontSize: '0.92rem', wordBreak: 'break-word' }}>
+                  <a href="mailto:parmarparth23012003@gmail.com" style={{ color: '#f8fafc', fontWeight: 600, fontSize: '0.92rem', wordBreak: 'break-all' }}>
                     parmarparth23012003@gmail.com
                   </a>
                 </div>
