@@ -540,13 +540,12 @@ function Hero() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div style={{
+          <div className="hero-banner-image" style={{
             position: 'relative',
             borderRadius: '24px',
             overflow: 'hidden',
             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(239, 68, 68, 0.2)',
-            border: '1px solid rgba(255,255,255,0.05)',
-            aspectRatio: '1/1'
+            border: '1px solid rgba(255,255,255,0.05)'
           }}>
             <img 
               src="./hero_banner.webp" 
@@ -1167,15 +1166,21 @@ function Projects() {
       </h3>
 
       <Swiper
-        modules={[Pagination, Navigation]}
+        modules={[Pagination, Navigation, Autoplay]}
         spaceBetween={30}
         slidesPerView={1}
+        grabCursor={true}
+        loop={true}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
         breakpoints={{
           768: { slidesPerView: 2, spaceBetween: 30 }
         }}
         navigation
-        pagination={{ clickable: true }}
-        style={{ paddingBottom: '3rem', paddingTop: '1rem' }}
+        pagination={{ clickable: true, dynamicBullets: true }}
+        style={{ paddingBottom: '3.5rem', paddingTop: '1rem' }}
       >
         {filteredProjects.map((project, cardIdx) => (
           <SwiperSlide key={project.id} style={{ height: 'auto', display: 'flex' }}>

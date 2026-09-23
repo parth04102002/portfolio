@@ -2387,3 +2387,41 @@ a {
 .material-slide-card:hover {
   transform: translateY(-5px);
 }
+
+/* Hero Banner Responsiveness */
+.hero-banner-image {
+  aspect-ratio: 16/10;
+}
+
+@media (min-width: 992px) {
+  .hero-banner-image {
+    aspect-ratio: 1/1;
+  }
+}
+
+
+/* Swiper Customizations */
+.swiper-button-next, .swiper-button-prev {
+  color: #ef4444 !important;
+  background: rgba(255,255,255,0.05);
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50%;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+  font-size: 1.2rem !important;
+  font-weight: bold;
+}
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+.swiper-pagination-bullet-active {
+  background: #ef4444 !important;
+  box-shadow: 0 0 10px #ef4444;
+}
+
