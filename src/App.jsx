@@ -313,13 +313,13 @@ function Navbar() {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '1.5rem',
+          gap: '1rem',
           background: shrunk ? 'rgba(3, 7, 18, 0.85)' : 'rgba(15, 23, 42, 0.4)',
           backdropFilter: 'blur(24px)',
           WebkitBackdropFilter: 'blur(24px)',
           border: '1px solid rgba(255,255,255,0.08)',
           boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)',
-          padding: '8px 8px 8px 24px',
+          padding: '6px 6px 6px 16px',
           borderRadius: '999px',
         }}
       >
@@ -2199,7 +2199,7 @@ function ServicesSection() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
           {services.map((srv, idx) => {
             const Icon = srv.icon;
             return (
@@ -2289,7 +2289,7 @@ function BannerSliderSection() {
 
 export default function App() {
   return (
-    <>
+    <div style={{ overflow: 'hidden', width: '100%', position: 'relative' }}>
       <GlobalBackground />
       <Navbar />
       <BannerSliderSection />
@@ -2305,6 +2305,6 @@ export default function App() {
       <ContactSection />
       <Footer />
       <FloatingWhatsApp />
-    </>
+    </div>
   );
 }

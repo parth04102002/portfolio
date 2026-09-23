@@ -349,7 +349,7 @@ body {
   font-size: 0.82rem;
   font-weight: 600;
   color: #94a3b8;
-  white-space: nowrap;
+  
   transition: color 0.2s ease, border-color 0.2s ease;
   cursor: default;
 }
@@ -878,7 +878,7 @@ a {
   font-size: 0.82rem;
   font-weight: 500;
   color: #64748b;
-  white-space: nowrap;
+  
 }
 
 .hud-metric-divider {
@@ -890,6 +890,8 @@ a {
 
 .status-pill {
   display: inline-flex;
+  max-width: 100%;
+  white-space: normal;
   align-items: center;
   gap: 10px;
   padding: 7px 18px;
@@ -1025,7 +1027,7 @@ a {
   max-width: 65%;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  
 }
 
 /* Corner Cut HUD Decorator for Form & Tech Container */
@@ -1600,7 +1602,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  white-space: nowrap;
+  
 }
 .project-case-btn {
   display: inline-flex;
@@ -1616,7 +1618,7 @@ a {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
-  white-space: nowrap;
+  
   flex-shrink: 0;
 }
 .project-case-btn:hover {
@@ -1930,7 +1932,7 @@ a {
   border-radius: 50px;
   border: 1px solid;
   letter-spacing: 0.04em;
-  white-space: nowrap;
+  
 }
 
 .skill-chips-wrap {
@@ -1954,7 +1956,7 @@ a {
   transition: all 0.25s ease;
   cursor: default;
   user-select: none;
-  white-space: nowrap;
+  
 }
 
 .skill-chip-interactive:hover {
@@ -2474,5 +2476,12 @@ a {
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    max-width: 95vw !important;
+  }
 }
 
