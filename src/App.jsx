@@ -1984,7 +1984,7 @@ function ExperienceOptionTwo() {
           modules={[Pagination]}
           spaceBetween={20}
           slidesPerView={1.15}
-          centeredSlides={false}
+          centeredSlides={true}
           breakpoints={{
             640: { slidesPerView: 2, spaceBetween: 20 },
             1024: { slidesPerView: 3, spaceBetween: 30 }
@@ -2262,7 +2262,7 @@ function BannerSliderSection() {
         <Swiper
           modules={[Autoplay]}
           slidesPerView={'auto'}
-          centeredSlides={false}
+          centeredSlides={true}
           spaceBetween={16}
           loop={true}
           autoplay={{ delay: 3500, disableOnInteraction: false }}

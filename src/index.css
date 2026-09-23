@@ -2485,3 +2485,13 @@ a {
   }
 }
 
+
+@media (max-width: 768px) {
+  .hero-material-slider .swiper-slide {
+    width: 15% !important;
+  }
+  .hero-material-slider .swiper-slide-active {
+    width: 80% !important;
+  }
+}
+
