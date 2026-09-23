@@ -1233,11 +1233,7 @@ a {
   transform: scale(1.08);
 }
 
-.project-card-html, body {
-  overflow-x: hidden;
-}
-
-body {
+.project-card-body {
   padding: 1.5rem 1.75rem 1.75rem;
   display: flex;
   flex-direction: column;
