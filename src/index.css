@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+﻿/* @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 * {
   margin: 0;
@@ -132,7 +132,7 @@ body {
   position: relative;
 }
 
-/* ─── Custom Scrollbar ──────────────────────────────────────── */
+/* â”€â”€â”€ Custom Scrollbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #030712; }
 ::-webkit-scrollbar-thumb {
@@ -141,7 +141,7 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover { background: #f87171; }
 
-/* ─── Preloader ─────────────────────────────────────────────── */
+/* â”€â”€â”€ Preloader â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .preloader {
   position: fixed;
   inset: 0;
@@ -224,7 +224,7 @@ body {
   text-align: center;
 }
 
-/* ─── Navbar shrink on scroll ───────────────────────────────── */
+/* â”€â”€â”€ Navbar shrink on scroll â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .navbar-wrapper {
   transition: padding 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.35s ease,
@@ -237,13 +237,13 @@ body {
 .navbar-shrunk .navbar { padding-top: 0.7rem; padding-bottom: 0.7rem; }
 .navbar-shrunk .brand-badge { transform: scale(0.9); }
 
-/* ─── Magnetic button ───────────────────────────────────────── */
+/* â”€â”€â”€ Magnetic button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .magnetic-btn {
   transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),
               box-shadow 0.25s ease !important;
 }
 
-/* ─── Hero floating particles ───────────────────────────────── */
+/* â”€â”€â”€ Hero floating particles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .hero-particles {
   position: absolute;
   inset: 0;
@@ -299,7 +299,7 @@ body {
   .hero-particle { animation: none !important; opacity: 0.4 !important; }
 }
 
-/* ─── Tech Marquee Strip ────────────────────────────────────── */
+/* â”€â”€â”€ Tech Marquee Strip â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .marquee-section {
   padding: 1.5rem 0;
   background: rgba(239, 68, 68, 0.03);
@@ -443,7 +443,7 @@ a {
 }
 
 /* Large Typographic Row Hover & Outline Effects */
-/* ─── Typographic Impact Section ─────────────────────────────── */
+/* â”€â”€â”€ Typographic Impact Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .typo-impact-section {
   padding: clamp(3.5rem, 6vw, 5.5rem) 0;
   background: #000000;
@@ -715,7 +715,7 @@ a {
   align-items: center;
   gap: 10px;
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: -0.5px;
 }
 
@@ -728,7 +728,7 @@ a {
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-weight: 800;
+  font-weight: 400;
   font-size: 1.1rem;
   box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
 }
@@ -869,7 +869,7 @@ a {
 
 .hud-metric-val {
   font-size: 1.65rem;
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
@@ -947,7 +947,7 @@ a {
 
 .section-title {
   font-size: 2.8rem;
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1.2;
   margin-bottom: 1.2rem;
   letter-spacing: -0.5px;
@@ -1504,7 +1504,7 @@ a {
   text-transform: uppercase;
 }
 
-/* ─── Preloader subtitle ─────────────────────────────────────── */
+/* â”€â”€â”€ Preloader subtitle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .preloader-subtitle {
   font-size: 0.72rem;
   font-weight: 700;
@@ -1514,7 +1514,7 @@ a {
   margin-top: 0.2rem;
 }
 
-/* ─── Project Card Improvements ─────────────────────────────── */
+/* â”€â”€â”€ Project Card Improvements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .project-card-stripe {
   height: 3px;
   width: 100%;
@@ -1631,7 +1631,7 @@ a {
   transform: translateY(0);
 }
 
-/* ─── Projects Section Background ──────────── */
+/* â”€â”€â”€ Projects Section Background â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #projects {
   background-image: linear-gradient(rgba(3, 7, 18, 0.75), rgba(3, 7, 18, 0.85)), url('./assets/bg-projects.webp');
   background-size: cover;
@@ -1642,7 +1642,7 @@ a {
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-/* ─── ROI / Technical Advantage — Premium Redesign ──────────── */
+/* â”€â”€â”€ ROI / Technical Advantage â€” Premium Redesign â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .roi-section {
   padding: clamp(4rem, 7vw, 7rem) 0;
   position: relative;
@@ -1716,7 +1716,7 @@ a {
 }
 .roi-tag-pill {
   font-size: 0.7rem;
-  font-weight: 800;
+  font-weight: 400;
   padding: 4px 12px;
   border-radius: 50px;
   border: 1px solid;
@@ -1866,7 +1866,7 @@ a {
   margin-bottom: 1.8rem;
 }
 
-/* Skills Matrix Grid — Premium 2×2 on Desktop */
+/* Skills Matrix Grid â€” Premium 2Ã—2 on Desktop */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2373,8 +2373,8 @@ a {
 
 .portfolio-swiper-container .swiper-button-next::after,
 .portfolio-swiper-container .swiper-button-prev::after {
-  font-size: 1.2rem !important;
-  font-weight: 800;
+  font-size: 1rem !important;
+  font-weight: 400;
 }
 
 .portfolio-swiper-container .swiper-pagination-bullet {
@@ -2417,7 +2417,7 @@ a {
   border: 1px solid rgba(255,255,255,0.1);
   transition: all 0.3s ease;
 }
-.swiper-button-next:after, .swiper-button-prev:after { display: none !important; } .swiper-button-next { background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E') !important; background-size: 55% !important; background-position: center !important; background-repeat: no-repeat !important; } .swiper-button-prev { background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E') !important; background-size: 55% !important; background-position: center !important; background-repeat: no-repeat !important; }
+
 .swiper-button-next:hover, .swiper-button-prev:hover {
   background: rgba(239, 68, 68, 0.2);
   border-color: #ef4444;
@@ -2431,7 +2431,7 @@ a {
 
 .hero-title {
   font-size: clamp(2.05rem, 5.2vw, 3.6rem);
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1.18;
   margin-bottom: 1.25rem;
   letter-spacing: -0.025em;
@@ -2493,7 +2493,146 @@ a {
 }
 
 
- . h e r o - t i t l e   {   m i n - h e i g h t :   3 . 8 e m   ! i m p o r t a n t ;   d i s p l a y :   f l e x ;   f l e x - d i r e c t i o n :   c o l u m n ;   j u s t i f y - c o n t e n t :   f l e x - s t a r t ;   }  
- 
- . h e r o - t i t l e   {   m i n - h e i g h t :   3 . 8 e m   ! i m p o r t a n t ;   d i s p l a y :   b l o c k ;   }  
- 
+.hero-title { min-height: 3.8em !important; display: flex; flex-direction: column; justify-content: flex-start; }
+
+.hero-title { min-height: 3.8em !important; display: block; }
+
+
+
+/* =========================================
+   Projects Option 2 (Modern Clean Layout)
+   ========================================= */
+.projects-v2-section {
+  padding: 5rem 1rem;
+  background: transparent;
+}
+.projects-v2-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 40px;
+  padding: 4rem;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+.projects-v2-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4rem;
+}
+.projects-v2-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+}
+.projects-v2-badge .star-icon {
+  color: #ef4444;
+  font-size: 1.2rem;
+}
+.projects-v2-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  text-transform: uppercase;
+  text-align: right;
+  max-width: 600px;
+  color: #f8fafc;
+}
+.projects-v2-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.project-v2-card {
+  position: relative;
+  display: block;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  text-decoration: none;
+  background: #0f172a;
+}
+.project-v2-image-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.project-v2-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.85;
+}
+.project-v2-card:hover .project-v2-image-wrapper img {
+  transform: scale(1.08);
+  opacity: 1;
+}
+.project-v2-hover-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+  background: #fff;
+  color: #0f172a;
+  font-weight: 900;
+  font-size: 1.15rem;
+  letter-spacing: -0.5px;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  clip-path: polygon(50% 0%, 61% 11%, 77% 8%, 82% 23%, 98% 27%, 94% 43%, 100% 57%, 88% 70%, 88% 86%, 73% 89%, 63% 100%, 48% 95%, 34% 100%, 22% 88%, 7% 83%, 11% 67%, 0% 52%, 9% 37%, 4% 22%, 19% 14%, 25% 0%, 40% 6%);
+}
+.project-v2-card:hover .project-v2-hover-badge {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (max-width: 1024px) {
+  .projects-v2-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .projects-v2-header { flex-direction: column; gap: 2rem; }
+  .projects-v2-title { text-align: left; }
+  .projects-v2-grid { grid-template-columns: 1fr; }
+  .projects-v2-container { padding: 2rem; border-radius: 24px; }
+}
+/* Portfolio Slider Spacing & Arrow Fixes */
+.projects-slider {
+  padding-bottom: 3.5rem !important;
+  padding-top: 1rem !important;
+}
+@media (min-width: 1024px) {
+  .projects-slider {
+    padding-left: 70px !important;
+    padding-right: 70px !important;
+  }
+}
+@media (max-width: 1023px) {
+  .projects-slider .swiper-button-next,
+  .projects-slider .swiper-button-prev {
+    display: none !important;
+  }
+}
+
+.projects-slider .swiper-button-next::after, 
+.projects-slider .swiper-button-prev::after {
+  font-size: 1rem !important;
+  font-weight: 400;
+}
+
+

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+﻿import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay, EffectCreative } from 'swiper/modules';
 import 'swiper/css';
@@ -36,7 +36,7 @@ const staggerContainer = {
 };
 
 
-/* ─── Scroll-shrink hook for Navbar ─────────────────────────── */
+/* â”€â”€â”€ Scroll-shrink hook for Navbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function useScrollShrink(threshold = 60) {
   const [shrunk, setShrunk] = useState(false);
   useEffect(() => {
@@ -47,7 +47,7 @@ function useScrollShrink(threshold = 60) {
   return shrunk;
 }
 
-/* ─── Magnetic button hook ───────────────────────────────────── */
+/* â”€â”€â”€ Magnetic button hook â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function useMagnetic(strength = 0.35) {
   const ref = useRef(null);
   const handleMove = useCallback((e) => {
@@ -155,7 +155,7 @@ function LargeTypewriterRow({ word, index, subtitle, description, metrics, isOpe
       tabIndex={0}
       role="button"
       aria-expanded={isOpen}
-      aria-label={`${word} — ${subtitle}`}
+      aria-label={`${word} â€” ${subtitle}`}
       onKeyDown={(e) => e.key === 'Enter' && onToggle()}
     >
       {/* Main row */}
@@ -242,7 +242,7 @@ function TypographicImpact() {
       description: 'Engineered to withstand massive traffic spikes without a sweat. From resilient database indexing to global CDN deployments, your platform is built to handle exponential growth seamlessly.',
       metrics: [
         { value: '99.9%', label: 'Uptime' },
-        { value: '∞', label: 'Scale Ready' },
+        { value: 'âˆž', label: 'Scale Ready' },
         { value: 'Future', label: 'Proof' },
       ]
     }
@@ -377,7 +377,7 @@ function Navbar() {
           </a>
           <button 
             className="mobile-menu-btn" 
-            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle Mobile Menu" onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle Navigation Menu"
             style={{ borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)' }}
           >
@@ -873,7 +873,7 @@ function Projects() {
       title: 'Satyam CNC & SPM Machines',
       category: 'Manufacturing',
       badge: 'Precision Engineering',
-      stat: '⚙️ Industrial Catalog',
+      stat: 'âš™ï¸ Industrial Catalog',
       type: 'grid',
       url: 'https://sabvix.com/satyam/',
       cleanUrl: 'https://sabvix.com/satyam',
@@ -890,7 +890,7 @@ function Projects() {
       title: 'Squadra Lupo',
       category: 'Corporate Website',
       badge: 'Premium Business',
-      stat: '🏎️ Premium Design',
+      stat: 'ðŸŽï¸ Premium Design',
       type: 'grid',
       url: 'https://www.squadralupo.com/',
       cleanUrl: 'https://squadralupo.com',
@@ -907,7 +907,7 @@ function Projects() {
       title: 'GoFuelly',
       category: 'On-Demand Services',
       badge: 'Fuel Delivery',
-      stat: '⛽ Delivery Platform',
+      stat: 'â›½ Delivery Platform',
       type: 'grid',
       url: '#',
       cleanUrl: 'gofuelly.com',
@@ -924,7 +924,7 @@ function Projects() {
       title: 'Aadicura Super Speciality Hospital',
       category: 'Healthcare',
       badge: 'Super Speciality',
-      stat: '🏥 Hospital Portal',
+      stat: 'ðŸ¥ Hospital Portal',
       type: 'grid',
       url: '#',
       cleanUrl: 'aadicura.com',
@@ -1181,7 +1181,7 @@ function Projects() {
         }}
         navigation
         pagination={{ clickable: true, dynamicBullets: true }}
-        style={{ paddingBottom: '3.5rem', paddingTop: '1rem' }}
+        className="projects-slider"
       >
         {filteredProjects.map((project, cardIdx) => (
           <SwiperSlide key={project.id} style={{ height: 'auto', display: 'flex' }}>
@@ -1301,7 +1301,7 @@ function Projects() {
                 background: '#0f172a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px', width: '100%', maxWidth: '800px', maxHeight: '90vh', overflowY: 'auto', position: 'relative'
               }}
             >
-              <button onClick={() => setSelectedProject(null)} style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 10 }}>
+              <button aria-label="Close Project Details" onClick={() => setSelectedProject(null)} style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 10 }}>
                 <X size={20} />
               </button>
               <img src={selectedProject.image} alt={selectedProject.title} style={{ width: '100%', height: 'auto', display: 'block', borderBottom: '1px solid rgba(255,255,255,0.1)' }} />
@@ -1351,7 +1351,7 @@ function ROIAnalysis() {
       value: '< 1s',
       numericVal: 96,
       benchmark: 'Core Web Vitals Pass',
-      spec: 'LCP 0.78s • Speed Index 98',
+      spec: 'LCP 0.78s â€¢ Speed Index 98',
       barPercent: 96,
       desc: 'Engineered for sub-second page loads to eliminate visitor bounce rates and boost Google search ranking signals.',
       icon: Zap,
@@ -1363,7 +1363,7 @@ function ROIAnalysis() {
       value: '100/100',
       numericVal: 100,
       benchmark: 'Lighthouse Score',
-      spec: 'Schema • JSON-LD • Meta',
+      spec: 'Schema â€¢ JSON-LD â€¢ Meta',
       barPercent: 100,
       desc: 'Semantic HTML5 structure, automated OpenGraph tags, rich snippets, and optimized crawl paths for top organic SERP rank.',
       icon: Globe,
@@ -1375,12 +1375,12 @@ function ROIAnalysis() {
       value: '2.4x',
       numericVal: 94,
       benchmark: 'Lead Gen Surge',
-      spec: 'Touch UX • Frictionless Forms',
+      spec: 'Touch UX â€¢ Frictionless Forms',
       barPercent: 94,
       desc: 'Thumb-friendly touch targets, streamlined inquiry flows, and fluid layouts designed to turn casual visitors into paying clients.',
       icon: LayoutTemplate,
       color: '#f8fafc',
-      tag: '2.4× MORE LEADS'
+      tag: '2.4Ã— MORE LEADS'
     }
   ];
 
@@ -1400,7 +1400,7 @@ function ROIAnalysis() {
             The Technical <span className="gradient-text">Advantage</span>
           </h2>
           <p className="section-desc">
-            Why clients choose to work with me — measurable performance, conversion funnels, and real digital growth.
+            Why clients choose to work with me â€” measurable performance, conversion funnels, and real digital growth.
           </p>
         </motion.div>
 
@@ -1801,7 +1801,7 @@ function Footer() {
             PARTH<span style={{ color: '#ef4444' }}>.</span>PARMAR
           </div>
           <p style={{ color: '#94a3b8', fontSize: '0.85rem' }}>
-            Professional WordPress & Web Solutions Developer • Vadodara, Gujarat
+            Professional WordPress & Web Solutions Developer â€¢ Vadodara, Gujarat
           </p>
         </div>
 
@@ -1826,7 +1826,7 @@ function Footer() {
       </div>
 
       <div className="container" style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.04)', textAlign: 'center', color: '#64748b', fontSize: '0.8rem' }}>
-        © {new Date().getFullYear()} Parth Parmar. All Rights Reserved. Built with React & Vite.
+        Â© {new Date().getFullYear()} Parth Parmar. All Rights Reserved. Built with React & Vite.
       </div>
     </footer>
   );
@@ -1895,7 +1895,7 @@ function TimelineSlider({ items = [] }) {
                 {item.role}
               </h4>
               <div style={{ fontSize: '0.92rem', color: item.color, fontWeight: 600, marginBottom: '1.25rem' }}>
-                {item.company} <span style={{ color: '#64748b', fontWeight: 400 }}>• {item.location}</span>
+                {item.company} <span style={{ color: '#64748b', fontWeight: 400 }}>â€¢ {item.location}</span>
               </div>
 
               <ul style={{ paddingLeft: '1.2rem', color: '#94a3b8', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem', flex: 1 }}>
@@ -2363,3 +2363,5 @@ export default function App() {
     </div>
   );
 }
+
+
