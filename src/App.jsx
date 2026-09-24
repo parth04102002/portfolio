@@ -839,7 +839,7 @@ function Projects() {
       title: 'DWA24 Medical Store',
       category: 'Healthcare / eCommerce',
       badge: 'Medical Store',
-      stat: '🛒 E-Commerce Platform',
+      stat: '? E-Commerce Platform',
       type: 'featured',
       url: '#',
       cleanUrl: 'dwa24.com',
@@ -856,7 +856,7 @@ function Projects() {
       title: 'The Moment Massage',
       category: 'Wellness & Spa',
       badge: 'Luxury Wellness',
-      stat: '📅 Direct Booking Engine',
+      stat: '? Direct Booking Engine',
       type: 'featured',
       url: 'https://themomentmassage.com/',
       cleanUrl: 'https://themomentmassage.com',
@@ -2281,18 +2281,73 @@ function BannerSliderSection() {
           <SwiperSlide>
             <img src="./dwa24.webp" alt="Workspace 4" />
           </SwiperSlide>
+          <SwiperSlide>
+            <img src="./hero_banner.webp" alt="Workspace 5" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="./hero-crimson.webp" alt="Workspace 6" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="./hero3d.webp" alt="Workspace 7" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="./dwa24.webp" alt="Workspace 8" />
+          </SwiperSlide>
         </Swiper>
       </div>
     </section>
   );
 }
 
+function Preloader() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    const timer = setTimeout(() => {
+      setLoading(false);
+      document.body.style.overflow = "auto";
+    }, 2500);
+    return () => { clearTimeout(timer); document.body.style.overflow = "auto"; };
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {loading && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0, filter: "blur(20px)" }}
+          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          style={{
+            position: "fixed", inset: 0, background: "#0f172a", zIndex: 99999,
+            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "#f8fafc"
+          }}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            style={{ position: "relative", width: "80px", height: "80px", display: "flex", alignItems: "center", justifyContent: "center" }}
+          >
+            <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 4, ease: "linear" }} style={{ position: "absolute", inset: 0, border: "2px dashed rgba(239, 68, 68, 0.4)", borderRadius: "50%" }} />
+            <motion.div animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 6, ease: "linear" }} style={{ position: "absolute", inset: "10px", border: "2px solid rgba(16, 185, 129, 0.2)", borderRadius: "50%" }} />
+            <span style={{ fontSize: "1.5rem", fontWeight: 900, letterSpacing: "-1px" }}>P<span style={{ color: "#ef4444" }}>.</span></span>
+          </motion.div>
+          <motion.div initial={{ width: 0 }} animate={{ width: 200 }} transition={{ duration: 2, ease: "easeInOut" }} style={{ height: "2px", background: "linear-gradient(90deg, transparent, #ef4444, transparent)", marginTop: "30px" }} />
+          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} style={{ marginTop: "15px", fontSize: "0.85rem", color: "#64748b", letterSpacing: "0.2em", textTransform: "uppercase" }}>Initializing Experience</motion.p>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 export default function App() {
   return (
-    <div style={{ overflow: 'hidden', width: '100%', position: 'relative' }}>
+    <div style={{ overflow: "hidden", width: "100%", position: "relative" }}>
+      <Preloader />
+
       <GlobalBackground />
       <Navbar />
-      <BannerSliderSection />
       <Hero />
       <TypographicImpact />
       <ServicesSection />
