@@ -1177,7 +1177,7 @@ function Projects() {
         }}
         breakpoints={{
           768: { slidesPerView: 2, spaceBetween: 30 },
-          1024: { slidesPerView: 3, spaceBetween: 30 }
+          1024: { slidesPerView: 3, spaceBetween: 30, centeredSlides: false }
         }}
         navigation
         pagination={{ clickable: true, dynamicBullets: true }}
@@ -1987,8 +1987,8 @@ function ExperienceOptionTwo() {
           slidesPerView={1.15}
           centeredSlides={true}
           breakpoints={{
-            640: { slidesPerView: 2, spaceBetween: 20 },
-            1024: { slidesPerView: 3, spaceBetween: 30 }
+            640: { slidesPerView: 2, spaceBetween: 20, centeredSlides: false },
+            1024: { slidesPerView: 3, spaceBetween: 30, centeredSlides: false }
           }}
           pagination={{ clickable: true }}
           style={{ paddingBottom: '3rem' }}
@@ -2363,5 +2363,6 @@ export default function App() {
     </div>
   );
 }
+
 
 
