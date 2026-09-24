@@ -1176,7 +1176,8 @@ function Projects() {
           disableOnInteraction: false,
         }}
         breakpoints={{
-          768: { slidesPerView: 2, spaceBetween: 30 }
+          768: { slidesPerView: 2, spaceBetween: 30 },
+          1024: { slidesPerView: 3, spaceBetween: 30 }
         }}
         navigation
         pagination={{ clickable: true, dynamicBullets: true }}
@@ -2344,7 +2345,6 @@ function Preloader() {
 export default function App() {
   return (
     <div style={{ overflow: "hidden", width: "100%", position: "relative" }}>
-      <Preloader />
 
       <GlobalBackground />
       <Navbar />

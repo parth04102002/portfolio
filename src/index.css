@@ -2417,10 +2417,7 @@ a {
   border: 1px solid rgba(255,255,255,0.1);
   transition: all 0.3s ease;
 }
-.swiper-button-next:after, .swiper-button-prev:after {
-  font-size: 1.2rem !important;
-  font-weight: bold;
-}
+.swiper-button-next:after, .swiper-button-prev:after { display: none !important; } .swiper-button-next { background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E') !important; background-size: 55% !important; background-position: center !important; background-repeat: no-repeat !important; } .swiper-button-prev { background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E') !important; background-size: 55% !important; background-position: center !important; background-repeat: no-repeat !important; }
 .swiper-button-next:hover, .swiper-button-prev:hover {
   background: rgba(239, 68, 68, 0.2);
   border-color: #ef4444;
@@ -2495,3 +2492,8 @@ a {
   }
 }
 
+
+ . h e r o - t i t l e   {   m i n - h e i g h t :   3 . 8 e m   ! i m p o r t a n t ;   d i s p l a y :   f l e x ;   f l e x - d i r e c t i o n :   c o l u m n ;   j u s t i f y - c o n t e n t :   f l e x - s t a r t ;   }  
+ 
+ . h e r o - t i t l e   {   m i n - h e i g h t :   3 . 8 e m   ! i m p o r t a n t ;   d i s p l a y :   b l o c k ;   }  
+ 
