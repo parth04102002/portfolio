@@ -1,8 +1,9 @@
 ﻿import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation, Autoplay, EffectCreative } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay, EffectCreative, Grid } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/grid';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-creative';
 
@@ -839,7 +840,7 @@ function Projects() {
       title: 'DWA24 Medical Store',
       category: 'Healthcare / eCommerce',
       badge: 'Medical Store',
-      stat: '? E-Commerce Platform',
+      stat: '🛒 E-Commerce Platform',
       type: 'featured',
       url: '#',
       cleanUrl: 'dwa24.com',
@@ -856,7 +857,7 @@ function Projects() {
       title: 'The Moment Massage',
       category: 'Wellness & Spa',
       badge: 'Luxury Wellness',
-      stat: '? Direct Booking Engine',
+      stat: '📅 Direct Booking Engine',
       type: 'featured',
       url: 'https://themomentmassage.com/',
       cleanUrl: 'https://themomentmassage.com',
@@ -873,7 +874,7 @@ function Projects() {
       title: 'Satyam CNC & SPM Machines',
       category: 'Manufacturing',
       badge: 'Precision Engineering',
-      stat: 'âš™ï¸ Industrial Catalog',
+      stat: '⚙️ Industrial Catalog',
       type: 'grid',
       url: 'https://sabvix.com/satyam/',
       cleanUrl: 'https://sabvix.com/satyam',
@@ -890,7 +891,7 @@ function Projects() {
       title: 'Squadra Lupo',
       category: 'Corporate Website',
       badge: 'Premium Business',
-      stat: 'ðŸŽï¸ Premium Design',
+      stat: '💎 Premium Design',
       type: 'grid',
       url: 'https://www.squadralupo.com/',
       cleanUrl: 'https://squadralupo.com',
@@ -907,7 +908,7 @@ function Projects() {
       title: 'GoFuelly',
       category: 'On-Demand Services',
       badge: 'Fuel Delivery',
-      stat: 'â›½ Delivery Platform',
+      stat: '🚚 Delivery Platform',
       type: 'grid',
       url: '#',
       cleanUrl: 'gofuelly.com',
@@ -924,7 +925,7 @@ function Projects() {
       title: 'Aadicura Super Speciality Hospital',
       category: 'Healthcare',
       badge: 'Super Speciality',
-      stat: 'ðŸ¥ Hospital Portal',
+      stat: '🏥 Hospital Portal',
       type: 'grid',
       url: '#',
       cleanUrl: 'aadicura.com',
@@ -1166,18 +1167,18 @@ function Projects() {
       </h3>
 
       <Swiper
-        modules={[Pagination, Navigation, Autoplay]}
+        modules={[Pagination, Navigation, Autoplay, Grid]}
         spaceBetween={30}
         slidesPerView={1}
         grabCursor={true}
-        loop={true}
+        loop={false}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
         }}
         breakpoints={{
           768: { slidesPerView: 2, spaceBetween: 30 },
-          1024: { slidesPerView: 3, spaceBetween: 30, centeredSlides: false }
+          1024: { slidesPerView: 2, spaceBetween: 30, centeredSlides: false }
         }}
         navigation
         pagination={{ clickable: true, dynamicBullets: true }}
@@ -2363,6 +2364,11 @@ export default function App() {
     </div>
   );
 }
+
+
+
+
+
 
 
 
