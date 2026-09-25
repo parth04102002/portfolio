@@ -1,5 +1,6 @@
 ﻿import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import ProjectsOptionTwo from './ProjectsOptionTwo';
 import { Pagination, Navigation, Autoplay, EffectCreative, Grid } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -2356,6 +2357,7 @@ export default function App() {
       <SkillsMatrix />
       <TechMarquee />
       <Projects />
+      <ProjectsOptionTwo projects={allProjects} />
       <ROIAnalysis />
       <FAQ />
       <ContactSection />
@@ -2364,6 +2366,7 @@ export default function App() {
     </div>
   );
 }
+
 
 
 
