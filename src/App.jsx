@@ -1,3 +1,5 @@
+
+
 ﻿import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ProjectsOptionTwo from './ProjectsOptionTwo';
@@ -16,6 +18,96 @@ import {
   MessageSquare, ChevronDown, Download, Lock, RefreshCw, Eye 
 } from 'lucide-react';
 import { TextInput, TextArea, Button as GravityButton, Card, Text } from '@gravity-ui/uikit';
+
+
+const allProjects = [
+    {
+      id: 'dwa24',
+      title: 'DWA24 Medical Store',
+      category: 'Healthcare / eCommerce',
+      badge: 'Medical Store',
+      stat: 'ðŸ›’ E-Commerce Platform',
+      type: 'featured',
+      url: '#',
+      cleanUrl: 'dwa24.com',
+      image: './dwa24.webp',
+      headline: 'Online Medical Store',
+      description: 'An online medical store developed using WordPress and WooCommerce. Features include product management, secure shopping experiences, responsive design, and optimized user journeys.',
+      challenge: 'Creating a secure, user-friendly shopping experience for medical products.',
+      solution: 'Custom WooCommerce integration with optimized checkout and responsive design.',
+      deliverables: ['WooCommerce Store', 'Product Management', 'Responsive UX'],
+      tags: ['WordPress', 'WooCommerce', 'PHP', 'JS', 'CSS']
+    },
+    {
+      id: 'moment',
+      title: 'The Moment Massage',
+      category: 'Wellness & Spa',
+      badge: 'Luxury Wellness',
+      stat: 'ðŸ“… Direct Booking Engine',
+      type: 'featured',
+      url: 'https://themomentmassage.com/',
+      cleanUrl: 'https://themomentmassage.com',
+      image: './themoment.webp',
+      headline: 'Luxury Spa & Wellness Sanctuary',
+      description: 'A premium wellness website designed to showcase services, improve customer engagement, and simplify appointment inquiries through an elegant user experience.',
+      challenge: 'Clients previously experienced friction booking massage packages online.',
+      solution: 'Integrated an intuitive booking flow, zen aesthetic, and high-performance layouts.',
+      deliverables: ['Custom Wellness Layouts', 'Integrated Booking Engine', 'High-Converting CTAs'],
+      tags: ['WordPress', 'Elementor', 'CSS', 'JavaScript']
+    },
+    {
+      id: 'satyam',
+      title: 'Satyam CNC & SPM Machines',
+      category: 'Manufacturing',
+      badge: 'Precision Engineering',
+      stat: 'âš™ï¸ Industrial Catalog',
+      type: 'grid',
+      url: 'https://sabvix.com/satyam/',
+      cleanUrl: 'https://sabvix.com/satyam',
+      image: './satyam.webp',
+      headline: 'Precision Industrial CNC & SPM Machine Manufacturing Portal',
+      description: 'An industrial website highlighting CNC machines, automation solutions, and manufacturing capabilities with a focus on lead generation and professional branding.',
+      challenge: 'Presenting complex industrial machinery in a clean, conversion-focused layout.',
+      solution: 'Developed modular WordPress components with high-impact product catalogs and inquiry funnels.',
+      deliverables: ['Custom CNC Catalog', 'Machinery Showcase Modules', 'Lead Generation Forms'],
+      tags: ['WordPress', 'Elementor', 'JavaScript', 'CSS']
+    },
+    {
+      id: 'squadra',
+      title: 'Squadra Lupo',
+      category: 'Corporate Website',
+      badge: 'Premium Business',
+      stat: 'ðŸ’Ž Premium Design',
+      type: 'grid',
+      url: 'https://www.squadralupo.com/',
+      cleanUrl: 'https://squadralupo.com',
+      image: './squadra.webp',
+      headline: 'Corporate Business Website',
+      description: 'A modern business website featuring premium design, responsive layouts, advanced animations, and performance-focused development.',
+      challenge: 'Delivering an immersive, high-end aesthetic while maintaining performance.',
+      solution: 'Crafted a bespoke, high-contrast UI with optimized media carousels and smooth animations.',
+      deliverables: ['Cinematic UI', 'Responsive Animations', 'Performance UI'],
+      tags: ['WordPress', 'CSS', 'JavaScript']
+    },
+    {
+      id: 'gofuelly',
+      title: 'GoFuelly',
+      category: 'On-Demand Services',
+      badge: 'Fuel Delivery',
+      stat: 'ðŸšš Delivery Platform',
+      type: 'grid',
+      url: '#',
+      cleanUrl: 'gofuelly.com',
+      image: './gofuelly.webp',
+      headline: 'Fuel Delivery Platform',
+      description: 'A fuel delivery platform designed to streamline fuel ordering and management through a user-friendly digital experience.',
+      challenge: 'Streamlining a complex ordering process for on-demand fuel delivery.',
+      solution: 'Developed a custom PHP/MySQL backend with a clean HTML/JS frontend for seamless ordering.',
+      deliverables: ['Fuel Ordering System', 'Database Management', 'Responsive Frontend'],
+      tags: ['PHP', 'HTML', 'CSS', 'JavaScript', 'MySQL']
+    }
+  ];
+
 
 const slideUp = {
   hidden: { opacity: 0, y: 40, scale: 0.98 },
@@ -38,7 +130,7 @@ const staggerContainer = {
 };
 
 
-/* â”€â”€â”€ Scroll-shrink hook for Navbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Scroll-shrink hook for Navbar Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 function useScrollShrink(threshold = 60) {
   const [shrunk, setShrunk] = useState(false);
   useEffect(() => {
@@ -49,7 +141,7 @@ function useScrollShrink(threshold = 60) {
   return shrunk;
 }
 
-/* â”€â”€â”€ Magnetic button hook â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Magnetic button hook Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 function useMagnetic(strength = 0.35) {
   const ref = useRef(null);
   const handleMove = useCallback((e) => {
@@ -157,7 +249,7 @@ function LargeTypewriterRow({ word, index, subtitle, description, metrics, isOpe
       tabIndex={0}
       role="button"
       aria-expanded={isOpen}
-      aria-label={`${word} â€” ${subtitle}`}
+      aria-label={`${word} Ã¢â‚¬â€ ${subtitle}`}
       onKeyDown={(e) => e.key === 'Enter' && onToggle()}
     >
       {/* Main row */}
@@ -244,7 +336,7 @@ function TypographicImpact() {
       description: 'Engineered to withstand massive traffic spikes without a sweat. From resilient database indexing to global CDN deployments, your platform is built to handle exponential growth seamlessly.',
       metrics: [
         { value: '99.9%', label: 'Uptime' },
-        { value: 'âˆž', label: 'Scale Ready' },
+        { value: 'Ã¢Ë†Å¾', label: 'Scale Ready' },
         { value: 'Future', label: 'Proof' },
       ]
     }
@@ -835,110 +927,9 @@ function Projects() {
   const [filter, setFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const allProjects = [
-    {
-      id: 'dwa24',
-      title: 'DWA24 Medical Store',
-      category: 'Healthcare / eCommerce',
-      badge: 'Medical Store',
-      stat: '🛒 E-Commerce Platform',
-      type: 'featured',
-      url: '#',
-      cleanUrl: 'dwa24.com',
-      image: './dwa24.webp',
-      headline: 'Online Medical Store',
-      description: 'An online medical store developed using WordPress and WooCommerce. Features include product management, secure shopping experiences, responsive design, and optimized user journeys.',
-      challenge: 'Creating a secure, user-friendly shopping experience for medical products.',
-      solution: 'Custom WooCommerce integration with optimized checkout and responsive design.',
-      deliverables: ['WooCommerce Store', 'Product Management', 'Responsive UX'],
-      tags: ['WordPress', 'WooCommerce', 'PHP', 'JS', 'CSS']
-    },
-    {
-      id: 'moment',
-      title: 'The Moment Massage',
-      category: 'Wellness & Spa',
-      badge: 'Luxury Wellness',
-      stat: '📅 Direct Booking Engine',
-      type: 'featured',
-      url: 'https://themomentmassage.com/',
-      cleanUrl: 'https://themomentmassage.com',
-      image: './themoment.webp',
-      headline: 'Luxury Spa & Wellness Sanctuary',
-      description: 'A premium wellness website designed to showcase services, improve customer engagement, and simplify appointment inquiries through an elegant user experience.',
-      challenge: 'Clients previously experienced friction booking massage packages online.',
-      solution: 'Integrated an intuitive booking flow, zen aesthetic, and high-performance layouts.',
-      deliverables: ['Custom Wellness Layouts', 'Integrated Booking Engine', 'High-Converting CTAs'],
-      tags: ['WordPress', 'Elementor', 'CSS', 'JavaScript']
-    },
-    {
-      id: 'satyam',
-      title: 'Satyam CNC & SPM Machines',
-      category: 'Manufacturing',
-      badge: 'Precision Engineering',
-      stat: '⚙️ Industrial Catalog',
-      type: 'grid',
-      url: 'https://sabvix.com/satyam/',
-      cleanUrl: 'https://sabvix.com/satyam',
-      image: './satyam.webp',
-      headline: 'Precision Industrial CNC & SPM Machine Manufacturing Portal',
-      description: 'An industrial website highlighting CNC machines, automation solutions, and manufacturing capabilities with a focus on lead generation and professional branding.',
-      challenge: 'Presenting complex industrial machinery in a clean, conversion-focused layout.',
-      solution: 'Developed modular WordPress components with high-impact product catalogs and inquiry funnels.',
-      deliverables: ['Custom CNC Catalog', 'Machinery Showcase Modules', 'Lead Generation Forms'],
-      tags: ['WordPress', 'Elementor', 'JavaScript', 'CSS']
-    },
-    {
-      id: 'squadra',
-      title: 'Squadra Lupo',
-      category: 'Corporate Website',
-      badge: 'Premium Business',
-      stat: '💎 Premium Design',
-      type: 'grid',
-      url: 'https://www.squadralupo.com/',
-      cleanUrl: 'https://squadralupo.com',
-      image: './squadra.webp',
-      headline: 'Corporate Business Website',
-      description: 'A modern business website featuring premium design, responsive layouts, advanced animations, and performance-focused development.',
-      challenge: 'Delivering an immersive, high-end aesthetic while maintaining performance.',
-      solution: 'Crafted a bespoke, high-contrast UI with optimized media carousels and smooth animations.',
-      deliverables: ['Cinematic UI', 'Responsive Animations', 'Performance UI'],
-      tags: ['WordPress', 'CSS', 'JavaScript']
-    },
-    {
-      id: 'gofuelly',
-      title: 'GoFuelly',
-      category: 'On-Demand Services',
-      badge: 'Fuel Delivery',
-      stat: '🚚 Delivery Platform',
-      type: 'grid',
-      url: '#',
-      cleanUrl: 'gofuelly.com',
-      image: './gofuelly.webp',
-      headline: 'Fuel Delivery Platform',
-      description: 'A fuel delivery platform designed to streamline fuel ordering and management through a user-friendly digital experience.',
-      challenge: 'Streamlining a complex ordering process for on-demand fuel delivery.',
-      solution: 'Developed a custom PHP/MySQL backend with a clean HTML/JS frontend for seamless ordering.',
-      deliverables: ['Fuel Ordering System', 'Database Management', 'Responsive Frontend'],
-      tags: ['PHP', 'HTML', 'CSS', 'JavaScript', 'MySQL']
-    },
-    {
-      id: 'aadicura',
-      title: 'Aadicura Super Speciality Hospital',
-      category: 'Healthcare',
-      badge: 'Super Speciality',
-      stat: '🏥 Hospital Portal',
-      type: 'grid',
-      url: '#',
-      cleanUrl: 'aadicura.com',
-      image: './aadicura.webp',
-      headline: 'Super Speciality Hospital Website',
-      description: 'A healthcare website designed to showcase hospital services, health packages, specialist consultations, and patient-focused information.',
-      challenge: 'Organizing a large volume of healthcare services and specialist information clearly.',
-      solution: 'Structured medical schema, clear navigation, and patient-friendly booking flows.',
-      deliverables: ['Specialist Profiles', 'Health Packages', 'SEO-Optimized Content'],
-      tags: ['WordPress', 'Elementor', 'SEO', 'CSS']
-    }
-  ];
+  
+
+
 
   const categories = [
     { label: 'All', count: allProjects.length },
@@ -1353,7 +1344,7 @@ function ROIAnalysis() {
       value: '< 1s',
       numericVal: 96,
       benchmark: 'Core Web Vitals Pass',
-      spec: 'LCP 0.78s â€¢ Speed Index 98',
+      spec: 'LCP 0.78s Ã¢â‚¬Â¢ Speed Index 98',
       barPercent: 96,
       desc: 'Engineered for sub-second page loads to eliminate visitor bounce rates and boost Google search ranking signals.',
       icon: Zap,
@@ -1365,7 +1356,7 @@ function ROIAnalysis() {
       value: '100/100',
       numericVal: 100,
       benchmark: 'Lighthouse Score',
-      spec: 'Schema â€¢ JSON-LD â€¢ Meta',
+      spec: 'Schema Ã¢â‚¬Â¢ JSON-LD Ã¢â‚¬Â¢ Meta',
       barPercent: 100,
       desc: 'Semantic HTML5 structure, automated OpenGraph tags, rich snippets, and optimized crawl paths for top organic SERP rank.',
       icon: Globe,
@@ -1377,12 +1368,12 @@ function ROIAnalysis() {
       value: '2.4x',
       numericVal: 94,
       benchmark: 'Lead Gen Surge',
-      spec: 'Touch UX â€¢ Frictionless Forms',
+      spec: 'Touch UX Ã¢â‚¬Â¢ Frictionless Forms',
       barPercent: 94,
       desc: 'Thumb-friendly touch targets, streamlined inquiry flows, and fluid layouts designed to turn casual visitors into paying clients.',
       icon: LayoutTemplate,
       color: '#f8fafc',
-      tag: '2.4Ã— MORE LEADS'
+      tag: '2.4Ãƒâ€” MORE LEADS'
     }
   ];
 
@@ -1402,7 +1393,7 @@ function ROIAnalysis() {
             The Technical <span className="gradient-text">Advantage</span>
           </h2>
           <p className="section-desc">
-            Why clients choose to work with me â€” measurable performance, conversion funnels, and real digital growth.
+            Why clients choose to work with me Ã¢â‚¬â€ measurable performance, conversion funnels, and real digital growth.
           </p>
         </motion.div>
 
@@ -1803,7 +1794,7 @@ function Footer() {
             PARTH<span style={{ color: '#ef4444' }}>.</span>PARMAR
           </div>
           <p style={{ color: '#94a3b8', fontSize: '0.85rem' }}>
-            Professional WordPress & Web Solutions Developer â€¢ Vadodara, Gujarat
+            Professional WordPress & Web Solutions Developer Ã¢â‚¬Â¢ Vadodara, Gujarat
           </p>
         </div>
 
@@ -1828,7 +1819,7 @@ function Footer() {
       </div>
 
       <div className="container" style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.04)', textAlign: 'center', color: '#64748b', fontSize: '0.8rem' }}>
-        Â© {new Date().getFullYear()} Parth Parmar. All Rights Reserved. Built with React & Vite.
+        Ã‚Â© {new Date().getFullYear()} Parth Parmar. All Rights Reserved. Built with React & Vite.
       </div>
     </footer>
   );
@@ -1897,7 +1888,7 @@ function TimelineSlider({ items = [] }) {
                 {item.role}
               </h4>
               <div style={{ fontSize: '0.92rem', color: item.color, fontWeight: 600, marginBottom: '1.25rem' }}>
-                {item.company} <span style={{ color: '#64748b', fontWeight: 400 }}>â€¢ {item.location}</span>
+                {item.company} <span style={{ color: '#64748b', fontWeight: 400 }}>Ã¢â‚¬Â¢ {item.location}</span>
               </div>
 
               <ul style={{ paddingLeft: '1.2rem', color: '#94a3b8', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem', flex: 1 }}>
@@ -2366,6 +2357,7 @@ export default function App() {
     </div>
   );
 }
+
 
 
 

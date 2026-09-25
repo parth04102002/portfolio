@@ -149,6 +149,7 @@ export default function ProjectsOptionTwo({ projects }) {
       }, 750);
     };
 
+    // passive: true so page still scrolls smoothly when mouse is over it!
     sliderWrapper.addEventListener("wheel", onWheel, { passive: true });
 
     updateScrollAnimation();
@@ -182,8 +183,8 @@ export default function ProjectsOptionTwo({ projects }) {
   }, [projects.length]);
 
   return (
-    <main className="p3d-portfolio" style={{ marginBottom: '4rem' }}>
-      <header className="p3d-heading">
+    <main className="p3d-portfolio" style={{ marginBottom: '4rem', padding: '80px 0' }}>
+      <header className="p3d-heading" style={{ marginBottom: '42px' }}>
         <div className="p3d-eyebrow">Projects Alternative</div>
         <h2 className="section-title">3D <span className="gradient-text">Portfolio Slider</span></h2>
         <p className="section-desc" style={{ maxWidth: '600px', margin: '0 auto' }}>
@@ -191,12 +192,12 @@ export default function ProjectsOptionTwo({ projects }) {
         </p>
       </header>
 
-      <section className="p3d-slider-wrapper" ref={sliderWrapperRef}>
+      <section className="p3d-slider-wrapper" ref={sliderWrapperRef} style={{ height: '570px' }}>
         <div className="p3d-slider" ref={sliderRef}>
           {projects.map((project, index) => (
             <article
               key={project.id || index}
-              className="p3d-project-card"
+              className={`p3d-project-card ${index === currentIndex ? "active" : ""}`}
               ref={(el) => (cardsRef.current[index] = el)}
               onClick={() => setCurrentIndex(index)}
             >
@@ -225,7 +226,7 @@ export default function ProjectsOptionTwo({ projects }) {
         </div>
       </section>
 
-      <div className="p3d-controls">
+      <div className="p3d-controls" style={{ marginTop: '24px' }}>
         <button className="p3d-arrow" onClick={prevProject} aria-label="Previous project">
           ←
         </button>
@@ -244,11 +245,11 @@ export default function ProjectsOptionTwo({ projects }) {
         </button>
       </div>
 
-      <div className="p3d-slider-progress">
+      <div className="p3d-slider-progress" style={{ marginTop: '25px' }}>
         <span style={{ width: `${((currentIndex + 1) / projects.length) * 100}%` }}></span>
       </div>
 
-      <div className="p3d-scroll-hint">
+      <div className="p3d-scroll-hint" style={{ marginTop: '25px' }}>
         <span>↓</span>
         Scroll or drag to explore
       </div>
