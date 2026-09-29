@@ -1,8 +1,10 @@
 
 
-﻿import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import ToolkitSection from './ToolkitSection';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ProjectsOptionTwo from './ProjectsOptionTwo';
+import PortfolioPage from './PortfolioPage';
 import { Pagination, Navigation, Autoplay, EffectCreative, Grid } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -26,7 +28,7 @@ const allProjects = [
       title: 'DWA24 Medical Store',
       category: 'Healthcare / eCommerce',
       badge: 'Medical Store',
-      stat: 'ðŸ›’ E-Commerce Platform',
+      stat: 'Ã°Å¸â€ºâ€™ E-Commerce Platform',
       type: 'featured',
       url: '#',
       cleanUrl: 'dwa24.com',
@@ -43,7 +45,7 @@ const allProjects = [
       title: 'The Moment Massage',
       category: 'Wellness & Spa',
       badge: 'Luxury Wellness',
-      stat: 'ðŸ“… Direct Booking Engine',
+      stat: 'Ã°Å¸â€œâ€¦ Direct Booking Engine',
       type: 'featured',
       url: 'https://themomentmassage.com/',
       cleanUrl: 'https://themomentmassage.com',
@@ -60,7 +62,7 @@ const allProjects = [
       title: 'Satyam CNC & SPM Machines',
       category: 'Manufacturing',
       badge: 'Precision Engineering',
-      stat: 'âš™ï¸ Industrial Catalog',
+      stat: 'Ã¢Å¡â„¢Ã¯Â¸Â Industrial Catalog',
       type: 'grid',
       url: 'https://sabvix.com/satyam/',
       cleanUrl: 'https://sabvix.com/satyam',
@@ -77,7 +79,7 @@ const allProjects = [
       title: 'Squadra Lupo',
       category: 'Corporate Website',
       badge: 'Premium Business',
-      stat: 'ðŸ’Ž Premium Design',
+      stat: 'Ã°Å¸â€™Å½ Premium Design',
       type: 'grid',
       url: 'https://www.squadralupo.com/',
       cleanUrl: 'https://squadralupo.com',
@@ -94,7 +96,7 @@ const allProjects = [
       title: 'GoFuelly',
       category: 'On-Demand Services',
       badge: 'Fuel Delivery',
-      stat: 'ðŸšš Delivery Platform',
+      stat: 'Ã°Å¸Å¡Å¡ Delivery Platform',
       type: 'grid',
       url: '#',
       cleanUrl: 'gofuelly.com',
@@ -130,7 +132,7 @@ const staggerContainer = {
 };
 
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Scroll-shrink hook for Navbar Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Scroll-shrink hook for Navbar ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
 function useScrollShrink(threshold = 60) {
   const [shrunk, setShrunk] = useState(false);
   useEffect(() => {
@@ -141,7 +143,7 @@ function useScrollShrink(threshold = 60) {
   return shrunk;
 }
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Magnetic button hook Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Magnetic button hook ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
 function useMagnetic(strength = 0.35) {
   const ref = useRef(null);
   const handleMove = useCallback((e) => {
@@ -249,7 +251,7 @@ function LargeTypewriterRow({ word, index, subtitle, description, metrics, isOpe
       tabIndex={0}
       role="button"
       aria-expanded={isOpen}
-      aria-label={`${word} Ã¢â‚¬â€ ${subtitle}`}
+      aria-label={`${word} ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ${subtitle}`}
       onKeyDown={(e) => e.key === 'Enter' && onToggle()}
     >
       {/* Main row */}
@@ -336,7 +338,7 @@ function TypographicImpact() {
       description: 'Engineered to withstand massive traffic spikes without a sweat. From resilient database indexing to global CDN deployments, your platform is built to handle exponential growth seamlessly.',
       metrics: [
         { value: '99.9%', label: 'Uptime' },
-        { value: 'Ã¢Ë†Å¾', label: 'Scale Ready' },
+        { value: 'ÃƒÂ¢Ã‹â€ Ã…Â¾', label: 'Scale Ready' },
         { value: 'Future', label: 'Proof' },
       ]
     }
@@ -557,7 +559,7 @@ function Hero() {
           {/* Status Pill Badge */}
           <motion.div variants={slideUp} className="status-pill">
             <span className="status-dot"></span>
-            Available for WordPress & Custom Web Projects
+            Hire Freelance WordPress Developer
           </motion.div>
 
           <motion.h1 
@@ -1344,7 +1346,7 @@ function ROIAnalysis() {
       value: '< 1s',
       numericVal: 96,
       benchmark: 'Core Web Vitals Pass',
-      spec: 'LCP 0.78s Ã¢â‚¬Â¢ Speed Index 98',
+      spec: 'LCP 0.78s ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Speed Index 98',
       barPercent: 96,
       desc: 'Engineered for sub-second page loads to eliminate visitor bounce rates and boost Google search ranking signals.',
       icon: Zap,
@@ -1356,7 +1358,7 @@ function ROIAnalysis() {
       value: '100/100',
       numericVal: 100,
       benchmark: 'Lighthouse Score',
-      spec: 'Schema Ã¢â‚¬Â¢ JSON-LD Ã¢â‚¬Â¢ Meta',
+      spec: 'Schema ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ JSON-LD ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Meta',
       barPercent: 100,
       desc: 'Semantic HTML5 structure, automated OpenGraph tags, rich snippets, and optimized crawl paths for top organic SERP rank.',
       icon: Globe,
@@ -1368,12 +1370,12 @@ function ROIAnalysis() {
       value: '2.4x',
       numericVal: 94,
       benchmark: 'Lead Gen Surge',
-      spec: 'Touch UX Ã¢â‚¬Â¢ Frictionless Forms',
+      spec: 'Touch UX ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Frictionless Forms',
       barPercent: 94,
       desc: 'Thumb-friendly touch targets, streamlined inquiry flows, and fluid layouts designed to turn casual visitors into paying clients.',
       icon: LayoutTemplate,
       color: '#f8fafc',
-      tag: '2.4Ãƒâ€” MORE LEADS'
+      tag: '2.4ÃƒÆ’Ã¢â‚¬â€ MORE LEADS'
     }
   ];
 
@@ -1393,7 +1395,7 @@ function ROIAnalysis() {
             The Technical <span className="gradient-text">Advantage</span>
           </h2>
           <p className="section-desc">
-            Why clients choose to work with me Ã¢â‚¬â€ measurable performance, conversion funnels, and real digital growth.
+            Why clients choose to work with me ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â measurable performance, conversion funnels, and real digital growth.
           </p>
         </motion.div>
 
@@ -1556,7 +1558,7 @@ function FAQ() {
 }
 
 /* --- High-Tech Glassmorphism Contact Form --- */
-function ContactSection() {
+export function ContactSection() {
   const [formState, setFormState] = useState({
     fullName: '',
     email: '',
@@ -1601,7 +1603,7 @@ function ContactSection() {
         >
           <div>
             <h3 style={{ fontSize: 'clamp(1.4rem, 3.5vw, 1.8rem)', fontWeight: 800, color: '#f8fafc', marginBottom: '1rem', lineHeight: 1.3 }}>
-              Work With a Dedicated <span style={{ color: '#ef4444' }}>WordPress Engineer</span>
+              Hire Freelance <span style={{ color: '#ef4444' }}>WordPress Developer</span>
             </h3>
             <p style={{ color: '#94a3b8', lineHeight: 1.7, marginBottom: '2rem', fontSize: '0.95rem' }}>
               Whether you need a custom-coded theme, high-converting WooCommerce storefront, emergency speed optimization, or ongoing website maintenance, I'm available to collaborate.
@@ -1754,7 +1756,7 @@ function ContactSection() {
                     type="submit" 
                     disabled={loading}
                     className="project-case-btn"
-                    style={{ width: '100%', justifyContent: 'center', marginTop: '1rem', background: 'var(--accent-cyan)', color: '#fff', border: 'none' }}
+                    style={{ width: '100%', justifyContent: 'center', marginTop: '1rem', background: 'linear-gradient(135deg, #ef4444, #b91c1c)', padding: '16px', borderRadius: '12px', fontSize: '1.05rem', fontWeight: '600', boxShadow: '0 10px 25px -5px rgba(239, 68, 68, 0.4)', color: '#fff', border: 'none' }}
                   >
                     {loading ? 'Sending...' : 'Send Inquiry Directly'}
                   </button>
@@ -1794,7 +1796,7 @@ function Footer() {
             PARTH<span style={{ color: '#ef4444' }}>.</span>PARMAR
           </div>
           <p style={{ color: '#94a3b8', fontSize: '0.85rem' }}>
-            Professional WordPress & Web Solutions Developer Ã¢â‚¬Â¢ Vadodara, Gujarat
+            Professional WordPress & Web Solutions Developer ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Vadodara, Gujarat
           </p>
         </div>
 
@@ -1819,7 +1821,7 @@ function Footer() {
       </div>
 
       <div className="container" style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.04)', textAlign: 'center', color: '#64748b', fontSize: '0.8rem' }}>
-        Ã‚Â© {new Date().getFullYear()} Parth Parmar. All Rights Reserved. Built with React & Vite.
+        Ãƒâ€šÃ‚Â© {new Date().getFullYear()} Parth Parmar. All Rights Reserved. Built with React & Vite.
       </div>
     </footer>
   );
@@ -1888,7 +1890,7 @@ function TimelineSlider({ items = [] }) {
                 {item.role}
               </h4>
               <div style={{ fontSize: '0.92rem', color: item.color, fontWeight: 600, marginBottom: '1.25rem' }}>
-                {item.company} <span style={{ color: '#64748b', fontWeight: 400 }}>Ã¢â‚¬Â¢ {item.location}</span>
+                {item.company} <span style={{ color: '#64748b', fontWeight: 400 }}>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {item.location}</span>
               </div>
 
               <ul style={{ paddingLeft: '1.2rem', color: '#94a3b8', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem', flex: 1 }}>
@@ -2295,14 +2297,33 @@ function BannerSliderSection() {
 
 function Preloader() {
   const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    const timer = setTimeout(() => {
-      setLoading(false);
-      document.body.style.overflow = "auto";
-    }, 2500);
-    return () => { clearTimeout(timer); document.body.style.overflow = "auto"; };
+    
+    const duration = 2000;
+    const interval = 20;
+    const steps = duration / interval;
+    let currentStep = 0;
+    
+    const timer = setInterval(() => {
+      currentStep++;
+      setProgress(Math.min(Math.round((currentStep / steps) * 100), 100));
+      
+      if (currentStep >= steps) {
+        clearInterval(timer);
+        setTimeout(() => {
+          setLoading(false);
+          document.body.style.overflow = "auto";
+        }, 500);
+      }
+    }, interval);
+
+    return () => { 
+      clearInterval(timer); 
+      document.body.style.overflow = "auto"; 
+    };
   }, []);
 
   return (
@@ -2313,22 +2334,41 @@ function Preloader() {
           exit={{ opacity: 0, filter: "blur(20px)" }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           style={{
-            position: "fixed", inset: 0, background: "#0f172a", zIndex: 99999,
-            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "#f8fafc"
+            position: "fixed", inset: 0, background: "#050810", zIndex: 99999,
+            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "#f8fafc",
+            fontFamily: '"Plus Jakarta Sans", -apple-system, sans-serif'
           }}
         >
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            style={{ position: "relative", width: "80px", height: "80px", display: "flex", alignItems: "center", justifyContent: "center" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{ textAlign: 'center' }}
           >
-            <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 4, ease: "linear" }} style={{ position: "absolute", inset: 0, border: "2px dashed rgba(239, 68, 68, 0.4)", borderRadius: "50%" }} />
-            <motion.div animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 6, ease: "linear" }} style={{ position: "absolute", inset: "10px", border: "2px solid rgba(16, 185, 129, 0.2)", borderRadius: "50%" }} />
-            <span style={{ fontSize: "1.5rem", fontWeight: 900, letterSpacing: "-1px" }}>P<span style={{ color: "#ef4444" }}>.</span></span>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, margin: '0 0 10px 0', letterSpacing: '-1px' }}>
+              Parth <span style={{ color: '#ef4444' }}>Parmar</span>
+            </h1>
+            <div style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '3px', color: '#f87171', textTransform: 'uppercase', marginBottom: '50px' }}>
+              Creative Web Developer • Portfolio
+            </div>
+            
+            <div style={{ fontSize: '0.75rem', fontWeight: 500, letterSpacing: '2px', color: '#64748b', textTransform: 'uppercase', marginBottom: '15px' }}>
+              Loading Experience..
+            </div>
+            
+            <div style={{ width: '280px', height: '4px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', margin: '0 auto', position: 'relative', overflow: 'hidden' }}>
+              <motion.div 
+                style={{ position: 'absolute', top: 0, left: 0, height: '100%', background: 'linear-gradient(90deg, #ef4444, #f87171)', borderRadius: '4px' }}
+                initial={{ width: '0%' }}
+                animate={{ width: `${progress}%` }}
+                transition={{ duration: 0.1 }}
+              />
+            </div>
+            
+            <div style={{ marginTop: '20px', fontSize: '1.2rem', fontWeight: 700, color: '#ef4444' }}>
+              {progress}%
+            </div>
           </motion.div>
-          <motion.div initial={{ width: 0 }} animate={{ width: 200 }} transition={{ duration: 2, ease: "easeInOut" }} style={{ height: "2px", background: "linear-gradient(90deg, transparent, #ef4444, transparent)", marginTop: "30px" }} />
-          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} style={{ marginTop: "15px", fontSize: "0.85rem", color: "#64748b", letterSpacing: "0.2em", textTransform: "uppercase" }}>Initializing Experience</motion.p>
         </motion.div>
       )}
     </AnimatePresence>
@@ -2336,6 +2376,12 @@ function Preloader() {
 }
 
 export default function App() {
+  const [currentView, setCurrentView] = React.useState('home');
+
+  if (currentView === 'portfolio') {
+    return <PortfolioPage projects={allProjects} onBack={() => setCurrentView('home')} />;
+  }
+
   return (
     <div style={{ overflow: "hidden", width: "100%", position: "relative" }}>
 
@@ -2347,8 +2393,35 @@ export default function App() {
       <ExperienceOptionTwo />
       <SkillsMatrix />
       <TechMarquee />
+      <ToolkitSection />
       <Projects />
       <ProjectsOptionTwo projects={allProjects} />
+      
+      {/* View All Projects Action */}
+      <section style={{ padding: '40px 0 80px', textAlign: 'center', position: 'relative', zIndex: 10 }}>
+        <button 
+          onClick={() => setCurrentView('portfolio')}
+          style={{
+            background: 'linear-gradient(135deg, #f87171, #ef4444)',
+            color: '#fff',
+            border: 'none',
+            padding: '16px 40px',
+            fontSize: '18px',
+            fontWeight: '600',
+            borderRadius: '100px',
+            cursor: 'pointer',
+            boxShadow: '0 10px 30px -10px rgba(239, 68, 68, 0.6)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '12px',
+            transition: 'transform 0.2s, box-shadow 0.2s'
+          }}
+          onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 15px 35px -10px rgba(65, 217, 255, 0.6)'; }}
+          onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 30px -10px rgba(239, 68, 68, 0.6)'; }}
+        >
+          View Full Portfolio Grid <ArrowRight size={20} />
+        </button>
+      </section>
       <ROIAnalysis />
       <FAQ />
       <ContactSection />
@@ -2357,6 +2430,8 @@ export default function App() {
     </div>
   );
 }
+
+
 
 
 

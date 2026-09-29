@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Portfolio Full Content</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; }
+        h1, h2, h3 { border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; margin-top: 1.5em; }
+        pre { background-color: #f6f8fa; padding: 16px; overflow: auto; border-radius: 6px; font-size: 14px; }
+        code { font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace; }
+        ul { padding-left: 2em; }
+    </style>
+</head>
+<body>
+    <h1>Comprehensive Portfolio Content</h1>
+<p>This document is a complete raw extraction of all the text data, arrays, and content blocks used in your React portfolio.</p>
+<h2>1. Projects (allProjects)</h2>
+<pre><code class="language-javascript">const allProjects = [
+    {
+      id: &#39;dwa24&#39;,
+      title: &#39;DWA24 Medical Store&#39;,
+      category: &#39;Healthcare / eCommerce&#39;,
+      badge: &#39;Medical Store&#39;,
+      stat: &#39;ðŸ›’ E-Commerce Platform&#39;,
+      type: &#39;featured&#39;,
+      url: &#39;#&#39;,
+      cleanUrl: &#39;dwa24.com&#39;,
+      image: &#39;./dwa24.webp&#39;,
+      headline: &#39;Online Medical Store&#39;,
+      description: &#39;An online medical store developed using WordPress and WooCommerce. Features include product management, secure shopping experiences, responsive design, and optimized user journeys.&#39;,
+      challenge: &#39;Creating a secure, user-friendly shopping experience for medical products.&#39;,
+      solution: &#39;Custom WooCommerce integration with optimized checkout and responsive design.&#39;,
+      deliverables: [&#39;WooCommerce Store&#39;, &#39;Product Management&#39;, &#39;Responsive UX&#39;],
+      tags: [&#39;WordPress&#39;, &#39;WooCommerce&#39;, &#39;PHP&#39;, &#39;JS&#39;, &#39;CSS&#39;]
+    },
+    {
+      id: &#39;moment&#39;,
+      title: &#39;The Moment Massage&#39;,
+      category: &#39;Wellness &amp; Spa&#39;,
+      badge: &#39;Luxury Wellness&#39;,
+      stat: &#39;ðŸ“… Direct Booking Engine&#39;,
+      type: &#39;featured&#39;,
+      url: &#39;https://themomentmassage.com/&#39;,
+      cleanUrl: &#39;https://themomentmassage.com&#39;,
+      image: &#39;./themoment.webp&#39;,
+      headline: &#39;Luxury Spa &amp; Wellness Sanctuary&#39;,
+      description: &#39;A premium wellness website designed to showcase services, improve customer engagement, and simplify appointment inquiries through an elegant user experience.&#39;,
+      challenge: &#39;Clients previously experienced friction booking massage packages online.&#39;,
+      solution: &#39;Integrated an intuitive booking flow, zen aesthetic, and high-performance layouts.&#39;,
+      deliverables: [&#39;Custom Wellness Layouts&#39;, &#39;Integrated Booking Engine&#39;, &#39;High-Converting CTAs&#39;],
+      tags: [&#39;WordPress&#39;, &#39;Elementor&#39;, &#39;CSS&#39;, &#39;JavaScript&#39;]
+    },
+    {
+      id: &#39;satyam&#39;,
+      title: &#39;Satyam CNC &amp; SPM Machines&#39;,
+      category: &#39;Manufacturing&#39;,
+      badge: &#39;Precision Engineering&#39;,
+      stat: &#39;âš™ï¸ Industrial Catalog&#39;,
+      type: &#39;grid&#39;,
+      url: &#39;https://sabvix.com/satyam/&#39;,
+      cleanUrl: &#39;https://sabvix.com/satyam&#39;,
+      image: &#39;./satyam.webp&#39;,
+      headline: &#39;Precision Industrial CNC &amp; SPM Machine Manufacturing Portal&#39;,
+      description: &#39;An industrial website highlighting CNC machines, automation solutions, and manufacturing capabilities with a focus on lead generation and professional branding.&#39;,
+      challenge: &#39;Presenting complex industrial machinery in a clean, conversion-focused layout.&#39;,
+      solution: &#39;Developed modular WordPress components with high-impact product catalogs and inquiry funnels.&#39;,
+      deliverables: [&#39;Custom CNC Catalog&#39;, &#39;Machinery Showcase Modules&#39;, &#39;Lead Generation Forms&#39;],
+      tags: [&#39;WordPress&#39;, &#39;Elementor&#39;, &#39;JavaScript&#39;, &#39;CSS&#39;]
+    },
+    {
+      id: &#39;squadra&#39;,
+      title: &#39;Squadra Lupo&#39;,
+      category: &#39;Corporate Website&#39;,
+      badge: &#39;Premium Business&#39;,
+      stat: &#39;ðŸ’Ž Premium Design&#39;,
+      type: &#39;grid&#39;,
+      url: &#39;https://www.squadralupo.com/&#39;,
+      cleanUrl: &#39;https://squadralupo.com&#39;,
+      image: &#39;./squadra.webp&#39;,
+      headline: &#39;Corporate Business Website&#39;,
+      description: &#39;A modern business website featuring premium design, responsive layouts, advanced animations, and performance-focused development.&#39;,
+      challenge: &#39;Delivering an immersive, high-end aesthetic while maintaining performance.&#39;,
+      solution: &#39;Crafted a bespoke, high-contrast UI with optimized media carousels and smooth animations.&#39;,
+      deliverables: [&#39;Cinematic UI&#39;, &#39;Responsive Animations&#39;, &#39;Performance UI&#39;],
+      tags: [&#39;WordPress&#39;, &#39;CSS&#39;, &#39;JavaScript&#39;]
+    },
+    {
+      id: &#39;gofuelly&#39;,
+      title: &#39;GoFuelly&#39;,
+      category: &#39;On-Demand Services&#39;,
+      badge: &#39;Fuel Delivery&#39;,
+      stat: &#39;ðŸšš Delivery Platform&#39;,
+      type: &#39;grid&#39;,
+      url: &#39;#&#39;,
+      cleanUrl: &#39;gofuelly.com&#39;,
+      image: &#39;./gofuelly.webp&#39;,
+      headline: &#39;Fuel Delivery Platform&#39;,
+      description: &#39;A fuel delivery platform designed to streamline fuel ordering and management through a user-friendly digital experience.&#39;,
+      challenge: &#39;Streamlining a complex ordering process for on-demand fuel delivery.&#39;,
+      solution: &#39;Developed a custom PHP/MySQL backend with a clean HTML/JS frontend for seamless ordering.&#39;,
+      deliverables: [&#39;Fuel Ordering System&#39;, &#39;Database Management&#39;, &#39;Responsive Frontend&#39;],
+      tags: [&#39;PHP&#39;, &#39;HTML&#39;, &#39;CSS&#39;, &#39;JavaScript&#39;, &#39;MySQL&#39;]
+    }
+  ];
+</code></pre>
+<h2>2. Work History (Experience)</h2>
+<pre><code class="language-javascript">const workHistory = [
+    {
+      role: &#39;Executive Web Developer&#39;,
+      company: &#39;Trizone Communications&#39;,
+      duration: &#39;Nov 2024 - Present&#39;,
+      location: &#39;Vadodara, India&#39;,
+      icon: Briefcase,
+      color: &#39;#ef4444&#39;,
+      points: [
+        &#39;Develop and manage WordPress websites for clients across multiple industries.&#39;,
+        &#39;Build custom Elementor layouts and interactive user interfaces.&#39;,
+        &#39;Implement SEO improvements and website optimization strategies.&#39;,
+        &#39;Integrate third-party APIs, payment gateways, and marketing tools.&#39;,
+        &#39;Ensure website security, performance, and scalability.&#39;
+      ],
+      tags: [&#39;WordPress&#39;, &#39;Elementor&#39;, &#39;SEO&#39;, &#39;API&#39;]
+    },
+    {
+      role: &#39;WordPress Developer&#39;,
+      company: &#39;SNT Solutions&#39;,
+      duration: &#39;Dec 2023 - Nov 2024&#39;,
+      location: &#39;Vadodara, India&#39;,
+      icon: Briefcase,
+      color: &#39;#3b82f6&#39;,
+      points: [
+        &#39;Developed custom WordPress websites and landing pages.&#39;,
+        &#39;Customized themes and plugins according to client requirements.&#39;,
+        &#39;Improved website performance and mobile responsiveness.&#39;,
+        &#39;Worked with HTML, CSS, JavaScript, PHP, and Elementor.&#39;
+      ],
+      tags: [&#39;WordPress&#39;, &#39;PHP&#39;, &#39;Performance&#39;, &#39;HTML/CSS/JS&#39;]
+    },
+    {
+      role: &#39;Freelance Web Developer&#39;,
+      company: &#39;Freelance&#39;,
+      duration: &#39;2023 - Present&#39;,
+      location: &#39;Remote&#39;,
+      icon: Briefcase,
+      color: &#39;#10b981&#39;,
+      points: [
+        &#39;Delivered websites for healthcare, manufacturing, eCommerce, and business clients.&#39;,
+        &#39;Managed complete project lifecycles from design implementation to deployment.&#39;,
+        &#39;Provided SEO optimization and website maintenance services.&#39;
+      ],
+      tags: [&#39;Healthcare&#39;, &#39;eCommerce&#39;, &#39;Manufacturing&#39;, &#39;Maintenance&#39;]
+    }
+  ];
+</code></pre>
+<h2>3. Education History</h2>
+<pre><code class="language-javascript">const educationHistory = [
+    {
+      role: &#39;Bachelor of Technology (Information Technology)&#39;,
+      company: &#39;Parul University&#39;,
+      duration: &#39;2020 - 2024&#39;,
+      location: &#39;Vadodara, India&#39;,
+      icon: GraduationCap,
+      color: &#39;#10b981&#39;,
+      points: [
+        &#39;Graduated with a Bachelor\&#39;s degree in Information Technology.&#39;,
+        &#39;Focused on software development, web technologies, database systems, and programming fundamentals.&#39;
+      ],
+      tags: [&#39;Information Technology&#39;, &#39;Software Development&#39;, &#39;Web Technologies&#39;]
+    }
+  ];
+</code></pre>
+<h2>4. Skills &amp; Categories</h2>
+<pre><code class="language-javascript">const skillCategories = [
+    {
+      category: &#39;Frontend&#39;,
+      badge: &#39;Client Stack&#39;,
+      icon: LayoutTemplate,
+      color: &#39;#f87171&#39;,
+      desc: &#39;Pixel-perfect, responsive interfaces with silky-smooth animations.&#39;,
+      skills: [
+        { name: &#39;HTML5&#39;, level: &#39;Expert&#39; },
+        { name: &#39;CSS3&#39;, level: &#39;Expert&#39; },
+        { name: &#39;JavaScript&#39;, level: &#39;Advanced&#39; },
+        { name: &#39;React.js&#39;, level: &#39;Intermediate&#39; },
+        { name: &#39;Bootstrap&#39;, level: &#39;Expert&#39; },
+        { name: &#39;Tailwind CSS&#39;, level: &#39;Expert&#39; },
+        { name: &#39;Responsive Design&#39;, level: &#39;Expert&#39; },
+      ]
+    },
+    {
+      category: &#39;CMS &amp; Frameworks&#39;,
+      badge: &#39;Core Specialization&#39;,
+      icon: ShoppingCart,
+      color: &#39;#ef4444&#39;,
+      desc: &#39;Building blazing-fast storefronts and CMS-driven platforms that convert.&#39;,
+      skills: [
+        { name: &#39;WordPress&#39;, level: &#39;Expert&#39; },
+        { name: &#39;Elementor&#39;, level: &#39;Expert&#39; },
+        { name: &#39;WooCommerce&#39;, level: &#39;Expert&#39; },
+        { name: &#39;ACF&#39;, level: &#39;Expert&#39; },
+        { name: &#39;PHP&#39;, level: &#39;Advanced&#39; },
+      ]
+    },
+    {
+      category: &#39;SEO &amp; Analytics&#39;,
+      badge: &#39;Search Engine Growth&#39;,
+      icon: Zap,
+      color: &#39;#10b981&#39;,
+      desc: &#39;Optimizing for Core Web Vitals, organic traffic, and conversion.&#39;,
+      skills: [
+        { name: &#39;Technical SEO&#39;, level: &#39;Expert&#39; },
+        { name: &#39;On-Page SEO&#39;, level: &#39;Expert&#39; },
+        { name: &#39;Google Search Console&#39;, level: &#39;Expert&#39; },
+        { name: &#39;Google Analytics&#39;, level: &#39;Expert&#39; },
+        { name: &#39;Microsoft Clarity&#39;, level: &#39;Advanced&#39; },
+        { name: &#39;Schema Markup&#39;, level: &#39;Expert&#39; },
+      ]
+    },
+    {
+      category: &#39;Tools&#39;,
+      badge: &#39;DevOps &amp; Workflow&#39;,
+      icon: Database,
+      color: &#39;#a855f7&#39;,
+      desc: &#39;Modern tooling for efficient development and deployment.&#39;,
+      skills: [
+        { name: &#39;GitHub&#39;, level: &#39;Advanced&#39; },
+        { name: &#39;Figma&#39;, level: &#39;Intermediate&#39; },
+        { name: &#39;VS Code&#39;, level: &#39;Expert&#39; },
+        { name: &#39;Hostinger&#39;, level: &#39;Expert&#39; },
+        { name: &#39;cPanel&#39;, level: &#39;Expert&#39; },
+        { name: &#39;Cloudflare&#39;, level: &#39;Advanced&#39; },
+      ]
+    }
+  ];
+</code></pre>
+<h2>5. Services Provided</h2>
+<pre><code class="language-javascript">const services = [
+    {
+      title: &#39;Custom Web &amp; Shopify&#39;,
+      desc: &#39;Custom, high-performing websites built with modern technologies like React, Shopify Liquid, Node.js, and modern tech to ensure scalable digital solutions.&#39;,
+      icon: LayoutTemplate,
+      color: &#39;#3b82f6&#39;
+    },
+    {
+      title: &#39;WordPress Solutions&#39;,
+      desc: &#39;Expert WordPress development, custom Elementor layouts, theme customization, and plugin integration for tailored business needs.&#39;,
+      icon: Layers,
+      color: &#39;#ef4444&#39;
+    },
+    {
+      title: &#39;SEO Specialist&#39;,
+      desc: &#39;On-page and technical SEO optimization, Core Web Vitals improvements, and schema implementations to rank higher on Google.&#39;,
+      icon: Globe,
+      color: &#39;#10b981&#39;
+    },
+    {
+      title: &#39;Performance Optimization&#39;,
+      desc: &#39;Speeding up slow websites, caching strategies, and asset minification for sub-second page loads and better conversion rates.&#39;,
+      icon: Zap,
+      color: &#39;#f59e0b&#39;
+    },
+    {
+      title: &#39;UI/UX Enhancement&#39;,
+      desc: &#39;Designing intuitive, user-friendly interfaces with a focus on mobile-first responsiveness and frictionless user journeys.&#39;,
+      icon: Eye,
+      color: &#39;#8b5cf6&#39;
+    },
+    {
+      title: &#39;Website Maintenance&#39;,
+      desc: &#39;Ongoing support, security audits, backups, and regular updates to keep your digital presence secure and running smoothly.&#39;,
+      icon: ShieldCheck,
+      color: &#39;#0ea5e9&#39;
+    }
+  ];
+</code></pre>
+<h2>6. ROI &amp; Benefits</h2>
+<pre><code class="language-javascript">const benefits = [
+    {
+      title: &#39;Lightning Fast Load Speeds&#39;,
+      value: &#39;&lt; 1s&#39;,
+      numericVal: 96,
+      benchmark: &#39;Core Web Vitals Pass&#39;,
+      spec: &#39;LCP 0.78s Ã¢â‚¬Â¢ Speed Index 98&#39;,
+      barPercent: 96,
+      desc: &#39;Engineered for sub-second page loads to eliminate visitor bounce rates and boost Google search ranking signals.&#39;,
+      icon: Zap,
+      color: &#39;#ef4444&#39;,
+      tag: &#39;96% FASTER&#39;
+    },
+    {
+      title: &#39;Flawless Technical SEO&#39;,
+      value: &#39;100/100&#39;,
+      numericVal: 100,
+      benchmark: &#39;Lighthouse Score&#39;,
+      spec: &#39;Schema Ã¢â‚¬Â¢ JSON-LD Ã¢â‚¬Â¢ Meta&#39;,
+      barPercent: 100,
+      desc: &#39;Semantic HTML5 structure, automated OpenGraph tags, rich snippets, and optimized crawl paths for top organic SERP rank.&#39;,
+      icon: Globe,
+      color: &#39;#10b981&#39;,
+      tag: &#39;PERFECT SCORE&#39;
+    },
+    {
+      title: &#39;Mobile-First Conversions&#39;,
+      value: &#39;2.4x&#39;,
+      numericVal: 94,
+      benchmark: &#39;Lead Gen Surge&#39;,
+      spec: &#39;Touch UX Ã¢â‚¬Â¢ Frictionless Forms&#39;,
+      barPercent: 94,
+      desc: &#39;Thumb-friendly touch targets, streamlined inquiry flows, and fluid layouts designed to turn casual visitors into paying clients.&#39;,
+      icon: LayoutTemplate,
+      color: &#39;#f8fafc&#39;,
+      tag: &#39;2.4Ãƒâ€” MORE LEADS&#39;
+    }
+  ];
+</code></pre>
+<h2>7. Frequently Asked Questions (faqs)</h2>
+<pre><code class="language-javascript">const faqs = [
+    {
+      q: &#39;Do you build custom WordPress themes or customize existing ones?&#39;,
+      a: &#39;I specialize in both! For maximum speed and bespoke branding, I build lightweight custom themes using clean PHP, Advanced Custom Fields (ACF), and semantic CSS. I can also customize existing themes or Elementor setups without introducing bloat.&#39;
+    },
+    {
+      q: &#39;How do you guarantee fast website load speeds and Core Web Vitals?&#39;,
+      a: &#39;I audit every site using Google PageSpeed Insights, implement server-level caching, optimize database queries, compress images to WebP formats, eliminate render-blocking CSS/JS, and ensure smooth sub-second load times.&#39;
+    },
+    {
+      q: &#39;Can you migrate or redesign our existing site without losing SEO rankings?&#39;,
+      a: &#39;Absolutely. I preserve all permalink structures, implement proper 301 redirects, maintain existing meta tags and schemas, and improve overall on-page technical SEO so your search visibility increases after redesign.&#39;
+    },
+    {
+      q: &#39;Do you develop e-commerce stores with WooCommerce and Shopify?&#39;,
+      a: &#39;Yes. I configure product catalogs, secure checkout gateways, automated customer emails, discount systems, and inventory tracking for both WooCommerce and Shopify.&#39;
+    }
+  ];
+</code></pre>
+<h2>8. Marquee Items (Tech Stack)</h2>
+<pre><code class="language-javascript">const MARQUEE_ITEMS = [
+  &#39;WordPress&#39;, &#39;React.js&#39;, &#39;SEO&#39;, &#39;Elementor&#39;, &#39;WooCommerce&#39;,
+  &#39;PHP&#39;, &#39;MySQL&#39;, &#39;HTML5&#39;, &#39;CSS3&#39;, &#39;Core Web Vitals&#39;,
+  &#39;Technical SEO&#39;, &#39;JavaScript&#39;, &#39;Responsive Design&#39;,
+  &#39;Bootstrap&#39;, &#39;Tailwind CSS&#39;, &#39;Git / GitHub&#39;, &#39;Hostinger&#39;, &#39;cPanel&#39;,
+];
+</code></pre>
+<h2>9. Marquee Items (Clients)</h2>
+<pre><code class="language-javascript">const CLIENT_ITEMS = [
+  &#39;Trizone&#39;, &#39;SNT Solutions&#39;, &#39;DWA24 Medical&#39;, &#39;The Moment Massage&#39;, 
+  &#39;Satyam CNC&#39;, &#39;Squadra Lupo&#39;, &#39;GoFuelly&#39;, &#39;Aadicura Hospital&#39;
+];
+</code></pre>
+<h2>10. Navigation Menu Items</h2>
+<pre><code class="language-javascript">const navItems = [
+    { name: &#39;About&#39;, path: &#39;#about&#39; },
+    { name: &#39;Experience&#39;, path: &#39;#experience&#39; },
+    { name: &#39;Skills&#39;, path: &#39;#skills&#39; },
+    { name: &#39;Projects&#39;, path: &#39;#work&#39; },
+    { name: &#39;FAQ&#39;, path: &#39;#faq&#39; },
+    { name: &#39;Contact&#39;, path: &#39;#contact&#39; }
+  ];
+</code></pre>
+
+</body>
+</html>
