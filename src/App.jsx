@@ -1857,3 +1857,5 @@ export default function App() {
     </div>
   );
 }
+
+// Trigger Vercel rebuild
