@@ -206,26 +206,7 @@ export default function ProjectsOptionTwo({ projects }) {
                     <span key={i}>{tag}</span>
                   ))}
                 </div>
-                <div style={{ marginTop: '20px' }}>
-                  <a 
-                    href={project.url !== '#' ? project.url : '#'} 
-                    target={project.url !== '#' ? "_blank" : "_self"}
-                    rel="noopener noreferrer" 
-                    className="btn-primary" 
-                    style={{ padding: '8px 16px', fontSize: '0.85rem', display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '100px', textDecoration: 'none', transition: 'all 0.3s ease' }}
-                    onClick={(e) => {
-                      if (project.url === '#') {
-                        e.preventDefault();
-                        alert('This project is currently archived or restricted.');
-                      }
-                    }}
-                    onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(239, 68, 68, 0.2)'; }}
-                    onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(239, 68, 68, 0.1)'; }}
-                  >
-                    {project.url !== '#' ? 'Visit Website' : 'Archived Project'} 
-                    <ExternalLink size={14} />
-                  </a>
-                </div>
+
               </div>
             </article>
           ))}

@@ -202,22 +202,7 @@ export default function PortfolioPage({ projects, onBack }) {
                     </div>
                   )}
 
-                  {/* Link / URL */}
-                  <a 
-                    href={project.url !== '#' ? project.url : `https://${project.cleanUrl}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-                      background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444',
-                      padding: '12px', borderRadius: '8px', textDecoration: 'none',
-                      fontWeight: '600', fontSize: '14px', transition: 'background 0.2s'
-                    }}
-                    onMouseOver={(e) => e.currentTarget.style.background = 'rgba(65, 217, 255, 0.2)'}
-                    onMouseOut={(e) => e.currentTarget.style.background = 'rgba(239, 68, 68, 0.1)'}
-                  >
-                    Visit Website <ExternalLink size={16} />
-                  </a>
+
                 </div>
               </motion.article>
             ))}
