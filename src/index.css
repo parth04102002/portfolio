@@ -2493,9 +2493,9 @@ a {
 }
 
 
-.hero-title { min-height: 3.8em !important; display: flex; flex-direction: column; justify-content: flex-start; }
 
-.hero-title { min-height: 3.8em !important; display: block; }
+
+
 
 
 
@@ -2979,3 +2979,7 @@ a {
   .p3d-slider-wrapper::before,
   .p3d-slider-wrapper::after { width: 180px; height: 180px; filter: blur(50px); }
 }
+
+/* --- Accessibility Focus --- */
+*:focus-visible { outline: 2px solid #ef4444 !important; outline-offset: 3px !important; }
+

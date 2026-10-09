@@ -1,11 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 const ToolkitSection = () => {
   return (
     <section className="toolkit-section">
       <style>{`
         .toolkit-section {
+          overflow-x: hidden;
           background: linear-gradient(to bottom, transparent 0%, rgba(15, 23, 42, 0.95) 15%, rgba(15, 23, 42, 0.95) 85%, transparent 100%);
           border-top: 1px solid rgba(255,255,255,0.02);
           border-bottom: 1px solid rgba(255,255,255,0.02);
@@ -206,6 +207,7 @@ const ToolkitSection = () => {
 
         @media (max-width: 768px) {
           .toolkit-section {
+          overflow-x: hidden;
             padding: 60px 5%;
           }
           .center-sphere {
@@ -265,13 +267,13 @@ const ToolkitSection = () => {
             {/* Outer Ring Tool Pills */}
             {[
               { label: 'CSS3', top: '18%', left: '18%', delay: 0 },
-              { label: 'HTML5', top: '-2%', left: '50%', delay: 0.5 },
+              { label: 'HTML5', top: '8%', left: '50%', delay: 0.5 },
               { label: 'Elementor', top: '18%', left: '82%', delay: 1 },
-              { label: 'WordPress', top: '50%', left: '100%', delay: 1.5 },
+              { label: 'WordPress', top: '50%', left: '90%', delay: 1.5 },
               { label: 'Shopify', top: '82%', left: '85%', delay: 2 },
-              { label: 'PHP', top: '98%', left: '55%', delay: 2.5 },
+              { label: 'PHP', top: '92%', left: '55%', delay: 2.5 },
               { label: 'SEO', top: '85%', left: '15%', delay: 3 },
-              { label: 'React JS', top: '50%', left: '2%', delay: 3.5 },
+              { label: 'React JS', top: '50%', left: '10%', delay: 3.5 },
             ].map((tool, idx) => (
               <motion.div 
                 key={idx} 

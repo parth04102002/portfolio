@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, ExternalLink, Code2, ShieldCheck, Database, LayoutTemplate, Layers, Globe } from 'lucide-react';
 import { ContactSection } from './App';
 
@@ -177,6 +177,20 @@ export default function PortfolioPage({ projects, onBack }) {
                     {project.description}
                   </p>
                   
+                  {project.challenge && (
+                    <div style={{ marginBottom: '16px', background: 'rgba(255,255,255,0.02)', padding: '12px', borderRadius: '8px', borderLeft: '3px solid #ef4444' }}>
+                      <div style={{ fontSize: '12px', color: '#9da2b2', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px' }}>The Problem</div>
+                      <div style={{ fontSize: '14px', color: '#e2e8f0', lineHeight: '1.5' }}>{project.challenge}</div>
+                    </div>
+                  )}
+
+                  {project.solution && (
+                    <div style={{ marginBottom: '20px', background: 'rgba(255,255,255,0.02)', padding: '12px', borderRadius: '8px', borderLeft: '3px solid #10b981' }}>
+                      <div style={{ fontSize: '12px', color: '#9da2b2', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px' }}>The Solution</div>
+                      <div style={{ fontSize: '14px', color: '#e2e8f0', lineHeight: '1.5' }}>{project.solution}</div>
+                    </div>
+                  )}
+
                   {/* Tags */}
                   {project.tags && (
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '24px' }}>

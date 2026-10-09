@@ -12,7 +12,7 @@ import 'swiper/css/grid';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-creative';
 
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { 
   Zap, LayoutTemplate, ShoppingCart, ExternalLink, Mail, ArrowRight, 
   Briefcase, Code2, GraduationCap, Phone, MapPin, CheckCircle2, 
@@ -28,9 +28,9 @@ const allProjects = [
       title: 'DWA24 Medical Store',
       category: 'Healthcare / eCommerce',
       badge: 'Medical Store',
-      stat: 'Ã°Å¸â€ºâ€™ E-Commerce Platform',
+      stat: '🛒 E-Commerce Platform',
       type: 'featured',
-      url: '#',
+      url: 'https://dwa24.com/',
       cleanUrl: 'dwa24.com',
       image: './dwa24.webp',
       headline: 'Online Medical Store',
@@ -45,10 +45,10 @@ const allProjects = [
       title: 'The Moment Massage',
       category: 'Wellness & Spa',
       badge: 'Luxury Wellness',
-      stat: 'Ã°Å¸â€œâ€¦ Direct Booking Engine',
+      stat: '📅 Direct Booking Engine',
       type: 'featured',
       url: 'https://themomentmassage.com/',
-      cleanUrl: 'https://themomentmassage.com',
+      cleanUrl: 'themomentmassage.com',
       image: './themoment.webp',
       headline: 'Luxury Spa & Wellness Sanctuary',
       description: 'A premium wellness website designed to showcase services, improve customer engagement, and simplify appointment inquiries through an elegant user experience.',
@@ -62,10 +62,10 @@ const allProjects = [
       title: 'Satyam CNC & SPM Machines',
       category: 'Manufacturing',
       badge: 'Precision Engineering',
-      stat: 'Ã¢Å¡â„¢Ã¯Â¸Â Industrial Catalog',
+      stat: '⚙️ Industrial Catalog',
       type: 'grid',
       url: 'https://sabvix.com/satyam/',
-      cleanUrl: 'https://sabvix.com/satyam',
+      cleanUrl: 'sabvix.com/satyam',
       image: './satyam.webp',
       headline: 'Precision Industrial CNC & SPM Machine Manufacturing Portal',
       description: 'An industrial website highlighting CNC machines, automation solutions, and manufacturing capabilities with a focus on lead generation and professional branding.',
@@ -79,10 +79,10 @@ const allProjects = [
       title: 'Squadra Lupo',
       category: 'Corporate Website',
       badge: 'Premium Business',
-      stat: 'Ã°Å¸â€™Å½ Premium Design',
+      stat: '💎 Premium Design',
       type: 'grid',
       url: 'https://www.squadralupo.com/',
-      cleanUrl: 'https://squadralupo.com',
+      cleanUrl: 'squadralupo.com',
       image: './squadra.webp',
       headline: 'Corporate Business Website',
       description: 'A modern business website featuring premium design, responsive layouts, advanced animations, and performance-focused development.',
@@ -96,7 +96,7 @@ const allProjects = [
       title: 'GoFuelly',
       category: 'On-Demand Services',
       badge: 'Fuel Delivery',
-      stat: 'Ã°Å¸Å¡Å¡ Delivery Platform',
+      stat: '🚚 Delivery Platform',
       type: 'grid',
       url: '#',
       cleanUrl: 'gofuelly.com',
@@ -132,7 +132,7 @@ const staggerContainer = {
 };
 
 
-/* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Scroll-shrink hook for Navbar ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
+/* --- Scroll-shrink hook for Navbar --- */
 function useScrollShrink(threshold = 60) {
   const [shrunk, setShrunk] = useState(false);
   useEffect(() => {
@@ -143,7 +143,7 @@ function useScrollShrink(threshold = 60) {
   return shrunk;
 }
 
-/* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Magnetic button hook ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
+/* --- Magnetic button hook --- */
 function useMagnetic(strength = 0.35) {
   const ref = useRef(null);
   const handleMove = useCallback((e) => {
@@ -251,7 +251,7 @@ function LargeTypewriterRow({ word, index, subtitle, description, metrics, isOpe
       tabIndex={0}
       role="button"
       aria-expanded={isOpen}
-      aria-label={`${word} ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ${subtitle}`}
+      aria-label={`${word} — ${subtitle}`}
       onKeyDown={(e) => e.key === 'Enter' && onToggle()}
     >
       {/* Main row */}
@@ -338,7 +338,7 @@ function TypographicImpact() {
       description: 'Engineered to withstand massive traffic spikes without a sweat. From resilient database indexing to global CDN deployments, your platform is built to handle exponential growth seamlessly.',
       metrics: [
         { value: '99.9%', label: 'Uptime' },
-        { value: 'ÃƒÂ¢Ã‹â€ Ã…Â¾', label: 'Scale Ready' },
+        { value: "∞", label: "Scale Ready" },
         { value: 'Future', label: 'Proof' },
       ]
     }
@@ -575,17 +575,17 @@ function Hero() {
           <motion.p 
             variants={slideUp}
             className="hero-desc"
-            style={{ marginBottom: '2rem', maxWidth: '580px' }}
+            style={{ marginBottom: '2.5rem', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.6' }}
           >
-            Specializing in high-performance WordPress themes, seamless WooCommerce & Shopify stores, and responsive frontends that transform visitors into paying clients.
+            I build lightning-fast, high-converting digital experiences. Specializing in React, WordPress, and modern web architectures, I turn complex business challenges into elegant, scalable solutions that drive real growth and retention.
           </motion.p>
 
           <motion.div variants={slideUp} style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem' }}>
-            <a href="#work" className="btn-primary">
-              Explore 30+ Client Sites <ArrowRight size={18} />
+            <a href="#work" className="btn-primary" style={{ padding: '12px 24px', fontSize: '1rem' }}>
+              View Case Studies <ArrowRight size={18} />
             </a>
-            <a href="https://wa.me/917567959878" target="_blank" rel="noreferrer" className="btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <MessageSquare size={18} /> Chat on WhatsApp
+            <a href="#contact" className="btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 24px', fontSize: '1rem' }}>
+              <MessageSquare size={18} /> Let's Start a Project
             </a>
             
           </motion.div>
@@ -657,85 +657,6 @@ function Hero() {
 }
 
 /* --- Experience & Education (Two-Column Symmetrical Architecture) --- */
-function ExperienceAndEducation() {
-  const workHistory = [
-    {
-      role: 'Executive Web Developer',
-      company: 'Trizone Communications',
-      duration: 'Nov 2024 - Present',
-      location: 'Vadodara, India',
-      icon: Briefcase,
-      color: '#ef4444',
-      points: [
-        'Develop and manage WordPress websites for clients across multiple industries.',
-        'Build custom Elementor layouts and interactive user interfaces.',
-        'Implement SEO improvements and website optimization strategies.',
-        'Integrate third-party APIs, payment gateways, and marketing tools.',
-        'Ensure website security, performance, and scalability.'
-      ],
-      tags: ['WordPress', 'Elementor', 'SEO', 'API']
-    },
-    {
-      role: 'WordPress Developer',
-      company: 'SNT Solutions',
-      duration: 'Dec 2023 - Nov 2024',
-      location: 'Vadodara, India',
-      icon: Briefcase,
-      color: '#3b82f6',
-      points: [
-        'Developed custom WordPress websites and landing pages.',
-        'Customized themes and plugins according to client requirements.',
-        'Improved website performance and mobile responsiveness.',
-        'Worked with HTML, CSS, JavaScript, PHP, and Elementor.'
-      ],
-      tags: ['WordPress', 'PHP', 'Performance', 'HTML/CSS/JS']
-    },
-    {
-      role: 'Freelance Web Developer',
-      company: 'Freelance',
-      duration: '2023 - Present',
-      location: 'Remote',
-      icon: Briefcase,
-      color: '#10b981',
-      points: [
-        'Delivered websites for healthcare, manufacturing, eCommerce, and business clients.',
-        'Managed complete project lifecycles from design implementation to deployment.',
-        'Provided SEO optimization and website maintenance services.'
-      ],
-      tags: ['Healthcare', 'eCommerce', 'Manufacturing', 'Maintenance']
-    }
-  ];
-
-  const educationHistory = [
-    {
-      role: 'Bachelor of Technology (Information Technology)',
-      company: 'Parul University',
-      duration: '2020 - 2024',
-      location: 'Vadodara, India',
-      icon: GraduationCap,
-      color: '#10b981',
-      points: [
-        'Graduated with a Bachelor\'s degree in Information Technology.',
-        'Focused on software development, web technologies, database systems, and programming fundamentals.'
-      ],
-      tags: ['Information Technology', 'Software Development', 'Web Technologies']
-    }
-  ];
-
-  return (
-    <section id="experience" className="container" style={{ paddingTop: 'clamp(4rem, 6vw, 6rem)', paddingBottom: 'clamp(4rem, 6vw, 6rem)' }}>
-      <div className="section-header">
-        <span className="section-tag">Career & Credentials</span>
-        <h2 className="section-title">Work Experience & <span className="gradient-text">Education</span></h2>
-        <p className="section-desc">
-          A track record of delivering production-ready web solutions, backed by formal IT engineering training.
-        </p>
-      </div>
-
-      <TimelineSlider items={[...workHistory, ...educationHistory]} />
-    </section>
-  );
-}
 
 /* --- Skills Matrix (Modern Interactive Tech Arsenal) --- */
 function SkillsMatrix() {
@@ -925,418 +846,6 @@ function TechMarquee() {
 }
 
 
-function Projects() {
-  const [filter, setFilter] = useState('All');
-  const [selectedProject, setSelectedProject] = useState(null);
-
-  
-
-
-
-  const categories = [
-    { label: 'All', count: allProjects.length },
-    { label: 'Healthcare', count: 1 },
-    { label: 'Healthcare / eCommerce', count: 1 },
-    { label: 'Wellness & Spa', count: 1 },
-    { label: 'Manufacturing', count: 1 },
-    { label: 'Corporate Website', count: 1 },
-    { label: 'On-Demand Services', count: 1 }
-  ];
-
-  const filteredProjects = filter === 'All' 
-    ? allProjects 
-    : allProjects.filter(p => p.category === filter);
-
-  return (
-    <section id="work" className="container" style={{ paddingTop: 'clamp(3.5rem, 7vw, 7rem)', paddingBottom: 'clamp(3.5rem, 7vw, 7rem)' }}>
-      <div className="section-header">
-        <span className="section-tag">Proven Results</span>
-        <h2 className="section-title">Featured <span className="gradient-text">Client Works</span></h2>
-        <p className="section-desc">
-          Real production websites engineered for luxury clinics, wellness centers, industrial exporters, and digital agencies.
-        </p>
-      </div>
-
-      {/* Social Proof Stats Strip */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        gap: 'clamp(1.5rem, 4vw, 3.5rem)',
-        flexWrap: 'wrap',
-        marginBottom: '2.5rem',
-        padding: '1.5rem 2rem',
-        background: 'rgba(239, 68, 68, 0.04)',
-        border: '1px solid rgba(239, 68, 68, 0.15)',
-        borderRadius: '18px',
-        
-      }}>
-        {[
-          { label: 'Live Websites', val: '30+', icon: Globe },
-          { label: 'Industries Served', val: '4', icon: Layers },
-          { label: 'Avg PageSpeed', val: '97', icon: Zap },
-          { label: 'Clients Satisfied', val: '100%', icon: CheckCircle2 },
-        ].map((s, i) => {
-          const Icon = s.icon;
-          return (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Icon size={18} color="#ef4444" />
-              <span style={{ fontSize: 'clamp(1.35rem, 3vw, 1.75rem)', fontWeight: 800, color: '#f8fafc', letterSpacing: '-0.02em' }}>{s.val}</span>
-              <span style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: 500 }}>{s.label}</span>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Filter Tabs with Live Project Counts */}
-      <div className="filter-tabs">
-        {categories.map((cat, i) => (
-          <button 
-            key={i}
-            className={`filter-btn ${filter === cat.label ? 'active' : ''}`}
-            onClick={() => setFilter(cat.label)}
-          >
-            <span>{cat.label}</span>
-            <span className="filter-count">{cat.count}</span>
-          </button>
-        ))}
-      </div>
-
-      {/* Flagship Showcases (Elegance Clinic & The Moment Massage) */}
-      {(filter === 'All' || filter === 'Healthcare & Aesthetics') && (
-        <div style={{ marginBottom: '4rem' }}>
-          {/* Elegance Clinic */}
-          <div className="featured-showcase-row">
-            <div className="glow-bg" style={{ right: '-15%', top: '10%' }}></div>
-            
-            <motion.div 
-              className="featured-info"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={slideUp}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.8rem' }}>
-                <span className="mono-tag" style={{ color: '#ef4444', fontWeight: 700 }}>FLAGSHIP E-COMMERCE</span>
-                <span style={{ fontSize: '0.8rem', background: 'rgba(239, 68, 68, 0.12)', color: '#67e8f9', padding: '3px 10px', borderRadius: '20px', border: '1px solid rgba(239, 68, 68, 0.25)' }}>
-                  Online Store
-                </span>
-              </div>
-
-              <h3 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 800, marginBottom: '1rem', color: '#f8fafc', letterSpacing: '-0.5px' }}>
-                DWA24 Medical Store
-              </h3>
-              <p style={{ color: '#94a3b8', fontSize: 'clamp(0.95rem, 2vw, 1.05rem)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-                An online medical store engineered with WooCommerce. The platform was designed to manage thousands of medical products, ensure secure shopping experiences, and provide seamless user journeys across all devices.
-              </p>
-
-              <div className="featured-checklist-grid">
-                {['Custom WooCommerce Theme', 'Inventory Management', 'Secure Checkout Funnel', 'High PageSpeed Score'].map((item, idx) => (
-                  <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#cbd5e1' }}>
-                    <CheckCircle2 size={16} color="#ef4444" /> {item}
-                  </div>
-                ))}
-              </div>
-
-              <div className="project-tags" style={{ marginBottom: '2rem' }}>
-                <span>WordPress</span>
-                <span>WooCommerce</span>
-                <span>PHP</span>
-                <span>Responsive</span>
-              </div>
-
-              <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }}>
-                <a href="https://dwa24.com/" target="_blank" rel="noreferrer" className="btn-primary">
-                  Launch Live Site <ExternalLink size={17} />
-                </a>
-                <button 
-                  className="btn-outline" 
-                  onClick={() => setSelectedProject(allProjects[0])}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
-                >
-                  <Eye size={17} /> View Case Study
-                </button>
-              </div>
-            </motion.div>
-
-                        <motion.div 
-              className="featured-image-container"
-              initial={{ opacity: 0, scale: 0.95, x: 50 }}
-              whileInView={{ opacity: 1, scale: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="browser-frame">
-                <div className="browser-header">
-                  <div className="browser-dots">
-                    <div className="browser-dot" style={{ background: '#ef4444' }}></div>
-                    <div className="browser-dot" style={{ background: '#f59e0b' }}></div>
-                    <div className="browser-dot" style={{ background: '#10b981' }}></div>
-                  </div>
-                </div>
-                <img src={allProjects[0].image} alt={allProjects[0].title} style={{ width: '100%', display: 'block' }} />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* The Moment Massage */}
-          <div className="featured-showcase-row reverse">
-            <div className="glow-bg" style={{ left: '-15%', top: '10%' }}></div>
-            
-            <motion.div 
-              className="featured-info"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={slideUp}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.8rem' }}>
-                <span className="mono-tag" style={{ color: '#f8fafc', fontWeight: 700 }}>LUXURY WELLNESS PORTAL</span>
-                <span style={{ fontSize: '0.8rem', background: 'rgba(248, 250, 252, 0.12)', color: '#93c5fd', padding: '3px 10px', borderRadius: '20px', border: '1px solid rgba(248, 250, 252, 0.25)' }}>
-                  Spa & Retreat
-                </span>
-              </div>
-
-              <h3 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 800, marginBottom: '1rem', color: '#f8fafc', letterSpacing: '-0.5px' }}>
-                The Moment Massage
-              </h3>
-              <p style={{ color: '#94a3b8', fontSize: 'clamp(0.95rem, 2vw, 1.05rem)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-                A luxury wellness and spa center website engineered with serene organic aesthetics, categorized therapy menus, and streamlined reservation features for seamless appointment booking.
-              </p>
-
-              <div className="featured-checklist-grid">
-                {['Direct Spa Reservation Form', 'Zen Organic UI Aesthetics', 'Mobile First Navigation', 'SEO Structured Data'].map((item, idx) => (
-                  <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#cbd5e1' }}>
-                    <CheckCircle2 size={16} color="#f8fafc" /> {item}
-                  </div>
-                ))}
-              </div>
-
-              <div className="project-tags" style={{ marginBottom: '2rem' }}>
-                <span>WordPress</span>
-                <span>Spa & Wellness</span>
-                <span>Booking System</span>
-                <span>Custom UI</span>
-              </div>
-
-              <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }}>
-                <a href="https://themomentmassage.com/" target="_blank" rel="noreferrer" className="btn-primary">
-                  Launch Live Site <ExternalLink size={17} />
-                </a>
-                <button 
-                  className="btn-outline" 
-                  onClick={() => setSelectedProject(allProjects[1])}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
-                >
-                  <Eye size={17} /> View Case Study
-                </button>
-              </div>
-            </motion.div>
-
-                        <motion.div 
-              className="featured-image-container"
-              initial={{ opacity: 0, scale: 0.95, x: -50 }}
-              whileInView={{ opacity: 1, scale: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="browser-frame">
-                <div className="browser-header">
-                  <div className="browser-dots">
-                    <div className="browser-dot" style={{ background: '#ef4444' }}></div>
-                    <div className="browser-dot" style={{ background: '#f59e0b' }}></div>
-                    <div className="browser-dot" style={{ background: '#10b981' }}></div>
-                  </div>
-                </div>
-                <img src={allProjects[1].image} alt={allProjects[1].title} style={{ width: '100%', display: 'block' }} />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      )}
-
-      {/* Grid of All Client Works */}
-      <h3 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '2.5rem', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <Layers size={24} color="#ef4444" />
-        {filter === 'All' ? 'All Live Client Deliverables' : `${filter} Projects`}
-      </h3>
-
-      <Swiper
-        modules={[Pagination, Navigation, Autoplay, Grid]}
-        spaceBetween={30}
-        slidesPerView={1}
-        grabCursor={true}
-        loop={false}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
-        breakpoints={{
-          768: { slidesPerView: 2, spaceBetween: 30 },
-          1024: { slidesPerView: 2, spaceBetween: 30, centeredSlides: false }
-        }}
-        navigation
-        pagination={{ clickable: true, dynamicBullets: true }}
-        className="projects-slider"
-      >
-        {filteredProjects.map((project, cardIdx) => (
-          <SwiperSlide key={project.id} style={{ height: 'auto', display: 'flex' }}>
-            <motion.div 
-              className="project-card"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={slideUp}
-              whileHover={{ y: -8 }}
-              style={{ width: '100%' }}
-            >
-              <div className="project-card-stripe" style={{
-                background: cardIdx % 3 === 0 ? 'linear-gradient(90deg,#ef4444,#f8fafc)' :
-                            cardIdx % 3 === 1 ? 'linear-gradient(90deg,#10b981,#ef4444)' :
-                                               'linear-gradient(90deg,#8b5cf6,#f8fafc)'
-              }} />
-
-              <div className="browser-header">
-                <div className="browser-dots">
-                  <div className="browser-dot" style={{ background: '#ef4444' }}></div>
-                  <div className="browser-dot" style={{ background: '#f59e0b' }}></div>
-                  <div className="browser-dot" style={{ background: '#10b981' }}></div>
-                </div>
-                <div className="browser-url">
-                  <Lock size={10} color="#10b981" /> {project.cleanUrl}
-                </div>
-              </div>
-
-              <div 
-                className="project-thumb-wrap" 
-                onClick={() => setSelectedProject(project)}
-                role="button"
-                tabIndex={0}
-                aria-label={`Open case study for ${project.title}`}
-                onKeyDown={(e) => e.key === 'Enter' && setSelectedProject(project)}
-              >
-                <img src={project.image} alt={project.title} loading="lazy" />
-                
-                <div className="project-cat-pill">
-                  {project.badge}
-                </div>
-
-                <div className="floating-stat-badge">
-                  {project.stat}
-                </div>
-
-                <div className="project-thumb-overlay">
-                  <div className="project-thumb-overlay-inner">
-                    <Eye size={18} />
-                    <span>Explore Case Study</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="project-card-body">
-                <h4 className="project-card-title">
-                  {project.title}
-                </h4>
-                <div className="project-card-headline">
-                  {project.headline}
-                </div>
-                <p className="project-card-desc">
-                  {project.description}
-                </p>
-
-                <div className="project-tags" style={{ marginBottom: '1.25rem' }}>
-                  {project.tags.map((tag, tIdx) => (
-                    <span key={tIdx}>{tag}</span>
-                  ))}
-                </div>
-
-                <div style={{ display: 'flex', gap: '0.75rem', marginTop: 'auto', paddingTop: '10px' }}>
-                  <button 
-                    className="btn-outline" 
-                    onClick={() => setSelectedProject(project)}
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', padding: '8px 16px', flex: 1, justifyContent: 'center' }}
-                  >
-                    <Eye size={15} /> Case Study
-                  </button>
-                  <a 
-                    href={project.url} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="btn-primary" 
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', padding: '8px 16px', flex: 1, justifyContent: 'center' }}
-                  >
-                    Live <ExternalLink size={15} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      {/* Project Case Study Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div 
-            className="project-modal-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedProject(null)}
-            style={{
-              position: 'fixed', inset: 0, zIndex: 99999, background: 'rgba(3, 7, 18, 0.85)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px'
-            }}
-          >
-            <motion.div 
-              className="project-modal-content"
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              onClick={e => e.stopPropagation()}
-              style={{
-                background: '#0f172a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px', width: '100%', maxWidth: '800px', maxHeight: '90vh', overflowY: 'auto', position: 'relative'
-              }}
-            >
-              <button aria-label="Close Project Details" onClick={() => setSelectedProject(null)} style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 10 }}>
-                <X size={20} />
-              </button>
-              <img src={selectedProject.image} alt={selectedProject.title} style={{ width: '100%', height: 'auto', display: 'block', borderBottom: '1px solid rgba(255,255,255,0.1)' }} />
-              <div style={{ padding: '30px' }}>
-                <div style={{ display: 'flex', gap: '10px', marginBottom: '15px', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '0.8rem', background: 'rgba(239, 68, 68, 0.15)', color: '#ef4444', padding: '4px 12px', borderRadius: '20px', border: '1px solid rgba(239, 68, 68, 0.3)' }}>{selectedProject.badge}</span>
-                  <span style={{ fontSize: '0.8rem', background: 'rgba(248, 250, 252, 0.1)', color: '#94a3b8', padding: '4px 12px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.1)' }}>{selectedProject.stat}</span>
-                </div>
-                <h3 style={{ fontSize: '2rem', fontWeight: 800, color: '#f8fafc', marginBottom: '10px' }}>{selectedProject.title}</h3>
-                <p style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '25px' }}>{selectedProject.description}</p>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '30px' }}>
-                  <div>
-                    <h4 style={{ color: '#f8fafc', fontSize: '1.1rem', marginBottom: '5px' }}>The Challenge</h4>
-                    <p style={{ color: '#94a3b8' }}>{selectedProject.challenge}</p>
-                  </div>
-                  <div>
-                    <h4 style={{ color: '#f8fafc', fontSize: '1.1rem', marginBottom: '5px' }}>The Solution</h4>
-                    <p style={{ color: '#94a3b8' }}>{selectedProject.solution}</p>
-                  </div>
-                </div>
-
-                <h4 style={{ color: '#f8fafc', fontSize: '1.1rem', marginBottom: '10px' }}>Key Deliverables</h4>
-                <ul style={{ color: '#94a3b8', paddingLeft: '20px', marginBottom: '30px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  {selectedProject.deliverables.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-
-                <a href={selectedProject.url} target="_blank" rel="noreferrer" className="btn-primary" style={{ display: 'inline-flex', width: '100%', justifyContent: 'center' }}>
-                  Visit Live Project <ExternalLink size={18} />
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </section>
-  );
-}
 
 /* --- Client ROI Analysis Section (The Technical Advantage) --- */
 function ROIAnalysis() {
@@ -1346,7 +855,7 @@ function ROIAnalysis() {
       value: '< 1s',
       numericVal: 96,
       benchmark: 'Core Web Vitals Pass',
-      spec: 'LCP 0.78s ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Speed Index 98',
+      spec: "LCP 0.78s • Speed Index 98",
       barPercent: 96,
       desc: 'Engineered for sub-second page loads to eliminate visitor bounce rates and boost Google search ranking signals.',
       icon: Zap,
@@ -1358,7 +867,7 @@ function ROIAnalysis() {
       value: '100/100',
       numericVal: 100,
       benchmark: 'Lighthouse Score',
-      spec: 'Schema ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ JSON-LD ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Meta',
+      spec: "Schema • JSON-LD • Meta",
       barPercent: 100,
       desc: 'Semantic HTML5 structure, automated OpenGraph tags, rich snippets, and optimized crawl paths for top organic SERP rank.',
       icon: Globe,
@@ -1370,12 +879,12 @@ function ROIAnalysis() {
       value: '2.4x',
       numericVal: 94,
       benchmark: 'Lead Gen Surge',
-      spec: 'Touch UX ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Frictionless Forms',
+      spec: "Touch UX • Frictionless Forms",
       barPercent: 94,
       desc: 'Thumb-friendly touch targets, streamlined inquiry flows, and fluid layouts designed to turn casual visitors into paying clients.',
       icon: LayoutTemplate,
       color: '#f8fafc',
-      tag: '2.4ÃƒÆ’Ã¢â‚¬â€ MORE LEADS'
+      tag: "2.4× MORE LEADS",
     }
   ];
 
@@ -1395,7 +904,7 @@ function ROIAnalysis() {
             The Technical <span className="gradient-text">Advantage</span>
           </h2>
           <p className="section-desc">
-            Why clients choose to work with me ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â measurable performance, conversion funnels, and real digital growth.
+            Why clients choose to work with me — measurable performance, conversion funnels, and real digital growth.
           </p>
         </motion.div>
 
@@ -1570,13 +1079,39 @@ export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "6607c4c5-238f-4e43-8c6b-9a597d493616",
+          name: formState.fullName,
+          email: formState.email,
+          phone: formState.phone || "Not provided",
+          message: formState.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        console.error("Form submission failed:", result);
+        alert("Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please check your connection.");
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 1000);
+    }
   };
 
   return (
@@ -1796,7 +1331,7 @@ function Footer() {
             PARTH<span style={{ color: '#ef4444' }}>.</span>PARMAR
           </div>
           <p style={{ color: '#94a3b8', fontSize: '0.85rem' }}>
-            Professional WordPress & Web Solutions Developer ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Vadodara, Gujarat
+            Professional WordPress & Web Solutions Developer • Vadodara, Gujarat
           </p>
         </div>
 
@@ -1821,7 +1356,7 @@ function Footer() {
       </div>
 
       <div className="container" style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.04)', textAlign: 'center', color: '#64748b', fontSize: '0.8rem' }}>
-        Ãƒâ€šÃ‚Â© {new Date().getFullYear()} Parth Parmar. All Rights Reserved. Built with React & Vite.
+        &copy; {new Date().getFullYear()} Parth Parmar. All Rights Reserved. Built with React & Vite.
       </div>
     </footer>
   );
@@ -1838,79 +1373,6 @@ function GlobalBackground() {
   );
 }
 
-function TimelineSlider({ items = [] }) {
-  const scrollRef = React.useRef(null);
-
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const scrollAmount = direction === 'left' ? -420 : 420;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <div className="timeline-slider-wrapper" style={{ position: 'relative', marginTop: '2rem' }}>
-      <div className="slider-controls" style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', marginBottom: '1rem' }}>
-        <button onClick={() => scroll('left')} className="slider-btn" aria-label="Scroll Left">
-          <ArrowRight style={{ transform: 'rotate(180deg)' }} size={20} />
-        </button>
-        <button onClick={() => scroll('right')} className="slider-btn" aria-label="Scroll Right">
-          <ArrowRight size={20} />
-        </button>
-      </div>
-      
-      <div className="career-timeline-scroll hide-scrollbar" ref={scrollRef}>
-        {items.map((item, idx) => {
-          const Icon = item.icon;
-          const isEdu = item.icon === GraduationCap || item.role.includes('Bachelor');
-          return (
-            <motion.div 
-              key={idx} 
-              className="exp-card"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={slideUp}
-            >
-              <div className="exp-header">
-                <div className="exp-icon-box" style={{ color: item.color, borderColor: `${item.color}40`, background: `${item.color}15` }}>
-                  <Icon size={22} />
-                </div>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: isEdu ? '#10b981' : '#ef4444', padding: '4px 10px', borderRadius: '100px', background: isEdu ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)' }}>
-                    {isEdu ? 'Education' : 'Experience'}
-                  </span>
-                  <span className="exp-date-badge" style={{ color: item.color, borderColor: `${item.color}35`, background: `${item.color}10` }}>
-                    {item.duration}
-                  </span>
-                </div>
-              </div>
-
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.35rem', lineHeight: 1.3 }}>
-                {item.role}
-              </h4>
-              <div style={{ fontSize: '0.92rem', color: item.color, fontWeight: 600, marginBottom: '1.25rem' }}>
-                {item.company} <span style={{ color: '#64748b', fontWeight: 400 }}>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {item.location}</span>
-              </div>
-
-              <ul style={{ paddingLeft: '1.2rem', color: '#94a3b8', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem', flex: 1 }}>
-                {(item.points || []).map((pt, pIdx) => (
-                  <li key={pIdx} style={{ lineHeight: 1.6 }}>{pt}</li>
-                ))}
-              </ul>
-
-              <div className="project-tags" style={{ margin: 0 }}>
-                {(item.tags || []).map((tg, tIdx) => (
-                  <span key={tIdx} style={{ fontSize: '0.75rem', padding: '4px 12px' }}>{tg}</span>
-                ))}
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
 
 
 
@@ -2251,55 +1713,13 @@ function ServicesSection() {
   );
 }
 
-function BannerSliderSection() {
-  return (
-    <section className="banner-slider-section" style={{ padding: '8rem 5% 0rem', maxWidth: '100vw', overflow: 'hidden' }}>
-      <div style={{ maxWidth: '1400px', margin: '0 auto', height: '400px' }}>
-        <Swiper
-          modules={[Autoplay]}
-          slidesPerView={'auto'}
-          centeredSlides={true}
-          spaceBetween={16}
-          loop={true}
-          autoplay={{ delay: 3500, disableOnInteraction: false }}
-          className="hero-material-slider"
-          style={{ height: '100%' }}
-        >
-          <SwiperSlide>
-            <img src="./hero_banner.webp" alt="Workspace 1" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="./hero-crimson.webp" alt="Workspace 2" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="./hero3d.webp" alt="Workspace 3" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="./dwa24.webp" alt="Workspace 4" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="./hero_banner.webp" alt="Workspace 5" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="./hero-crimson.webp" alt="Workspace 6" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="./hero3d.webp" alt="Workspace 7" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="./dwa24.webp" alt="Workspace 8" />
-          </SwiperSlide>
-        </Swiper>
-      </div>
-    </section>
-  );
-}
 
 function Preloader() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => sessionStorage.getItem('preloader_shown') !== 'true');
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    if (!loading) return;
     document.body.style.overflow = "hidden";
     
     const duration = 2000;
@@ -2316,6 +1736,7 @@ function Preloader() {
         setTimeout(() => {
           setLoading(false);
           document.body.style.overflow = "auto";
+          sessionStorage.setItem('preloader_shown', 'true');
         }, 500);
       }
     }, interval);
@@ -2336,7 +1757,8 @@ function Preloader() {
           style={{
             position: "fixed", inset: 0, background: "#050810", zIndex: 99999,
             display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "#f8fafc",
-            fontFamily: '"Plus Jakarta Sans", -apple-system, sans-serif'
+            fontFamily: '"Plus Jakarta Sans", -apple-system, sans-serif',
+            padding: '20px'
           }}
         >
           <motion.div
@@ -2345,10 +1767,10 @@ function Preloader() {
             transition={{ duration: 0.8 }}
             style={{ textAlign: 'center' }}
           >
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, margin: '0 0 10px 0', letterSpacing: '-1px' }}>
+            <h1 style={{ fontSize: 'clamp(2rem, 8vw, 4rem)', lineHeight: 1.2, fontWeight: 800, margin: '0 0 12px 0', letterSpacing: '-1px' }}>
               Parth <span style={{ color: '#ef4444' }}>Parmar</span>
             </h1>
-            <div style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '3px', color: '#f87171', textTransform: 'uppercase', marginBottom: '50px' }}>
+            <div style={{ fontSize: 'clamp(0.65rem, 3vw, 0.85rem)', lineHeight: 1.5, fontWeight: 600, letterSpacing: 'clamp(1px, 0.5vw, 3px)', color: '#f87171', textTransform: 'uppercase', marginBottom: '50px' }}>
               Creative Web Developer • Portfolio
             </div>
             
@@ -2356,7 +1778,7 @@ function Preloader() {
               Loading Experience..
             </div>
             
-            <div style={{ width: '280px', height: '4px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', margin: '0 auto', position: 'relative', overflow: 'hidden' }}>
+            <div style={{ width: '100%', maxWidth: '280px', height: '4px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', margin: '0 auto', position: 'relative', overflow: 'hidden' }}>
               <motion.div 
                 style={{ position: 'absolute', top: 0, left: 0, height: '100%', background: 'linear-gradient(90deg, #ef4444, #f87171)', borderRadius: '4px' }}
                 initial={{ width: '0%' }}
@@ -2375,16 +1797,22 @@ function Preloader() {
   );
 }
 
+
 export default function App() {
   const [currentView, setCurrentView] = React.useState('home');
 
   if (currentView === 'portfolio') {
-    return <PortfolioPage projects={allProjects} onBack={() => setCurrentView('home')} />;
+    return (
+      <>
+        <Preloader />
+        <PortfolioPage projects={allProjects} onBack={() => setCurrentView('home')} />
+      </>
+    );
   }
 
   return (
     <div style={{ overflow: "hidden", width: "100%", position: "relative" }}>
-
+      <Preloader />
       <GlobalBackground />
       <Navbar />
       <Hero />
@@ -2394,11 +1822,10 @@ export default function App() {
       <SkillsMatrix />
       <TechMarquee />
       <ToolkitSection />
-      <Projects />
       <ProjectsOptionTwo projects={allProjects} />
       
       {/* View All Projects Action */}
-      <section style={{ padding: '40px 0 80px', textAlign: 'center', position: 'relative', zIndex: 10 }}>
+      <section style={{ padding: '10px 0 80px', textAlign: 'center', position: 'relative', zIndex: 10 }}>
         <button 
           onClick={() => setCurrentView('portfolio')}
           style={{
@@ -2430,15 +1857,3 @@ export default function App() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-

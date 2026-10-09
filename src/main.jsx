@@ -8,21 +8,24 @@ import App from './App.jsx'
 import Lenis from 'lenis';
 
 /* ── Lenis smooth scroll ── */
+/* --- Lenis smooth scroll --- */
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   smoothWheel: true,
 });
 
+let rafId;
 function raf(time) {
   lenis.raf(time);
-  requestAnimationFrame(raf);
+  rafId = requestAnimationFrame(raf);
 }
-requestAnimationFrame(raf);
 
-/* ── prefers-reduced-motion: disable Lenis if user prefers reduced motion ── */
+/* --- prefers-reduced-motion: disable Lenis if user prefers reduced motion --- */
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (prefersReducedMotion) {
+if (!prefersReducedMotion) {
+  rafId = requestAnimationFrame(raf);
+} else {
   lenis.destroy();
 }
 

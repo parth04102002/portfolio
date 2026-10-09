@@ -1,4 +1,5 @@
-﻿import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { ChevronLeft, ChevronRight, ArrowLeftRight, ExternalLink } from 'lucide-react';
 
 export default function ProjectsOptionTwo({ projects }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -135,22 +136,7 @@ export default function ProjectsOptionTwo({ projects }) {
     sliderWrapper.addEventListener("pointerup", onPointerUp);
     sliderWrapper.addEventListener("pointercancel", onPointerCancel);
 
-    let wheelLocked = false;
-    const onWheel = (e) => {
-      if (wheelLocked) return;
-      wheelLocked = true;
-      if (e.deltaY > 0) {
-        nextProject();
-      } else {
-        prevProject();
-      }
-      setTimeout(() => {
-        wheelLocked = false;
-      }, 750);
-    };
 
-    // passive: true so page still scrolls smoothly when mouse is over it!
-    sliderWrapper.addEventListener("wheel", onWheel, { passive: true });
 
     updateScrollAnimation();
 
@@ -161,7 +147,6 @@ export default function ProjectsOptionTwo({ projects }) {
       sliderWrapper.removeEventListener("pointerdown", onPointerDown);
       sliderWrapper.removeEventListener("pointerup", onPointerUp);
       sliderWrapper.removeEventListener("pointercancel", onPointerCancel);
-      sliderWrapper.removeEventListener("wheel", onWheel);
     };
   }, [currentIndex, projects.length]);
 
@@ -175,6 +160,7 @@ export default function ProjectsOptionTwo({ projects }) {
 
   useEffect(() => {
     const onKeyDown = (e) => {
+      if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
       if (e.key === "ArrowRight") nextProject();
       if (e.key === "ArrowLeft") prevProject();
     };
@@ -183,7 +169,7 @@ export default function ProjectsOptionTwo({ projects }) {
   }, [projects.length]);
 
   return (
-    <main className="p3d-portfolio" style={{ marginBottom: '4rem', padding: '80px 0' }}>
+    <main id="work" className="p3d-portfolio" style={{ marginBottom: '1rem', padding: '80px 0' }}>
       <header className="p3d-heading" style={{ marginBottom: '42px' }}>
         <div className="p3d-eyebrow">Projects Alternative</div>
         <h2 className="section-title">3D <span className="gradient-text">Portfolio Slider</span></h2>
@@ -220,6 +206,26 @@ export default function ProjectsOptionTwo({ projects }) {
                     <span key={i}>{tag}</span>
                   ))}
                 </div>
+                <div style={{ marginTop: '20px' }}>
+                  <a 
+                    href={project.url !== '#' ? project.url : '#'} 
+                    target={project.url !== '#' ? "_blank" : "_self"}
+                    rel="noopener noreferrer" 
+                    className="btn-primary" 
+                    style={{ padding: '8px 16px', fontSize: '0.85rem', display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '100px', textDecoration: 'none', transition: 'all 0.3s ease' }}
+                    onClick={(e) => {
+                      if (project.url === '#') {
+                        e.preventDefault();
+                        alert('This project is currently archived or restricted.');
+                      }
+                    }}
+                    onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(239, 68, 68, 0.2)'; }}
+                    onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(239, 68, 68, 0.1)'; }}
+                  >
+                    {project.url !== '#' ? 'Visit Website' : 'Archived Project'} 
+                    <ExternalLink size={14} />
+                  </a>
+                </div>
               </div>
             </article>
           ))}
@@ -228,7 +234,7 @@ export default function ProjectsOptionTwo({ projects }) {
 
       <div className="p3d-controls" style={{ marginTop: '24px' }}>
         <button className="p3d-arrow" onClick={prevProject} aria-label="Previous project">
-          ←
+          <ChevronLeft size={22} />
         </button>
         <div className="p3d-dots">
           {projects.map((_, idx) => (
@@ -241,7 +247,7 @@ export default function ProjectsOptionTwo({ projects }) {
           ))}
         </div>
         <button className="p3d-arrow" onClick={nextProject} aria-label="Next project">
-          →
+          <ChevronRight size={22} />
         </button>
       </div>
 
@@ -249,10 +255,7 @@ export default function ProjectsOptionTwo({ projects }) {
         <span style={{ width: `${((currentIndex + 1) / projects.length) * 100}%` }}></span>
       </div>
 
-      <div className="p3d-scroll-hint" style={{ marginTop: '25px' }}>
-        <span>↓</span>
-        Scroll or drag to explore
-      </div>
+
     </main>
   );
 }
