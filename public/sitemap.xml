@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://portfolio-parth04102002.vercel.app/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <loc>https://parthparmar.runs-on.dev/</loc>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://parthparmar.runs-on.dev/hero3d.webp</image:loc>
+      <image:title>Parth Parmar - Freelance WordPress Developer &amp; Web Engineer</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://parthparmar.runs-on.dev/Parth_Parmar_Resume.pdf</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

@@ -23,92 +23,177 @@ import { TextInput, TextArea, Button as GravityButton, Card, Text } from '@gravi
 
 
 const allProjects = [
-    {
-      id: 'dwa24',
-      title: 'DWA24 Medical Store',
-      category: 'Healthcare / eCommerce',
-      badge: 'Medical Store',
-      stat: '🛒 E-Commerce Platform',
-      type: 'featured',
-      url: 'https://dwa24.com/',
-      cleanUrl: 'dwa24.com',
-      image: './dwa24.webp',
-      headline: 'Online Medical Store',
-      description: 'An online medical store developed using WordPress and WooCommerce. Features include product management, secure shopping experiences, responsive design, and optimized user journeys.',
-      challenge: 'Creating a secure, user-friendly shopping experience for medical products.',
-      solution: 'Custom WooCommerce integration with optimized checkout and responsive design.',
-      deliverables: ['WooCommerce Store', 'Product Management', 'Responsive UX'],
-      tags: ['WordPress', 'WooCommerce', 'PHP', 'JS', 'CSS']
-    },
-    {
-      id: 'moment',
-      title: 'The Moment Massage',
-      category: 'Wellness & Spa',
-      badge: 'Luxury Wellness',
-      stat: '📅 Direct Booking Engine',
-      type: 'featured',
-      url: 'https://themomentmassage.com/',
-      cleanUrl: 'themomentmassage.com',
-      image: './themoment.webp',
-      headline: 'Luxury Spa & Wellness Sanctuary',
-      description: 'A premium wellness website designed to showcase services, improve customer engagement, and simplify appointment inquiries through an elegant user experience.',
-      challenge: 'Clients previously experienced friction booking massage packages online.',
-      solution: 'Integrated an intuitive booking flow, zen aesthetic, and high-performance layouts.',
-      deliverables: ['Custom Wellness Layouts', 'Integrated Booking Engine', 'High-Converting CTAs'],
-      tags: ['WordPress', 'Elementor', 'CSS', 'JavaScript']
-    },
-    {
-      id: 'satyam',
-      title: 'Satyam CNC & SPM Machines',
-      category: 'Manufacturing',
-      badge: 'Precision Engineering',
-      stat: '⚙️ Industrial Catalog',
-      type: 'grid',
-      url: 'https://sabvix.com/satyam/',
-      cleanUrl: 'sabvix.com/satyam',
-      image: './satyam.webp',
-      headline: 'Precision Industrial CNC & SPM Machine Manufacturing Portal',
-      description: 'An industrial website highlighting CNC machines, automation solutions, and manufacturing capabilities with a focus on lead generation and professional branding.',
-      challenge: 'Presenting complex industrial machinery in a clean, conversion-focused layout.',
-      solution: 'Developed modular WordPress components with high-impact product catalogs and inquiry funnels.',
-      deliverables: ['Custom CNC Catalog', 'Machinery Showcase Modules', 'Lead Generation Forms'],
-      tags: ['WordPress', 'Elementor', 'JavaScript', 'CSS']
-    },
-    {
-      id: 'squadra',
-      title: 'Squadra Lupo',
-      category: 'Corporate Website',
-      badge: 'Premium Business',
-      stat: '💎 Premium Design',
-      type: 'grid',
-      url: 'https://www.squadralupo.com/',
-      cleanUrl: 'squadralupo.com',
-      image: './squadra.webp',
-      headline: 'Corporate Business Website',
-      description: 'A modern business website featuring premium design, responsive layouts, advanced animations, and performance-focused development.',
-      challenge: 'Delivering an immersive, high-end aesthetic while maintaining performance.',
-      solution: 'Crafted a bespoke, high-contrast UI with optimized media carousels and smooth animations.',
-      deliverables: ['Cinematic UI', 'Responsive Animations', 'Performance UI'],
-      tags: ['WordPress', 'CSS', 'JavaScript']
-    },
-    {
-      id: 'gofuelly',
-      title: 'GoFuelly',
-      category: 'On-Demand Services',
-      badge: 'Fuel Delivery',
-      stat: '🚚 Delivery Platform',
-      type: 'grid',
-      url: '#',
-      cleanUrl: 'gofuelly.com',
-      image: './gofuelly.webp',
-      headline: 'Fuel Delivery Platform',
-      description: 'A fuel delivery platform designed to streamline fuel ordering and management through a user-friendly digital experience.',
-      challenge: 'Streamlining a complex ordering process for on-demand fuel delivery.',
-      solution: 'Developed a custom PHP/MySQL backend with a clean HTML/JS frontend for seamless ordering.',
-      deliverables: ['Fuel Ordering System', 'Database Management', 'Responsive Frontend'],
-      tags: ['PHP', 'HTML', 'CSS', 'JavaScript', 'MySQL']
-    }
-  ];
+  {
+    id: 'dwa24',
+    title: 'DWA24 Medical Store',
+    category: 'Healthcare & Wellness',
+    badge: 'Medical Store',
+    stat: '🛒 E-Commerce Platform',
+    type: 'featured',
+    url: 'https://dwa24.com/',
+    cleanUrl: 'dwa24.com',
+    image: './dwa24.webp',
+    headline: 'Online Medical Store',
+    description: 'An online medical store developed using WordPress and WooCommerce. Features include product management, secure shopping experiences, responsive design, and optimized user journeys.',
+    challenge: 'Creating a secure, user-friendly shopping experience for medical products.',
+    solution: 'Custom WooCommerce integration with optimized checkout and responsive design.',
+    deliverables: ['WooCommerce Store', 'Product Management', 'Responsive UX'],
+    tags: ['WordPress', 'WooCommerce', 'PHP', 'JavaScript', 'CSS']
+  },
+  {
+    id: 'elegance',
+    title: 'Elegance Clinic',
+    category: 'Healthcare & Wellness',
+    badge: 'Aesthetic Clinic',
+    stat: '⚡ 98/100 PageSpeed',
+    type: 'featured',
+    url: 'https://eleganceclinic.in/',
+    cleanUrl: 'eleganceclinic.in',
+    image: './elegance.webp',
+    headline: 'Premium Aesthetics & Dermatology Platform',
+    description: 'Engineered a modern, performance-focused WordPress website for a premier cosmetic surgery and dermatology clinic, featuring interactive treatment catalogs and automated patient inquiry flows.',
+    challenge: 'High-resolution clinical photography was slowing down mobile page load times.',
+    solution: 'Implemented modern responsive WebP compression, server caching, and conversion-optimized treatment inquiry funnels.',
+    deliverables: ['Custom WordPress Theme', 'Consultation Inquiry System', 'Treatment Catalog', 'SEO Optimization'],
+    tags: ['WordPress', 'Healthcare SEO', 'Responsive UX', 'Speed Optimization']
+  },
+  {
+    id: 'moment',
+    title: 'The Moment Massage',
+    category: 'Healthcare & Wellness',
+    badge: 'Luxury Wellness',
+    stat: '📅 Direct Booking Engine',
+    type: 'featured',
+    url: 'https://themomentmassage.com/',
+    cleanUrl: 'themomentmassage.com',
+    image: './themoment.webp',
+    headline: 'Luxury Spa & Wellness Sanctuary',
+    description: 'A premium wellness website designed to showcase services, improve customer engagement, and simplify appointment inquiries through an elegant user experience.',
+    challenge: 'Clients previously experienced friction booking massage packages online.',
+    solution: 'Integrated an intuitive booking flow, zen aesthetic, and high-performance layouts.',
+    deliverables: ['Custom Wellness Layouts', 'Integrated Booking Engine', 'High-Converting CTAs'],
+    tags: ['WordPress', 'Elementor', 'CSS', 'JavaScript']
+  },
+  {
+    id: 'aadicura',
+    title: 'Aadicura Super Speciality Hospital',
+    category: 'Healthcare & Wellness',
+    badge: 'Multi-Speciality Hospital',
+    stat: '🏥 Clinical Portal',
+    type: 'featured',
+    url: 'https://aadicura.com/',
+    cleanUrl: 'aadicura.com',
+    image: './aadicura.webp',
+    headline: 'Advanced Healthcare & Hospital Platform',
+    description: 'A comprehensive medical portal for a multi-speciality hospital featuring doctor profiles, appointment scheduling, department navigation, and rapid-response emergency guidance.',
+    challenge: 'Organizing 20+ specialized medical departments into an intuitive navigation structure.',
+    solution: 'Engineered a clean taxonomy system with doctor directory filters and high-priority emergency CTAs.',
+    deliverables: ['Doctor Directory', 'Appointment Booking', 'Department Catalogs', 'Mobile UX'],
+    tags: ['WordPress', 'Healthcare UX', 'PHP', 'Responsive UI']
+  },
+  {
+    id: 'satyam',
+    title: 'Satyam CNC & SPM Machines',
+    category: 'Industrial & Manufacturing',
+    badge: 'Precision Engineering',
+    stat: '⚙️ Industrial Catalog',
+    type: 'grid',
+    url: 'https://sabvix.com/satyam/',
+    cleanUrl: 'sabvix.com/satyam',
+    image: './satyam.webp',
+    headline: 'Precision Industrial CNC & SPM Machine Manufacturing Portal',
+    description: 'An industrial website highlighting CNC machines, automation solutions, and manufacturing capabilities with a focus on lead generation and professional branding.',
+    challenge: 'Presenting complex industrial machinery in a clean, conversion-focused layout.',
+    solution: 'Developed modular WordPress components with high-impact product catalogs and inquiry funnels.',
+    deliverables: ['Custom CNC Catalog', 'Machinery Showcase Modules', 'Lead Generation Forms'],
+    tags: ['WordPress', 'Elementor', 'JavaScript', 'CSS']
+  },
+  {
+    id: 'aaron',
+    title: 'Aaron Metals Foundry',
+    category: 'Industrial & Manufacturing',
+    badge: 'Precision Foundry',
+    stat: '🔩 Valve Quote Engine',
+    type: 'grid',
+    url: 'https://aaronmetals.in/',
+    cleanUrl: 'aaronmetals.in',
+    image: './aaronmetals.webp',
+    headline: 'Precision Metal Casting & Valve Foundry',
+    description: 'Professional industrial website engineered for a metal casting foundry, showcasing valve castings, pump castings, company profile, and precision quote request systems.',
+    challenge: 'Industrial clients require specific alloy compositions and casting standards before requesting quotes.',
+    solution: 'Engineering-first layout with detailed product blueprints, pump/valve specs, and integrated RFP forms.',
+    deliverables: ['Valve & Pump Product Pages', 'Quote Inquiry System', 'Technical Catalog'],
+    tags: ['WordPress', 'Industrial Foundry', 'Product Pages', 'Quote Forms']
+  },
+  {
+    id: 'krishna',
+    title: 'Krishna Peanut Processing',
+    category: 'Industrial & Manufacturing',
+    badge: 'Global Agro Export',
+    stat: '📦 Export Quality Catalog',
+    type: 'grid',
+    url: 'https://krishnapeanut.com/',
+    cleanUrl: 'krishnapeanut.com',
+    image: './krishnapeanut.webp',
+    headline: 'Agro-Food Processing & Global Export Hub',
+    description: 'Created a comprehensive international trade portal featuring detailed product catalogs for Bold, Java, and TJ varieties, technical specifications, and international export inquiry tools.',
+    challenge: 'International buyers needed detailed purity, moisture, and grading specs before contacting.',
+    solution: 'Tabular technical catalogs, export certification badges, and multi-channel international trade inquiries.',
+    deliverables: ['Product Variety Catalog', 'Global Export Inquiry', 'Quality Certifications'],
+    tags: ['WordPress', 'Export Catalog', 'Inquiry Engine', 'International UX']
+  },
+  {
+    id: 'squadra',
+    title: 'Squadra Lupo',
+    category: 'Corporate & Luxury',
+    badge: 'Luxury Automotive',
+    stat: '💎 Premium Design',
+    type: 'grid',
+    url: 'https://www.squadralupo.com/',
+    cleanUrl: 'squadralupo.com',
+    image: './squadra.webp',
+    headline: 'Corporate Business Website',
+    description: 'A modern business website featuring premium design, responsive layouts, advanced animations, and performance-focused development.',
+    challenge: 'Delivering an immersive, high-end aesthetic while maintaining performance.',
+    solution: 'Crafted a bespoke, high-contrast UI with optimized media carousels and smooth animations.',
+    deliverables: ['Cinematic UI', 'Responsive Animations', 'Performance UI'],
+    tags: ['WordPress', 'CSS', 'JavaScript']
+  },
+  {
+    id: 'yashraj',
+    title: 'Yashraj Digital Marketing',
+    category: 'Corporate & Luxury',
+    badge: 'Growth Agency',
+    stat: '🎯 High-Converting Funnel',
+    type: 'grid',
+    url: 'https://yashrajmarketing.com/',
+    cleanUrl: 'yashrajmarketing.com',
+    image: './yashraj.webp',
+    headline: 'Digital Growth & Marketing Agency',
+    description: 'Built a clean, user-focused digital marketing agency portal presenting growth strategies, case studies, and conversion-focused lead generation funnels.',
+    challenge: 'Converting visitors into inbound agency inquiries.',
+    solution: 'High-contrast CTAs, social proof elements, and streamlined multi-step lead capture forms.',
+    deliverables: ['Lead Generation Forms', 'Service Packages Display', 'SEO-Friendly Layout'],
+    tags: ['WordPress', 'Lead Generation', 'Digital Agency', 'SEO']
+  },
+  {
+    id: 'gofuelly',
+    title: 'GoFuelly',
+    category: 'On-Demand & Web Apps',
+    badge: 'Fuel Delivery',
+    stat: '🚚 Delivery Platform',
+    type: 'grid',
+    url: 'https://gofuelly.com',
+    cleanUrl: 'gofuelly.com',
+    image: './gofuelly.webp',
+    headline: 'Fuel Delivery Platform',
+    description: 'A fuel delivery platform designed to streamline fuel ordering and management through a user-friendly digital experience.',
+    challenge: 'Streamlining a complex ordering process for on-demand fuel delivery.',
+    solution: 'Developed a custom PHP/MySQL backend with a clean HTML/JS frontend for seamless ordering.',
+    deliverables: ['Fuel Ordering System', 'Database Management', 'Responsive Frontend'],
+    tags: ['PHP', 'HTML', 'CSS', 'JavaScript', 'MySQL']
+  }
+];
 
 
 const slideUp = {
@@ -473,8 +558,8 @@ function Navbar() {
           </a>
           <button 
             className="mobile-menu-btn" 
-            aria-label="Toggle Mobile Menu" onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle Navigation Menu"
+            aria-label="Toggle Navigation Menu" 
+            onClick={() => setMobileOpen(!mobileOpen)}
             style={{ borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)' }}
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -1801,13 +1886,21 @@ function Preloader() {
 export default function App() {
   const [currentView, setCurrentView] = React.useState('home');
 
+  const handleOpenPortfolio = () => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    setCurrentView('portfolio');
+  };
+
+  const handleBackToHome = () => {
+    setCurrentView('home');
+    setTimeout(() => {
+      const el = document.getElementById('work');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
+  };
+
   if (currentView === 'portfolio') {
-    return (
-      <>
-        <Preloader />
-        <PortfolioPage projects={allProjects} onBack={() => setCurrentView('home')} />
-      </>
-    );
+    return <PortfolioPage projects={allProjects} onBack={handleBackToHome} />;
   }
 
   return (
@@ -1827,7 +1920,7 @@ export default function App() {
       {/* View All Projects Action */}
       <section style={{ padding: '10px 0 80px', textAlign: 'center', position: 'relative', zIndex: 10 }}>
         <button 
-          onClick={() => setCurrentView('portfolio')}
+          onClick={handleOpenPortfolio}
           style={{
             background: 'linear-gradient(135deg, #f87171, #ef4444)',
             color: '#fff',
